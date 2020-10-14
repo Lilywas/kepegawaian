@@ -1,2 +1,2 @@
 # kepegawaian
- Website Sistem Informasi Kepegawaian
+ Sistem Informasi Kepegawaian
