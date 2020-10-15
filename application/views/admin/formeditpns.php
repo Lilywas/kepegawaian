@@ -93,7 +93,7 @@ $jabatan = array(
           <div class="form-row">
             <div class="form-group col-md-4">
               <label>Tempat Lahir </label>
-              <input type="text" class="form-control" name="tempat_lahir" value="<?php print_r($dataPegawai['tempat_lahir'];) ?>">
+              <input type="text" class="form-control" name="tempat_lahir" value="<?php print_r($dataPegawai['tempat_lahir']) ?>">
             </div>
             <div class="form-group col-md-4">
               <label>Tanggal Lahir </label>
