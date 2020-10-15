@@ -60,19 +60,19 @@ $jabatan = array(
     <h4 class="font-weight-bold text-black">Edit Data Pegawai</h4>
   </div>
   <div class="card bg-light">
-    <form method="POST" action="<?= site_url('listpegawai/edit_pegawai/' . $dataPegawai['id_pegawai']) ?>" enctype="multipart/form-data">
-      <input hidden type="text" name="id_pegawai" value="<?= $dataPegawai['id_pegawai']; ?>">
+    <form method="POST" action="<?php echo site_url('listpegawai/edit_pegawai/' . $dataPegawai['id_pegawai']) ?>" enctype="multipart/form-data">
+      <input hidden type="text" name="id_pegawai" value="<?php echo $dataPegawai['id_pegawai']; ?>">
       <div class="card bg-light mb-3" style="margin: 7px">
         <div class="card-header">Informasi Umum</div>
         <div class="card-body">
           <div class="form-row">
             <div class="form-group col-md-4">
               <label>NIP </label>
-              <input type="text" class="form-control" name="nip" value="<?= $dataPegawai['nip']; ?>">
+              <input type="text" class="form-control" name="nip" value="<?php echo $dataPegawai['nip']; ?>">
             </div>
             <div class="form-group col-md-4">
               <label>Nama Lengkap </label>
-              <input type="text" class="form-control" name="nama" value="<?= $dataPegawai['nama']; ?>">
+              <input type="text" class="form-control" name="nama" value="<?php echo $dataPegawai['nama']; ?>">
             </div>
             <div class="form-group col-md-4">
               <label>Jenis Kelamin </label>
@@ -93,14 +93,14 @@ $jabatan = array(
           <div class="form-row">
             <div class="form-group col-md-4">
               <label>Tempat Lahir </label>
-              <input type="text" class="form-control" name="tempat_lahir" value="<?= $dataPegawai['tempat_lahir']; ?>">
+              <input type="text" class="form-control" name="tempat_lahir" value="<?php echo $dataPegawai['tempat_lahir']; ?>">
             </div>
             <div class="form-group col-md-4">
               <label>Tanggal Lahir </label>
               <?php
               $tgl = $dataPegawai['tgl_lahir'];
               ?>
-              <input type="date" data-date="" data-date-format="DD/MM/YYYY" name="tgl_lahir" class="form-control" value="<?= htmlspecialchars($tgl) ?>">
+              <input type="date" data-date="" data-date-format="DD/MM/YYYY" name="tgl_lahir" class="form-control" value="<?php echo htmlspecialchars($tgl) ?>">
             </div>
             <div class="form-group col-md-4">
               <label>Agama </label>
@@ -120,7 +120,7 @@ $jabatan = array(
           </div>
           <div class="form-row">
             <label>Alamat </label>
-            <input type="text" class="form-control" name="alamat" value="<?= $dataPegawai['alamat']; ?>">
+            <input type="text" class="form-control" name="alamat" value="<?php echo $dataPegawai['alamat']; ?>">
           </div>
           <div class="form-row">
             <div class="form-group col-md-4">
@@ -140,7 +140,7 @@ $jabatan = array(
             </div>
             <div class="form-group col-md-4">
               <label>Jurusan</label>
-              <input type="text" class="form-control" name="jurusan" value="<?= $dataPegawai['jurusan'] ?>">
+              <input type="text" class="form-control" name="jurusan" value="<?php echo $dataPegawai['jurusan'] ?>">
             </div>
           </div>
         </div>
@@ -151,11 +151,11 @@ $jabatan = array(
           <div class="form-row">
             <div class="form-group col-md-4">
               <label>No HP </label>
-              <input type="text" class="form-control" name="hp" value="<?= $dataPegawai['hp'] ?>">
+              <input type="text" class="form-control" name="hp" value="<?php echo $dataPegawai['hp'] ?>">
             </div>
             <div class="form-group col-md-4">
               <label>email </label>
-              <input type="email" class="form-control" name="email" value="<?= $dataPegawai['email'] ?>">
+              <input type="email" class="form-control" name="email" value="<?php echo $dataPegawai['email'] ?>">
             </div>
           </div>
         </div>
@@ -172,10 +172,10 @@ $jabatan = array(
                 foreach ($pangkat as $key => $value) {
                   if ($key == $dataPegawai['pangkat']) {
                 ?>
-                    <option selected=""><?= $value; ?></option>
+                    <option selected=""><?php echo $value; ?></option>
                   <?php } else {
                   ?>
-                    <option><?= $value; ?></option>
+                    <option><?php echo $value; ?></option>
                 <?php }
                 }
                 ?>
@@ -238,20 +238,20 @@ $jabatan = array(
             </div>
             <div class="form-group col-md-4">
               <label>Bagian </label>
-              <input type="text" class="form-control" name="bagian" value="<?= $dataPegawai['bagian'] ?>">
+              <input type="text" class="form-control" name="bagian" value="<?php echo $dataPegawai['bagian'] ?>">
             </div>
             <div class="form-group col-md-4">
               <label>Tanggal Mulai Kerja</label>
               <?php
               $tgl = $dataPegawai['tgl_kerja'];
               ?>
-              <input type="date" data-date="" data-date-format="DD/MM/YYYY" name="tgl_kerja" class="form-control" value="<?= htmlspecialchars($tgl) ?>">
+              <input type="date" data-date="" data-date-format="DD/MM/YYYY" name="tgl_kerja" class="form-control" value="<?php echo htmlspecialchars($tgl) ?>">
             </div>
           </div>
           <div class="form-row">
             <div class="form-group col-md-4">
               <label>Usia Pensiun </label>
-              <input type="text" class="form-control" name="pensiun" value="<?= $dataPegawai['pensiun'] ?>">
+              <input type="text" class="form-control" name="pensiun" value="<?php echo $dataPegawai['pensiun'] ?>">
             </div>
           </div>
         </div>

@@ -52,8 +52,8 @@ $jenis_jabatan = array(
   <div>
     <h4 class="font-weight-bold text-black">Edit Data Pegawai</h4>
   </div>
-  <form method="POST" action="<?= site_url('listpegawai/edit_pegawai/' . $dataPegawai['id_pegawai']) ?>" enctype="multipart/form-data">
-    <input hidden type="text" id="id" name="id_pegawai" value="<?= $dataPegawai['id_pegawai']; ?>">
+  <form method="POST" action="<?php echo site_url('listpegawai/edit_pegawai/' . $dataPegawai['id_pegawai']) ?>" enctype="multipart/form-data">
+    <input hidden type="text" id="id" name="id_pegawai" value="<?php echo $dataPegawai['id_pegawai']; ?>">
     <div class="card bg-light">
       <div class="card bg-light mb-3" style="margin: 7px">
         <div class="card-header">Informasi Umum</div>
@@ -61,7 +61,7 @@ $jenis_jabatan = array(
           <div class="form-row">
             <div class="form-group col-md-3">
               <label>Nama Lengkap </label>
-              <input type="text" class="form-control" name="nama" value="<?= $dataPegawai['nama']; ?>">
+              <input type="text" class="form-control" name="nama" value="<?php echo $dataPegawai['nama']; ?>">
             </div>
             <div class="form-group col-md-3">
               <label>Jenis Kelamin </label>
@@ -80,19 +80,19 @@ $jenis_jabatan = array(
             </div>
             <div class="form-group col-md-3">
               <label>Tempat Lahir </label>
-              <input type="text" class="form-control" name="tempat_lahir" value="<?= $dataPegawai['tempat_lahir']; ?>" readonly>
+              <input type="text" class="form-control" name="tempat_lahir" value="<?php echo $dataPegawai['tempat_lahir']; ?>" readonly>
             </div>
             <div class="form-group col-md-3">
               <label>Tanggal Lahir </label>
               <?php
               $tgl = $dataPegawai['tgl_lahir'];
               ?>
-              <input type="date" data-date="" data-date-format="DD/MM/YYYY" name="tgl_lahir" class="form-control" value="<?= htmlspecialchars($tgl) ?>">
+              <input type="date" data-date="" data-date-format="DD/MM/YYYY" name="tgl_lahir" class="form-control" value="<?php echo htmlspecialchars($tgl) ?>">
             </div>
           </div>
           <div class="form-group">
             <label>Alamat </label>
-            <input type="text" class="form-control" name="alamat" value="<?= $dataPegawai['alamat']; ?>">
+            <input type="text" class="form-control" name="alamat" value="<?php echo $dataPegawai['alamat']; ?>">
           </div>
           <div class="form-row">
             <div class="form-group col-md-4">
@@ -127,7 +127,7 @@ $jenis_jabatan = array(
             </div>
             <div class="form-group col-md-4">
               <label>Jurusan</label>
-              <input type="text" class="form-control" name="jurusan" value="<?= $dataPegawai['jurusan'] ?>">
+              <input type="text" class="form-control" name="jurusan" value="<?php echo $dataPegawai['jurusan'] ?>">
             </div>
           </div>
         </div>
@@ -138,11 +138,11 @@ $jenis_jabatan = array(
           <div class="form-row">
             <div class="form-group col-md-4">
               <label>No HP </label>
-              <input type="text" class="form-control" name="hp" value="<?= $dataPegawai['hp'] ?>">
+              <input type="text" class="form-control" name="hp" value="<?php echo $dataPegawai['hp'] ?>">
             </div>
             <div class="form-group col-md-4">
               <label>email </label>
-              <input type="email" class="form-control" name="email" value="<?= $dataPegawai['email'] ?>">
+              <input type="email" class="form-control" name="email" value="<?php echo $dataPegawai['email'] ?>">
             </div>
           </div>
         </div>
@@ -215,7 +215,7 @@ $jenis_jabatan = array(
               <?php
               $tgl = $dataPegawai['tgl_kerja'];
               ?>
-              <input type="date" data-date="" data-date-format="DD/MM/YYYY" name="tgl_kerja" class="form-control" value="<?= htmlspecialchars($tgl) ?>">
+              <input type="date" data-date="" data-date-format="DD/MM/YYYY" name="tgl_kerja" class="form-control" value="<?php echo htmlspecialchars($tgl) ?>">
             </div>
           </div>
         </div>
