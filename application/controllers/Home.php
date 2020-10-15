@@ -64,13 +64,11 @@ class Home extends CI_Controller {
 
 		$data['status'] = $this->ChartModel->get_count_status();
 		$data['jk'] = $this->ChartModel->get_count_jk();
-		$data['jabatan'] = $this->ChartModel->get_count_jabatan();
 		$data['pend'] = $this->ChartModel->get_count_pend();
 		$data['agama'] = $this->ChartModel->get_count_agama();
 		$data['all'] = $this->ChartModel->get_count_all();
 		$data['komp'] = $this->ChartModel->get_count_komp();
 		$data['allpns'] = $this->ChartModel->get_all_pns();
-		$data['jabnon'] = $this->ChartModel->get_count_jabnon();
 
 		$data['jumlah_lk_pns'] = $this->ChartModel->get_lk_pns();
 		$data['jumlah_pr_pns'] = $this->ChartModel->get_pr_pns();
@@ -98,10 +96,6 @@ class Home extends CI_Controller {
 		$data['jumlah_s1_nonpns'] = $this->ChartModel->get_pend_s1_nonpns();
 		$data['jumlah_s2_nonpns'] = $this->ChartModel->get_pend_s2_nonpns();
 		$data['jumlah_s3_nonpns'] = $this->ChartModel->get_pend_s3_nonpns();
-
-		$data['jumlah_umum_pns'] = $this->ChartModel->get_umum_pns();
-		$data['jumlah_khusus_pns'] = $this->ChartModel->get_khusus_pns();
-		$data['jumlah_struktural_pns'] = $this->ChartModel->get_struktural_pns();
 
 		$data['jumlah_1a_lk'] = $this->ChartModel->get_gol1a_lk();
 		$data['jumlah_1a_pr'] = $this->ChartModel->get_gol1a_pr();
@@ -204,14 +198,12 @@ class Home extends CI_Controller {
 
 		$data['status'] = $this->ChartModel->get_count_status();
 		$data['jk'] = $this->ChartModel->get_count_jk();
-		$data['jabatan'] = $this->ChartModel->get_count_jabatan();
 		$data['pend'] = $this->ChartModel->get_count_pend();
 		$data['agama'] = $this->ChartModel->get_count_agama();
 		$data['all'] = $this->ChartModel->get_count_all();
 		$data['komp'] = $this->ChartModel->get_count_komp();
 		$data['allpns'] = $this->ChartModel->get_all_pns();
 
-		$data['jumlah_tdk_aktif'] = $this->ChartModel->get_non_aktif();
 		$data['jumlah_aktif'] = $this->ChartModel->get_all_aktif();
 
 		$data['jumlah_lk_pns'] = $this->ChartModel->get_lk_pns();
@@ -284,4 +276,3 @@ class Home extends CI_Controller {
 		$this->load->view("admin/includes/footer", $data);
 	}
 }
-?>

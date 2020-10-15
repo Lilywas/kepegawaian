@@ -19,10 +19,10 @@ class Pegawai extends CI_Controller
 	}
 
 	public function detail(){
-		$id = $this->input->post('id_pegawai');
-		$dataPegawai = $this->UserModel->get_detail($id)->row();
-		$data = $this->UserModel->get_kompetensi($id)->result_array(); //get kompetensi pegawai
-		$dataRiwayat = $this->UserModel->get_riwayat($id)->result_array(); // get riwayat unit kerja
+		$id_pegawai = $this->input->post('id_pegawai');
+		$dataPegawai = $this->UserModel->get_detail($id_pegawai)->row();
+		$data = $this->UserModel->get_kompetensi($id_pegawai)->result_array(); //get kompetensi pegawai
+		$dataRiwayat = $this->UserModel->get_riwayat($id_pegawai)->result_array(); // get riwayat unit kerja
 
 
 		echo "<div class='modal-content'>";
@@ -44,10 +44,10 @@ class Pegawai extends CI_Controller
 		echo "<tbody>";
 		//kompetensi bidang/////////////////////////////////////////////////////////////////////////////////////
 		if ($data != NULL){
-			$no=1;
+			$nomor=1;
 			foreach ($data as $key) {
 				echo "<tr>";
-				echo "<td style='text-align: center; vertical-align: middle;'>".$no++."</td>";
+				echo "<td style='text-align: center; vertical-align: middle;'>".$nomor++."</td>";
 				echo "<td style='vertical-align: middle;'>".$key['kompetensi']."</td>";
 				if ($key['keterangan'] != NULL){
 					echo "<td style='vertical-align: middle;'>".$key['keterangan']."</td>";
@@ -80,8 +80,8 @@ class Pegawai extends CI_Controller
 		echo "</tr>";
 		echo "</thead>";
 		echo "<tbody>";
+		
 		//riwayat unit kerja //////////////////////////////////////////////////////////////////////////////////////////
-		$no = 1;
 		$bln = Date('m');
 		$recap = [
 			'01' => 'Januari',
@@ -98,10 +98,10 @@ class Pegawai extends CI_Controller
 			'12' => 'Desember'
 		];
 		if ($dataRiwayat != NULL){
-			$no=1;
+			$nomor=1;
 			foreach ($dataRiwayat as $key) {
 				echo "<tr>";
-				echo "<td style='text-align: center; vertical-align: middle;'>".$no++."</td>";
+				echo "<td style='text-align: center; vertical-align: middle;'>".$nomor++."</td>";
 				echo "<td style='vertical-align: middle;'>".$key['unit_kerja']."</td>";
 				echo "<td style='vertical-align: middle;'>".$key['sub_unit_kerja']."</td>";
 				
@@ -149,5 +149,3 @@ class Pegawai extends CI_Controller
 		echo "</div>";
 	}
 }
-
-?>

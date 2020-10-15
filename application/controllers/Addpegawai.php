@@ -57,7 +57,6 @@ class Addpegawai extends CI_Controller
       'unit_kerja_pegawai' => $this->input->post('unit_master'),
       'sub_pegawai' => $this->input->post('sub_unit_master')
     );
-     $data['dataPegawai'] = $data_pegawai;
 
      $this->db->insert('pns_local', $data_pegawai);
      $this->session->set_flashdata('msg_berhasil', '<div class="alert alert-success" role="alert"> Data berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -100,7 +99,6 @@ class Addpegawai extends CI_Controller
       'unit_kerja_pegawai' => $this->input->post('unit_master'),
       'sub_pegawai' => $this->input->post('sub_unit_master')
     );
-     $data['dataPegawai'] = $data_pegawai;
 
      $this->db->insert('pns_local', $data_pegawai);
      $this->session->set_flashdata('msg_berhasil', '<div class="alert alert-success" role="alert"> Data berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -118,5 +116,3 @@ class Addpegawai extends CI_Controller
   }
 }
 }
-
-?>

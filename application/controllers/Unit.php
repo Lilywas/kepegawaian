@@ -69,7 +69,6 @@ class Unit extends CI_Controller
 
 	public function delete_unit(){
 		$id_unit = $this->input->post('id_unit');
-		$sub = $this->UserModel->get_sub_unit_kerja($id_unit);
 		$this->UserModel->delete_sub_by_unit($id_unit);
 		$this->UserModel->delete_unit($id_unit);
 		$this->session->set_flashdata('msg_berhasil', '<div class="alert alert-success" role="alert"> Data unit kerja berhasil dihapus <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -78,4 +77,3 @@ class Unit extends CI_Controller
 	}
 
 }
-?>
