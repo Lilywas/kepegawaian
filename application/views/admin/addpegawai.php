@@ -4,8 +4,8 @@
   <div>
     <h4 class="font-weight-bold text-black">Tambah Data Pegawai</h4>
   </div>
-  
-  <form method="POST" action="<?= site_url('addpegawai/simpanpns')?>" enctype="multipart/form-data">
+
+  <form method="POST" action="<?= site_url('addpegawai/simpanpns') ?>" enctype="multipart/form-data">
     <div class="card bg-light">
       <div class="card bg-light mb-3" style="margin: 7px">
         <div class="card-header">Informasi Umum</div>
@@ -48,7 +48,7 @@
             </div>
             <div class="form-group col-md-4">
               <label>Tanggal Lahir <span style="color: red">*</span></label>
-              <input type="text" id="datepicker" class="form-control" name="tgl_lahir" placeholder="yyyy-mm-dd" required>
+              <input type="date" class="form-control" name="tgl_lahir" required>
             </div>
           </div>
           <div class="form-row">
@@ -128,9 +128,8 @@
               <select id="unit" class="form-control" name="unit_master" required>
                 <option value="">----Pilih----</option>
                 <?php
-                foreach ($unit as $key) 
-                {
-                  echo '<option value="'.$key['id_unit'].'" >'.$key['nama_unit'].'</option>';
+                foreach ($unit as $key) {
+                  echo '<option value="' . $key['id_unit'] . '" >' . $key['nama_unit'] . '</option>';
                 }
                 ?>
               </select>
@@ -164,7 +163,7 @@
           <div class="form-row">
             <div class="form-group col-md-4">
               <label>Usia Pensiun </label>
-              <input type="text" class="form-control" name="pensiun" value="58"> 
+              <input type="text" class="form-control" name="pensiun" value="58">
             </div>
           </div>
 
@@ -177,5 +176,3 @@
     </div>
   </form>
 </div>
-
-
