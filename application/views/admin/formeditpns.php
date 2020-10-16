@@ -256,7 +256,7 @@ $jabatan = array(
           </div>
         </div>
       </div>
-      <button style="margin-bottom: 10px" type="submit" name="simpan" class="btn btn-primary btn-block">
+      <button style="margin-bottom: 10px" type="submit" value="1" name="simpan" class="btn btn-primary btn-block">
         Simpan Data
       </button>
     </form>

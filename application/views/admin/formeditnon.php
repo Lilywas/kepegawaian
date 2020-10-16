@@ -222,7 +222,7 @@ $jenis_jabatan = array(
       </div>
     </div>
 </div>
-<button type="submit" name="simpan" class="btn btn-primary btn-block">
+<button type="submit" value="1" name="simpan" class="btn btn-primary btn-block">
   Simpan Data
 </button>
 </div>

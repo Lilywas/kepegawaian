@@ -41,7 +41,7 @@ class Subunit extends CI_Controller
 				<span aria-hidden="true">&times;</span></button></div>');
 			redirect(site_url('subunit'));
 		}
-		else{
+		elseif ($this->form_validation->run() == FALSE){
 			$this->session->set_flashdata('msg_sub_gagal', '<div class="alert alert-danger" role="alert"> Data sub unit kerja gagal ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 				<span aria-hidden="true">&times;</span>
 				</button></div>');
@@ -63,7 +63,7 @@ class Subunit extends CI_Controller
 				<span aria-hidden="true">&times;</span></button></div>');
 			redirect(site_url('subunit'));
 		}
-		else{
+		elseif ($this->form_validation->run() == FALSE){
 			$this->session->set_flashdata('msg_sub_gagal', '<div class="alert alert-danger" role="alert"> Data sub unit kerja gagal diperbarui <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 				<span aria-hidden="true">&times;</span>
 				</button></div>');
@@ -79,4 +79,3 @@ class Subunit extends CI_Controller
 		redirect(site_url('subunit'));
 	}
 }
-?>

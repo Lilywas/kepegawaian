@@ -1,16 +1,19 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Home extends CI_Controller {
-	
-	public function __construct() {
+class Home extends CI_Controller
+{
+
+	public function __construct()
+	{
 		parent::__construct();
 		$this->load->model('account/ChartModel');
 		$this->load->model('account/UserModel');
 	}
 
 	//halaman home publik///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	public function index(){
+	public function index()
+	{
 		$data['title'] = "Home";
 		$data_pegawai = $this->UserModel->get_data_pegawai();
 
@@ -23,35 +26,35 @@ class Home extends CI_Controller {
 		foreach ($data_pegawai as $key) {
 			$tgl = substr($key['tanggal_lahir'], 0, 4);
 			$usia = Date('Y') - $tgl;
-			if ($usia == $key['pensiun']){
+			if ($usia == $key['pensiun']) {
 				$total1++;
 			}
 		}
 		foreach ($data_pegawai as $key) {
 			$tgl = substr($key['tanggal_lahir'], 0, 4);
 			$usia = (Date('Y') + 1) - $tgl;
-			if ($usia == $key['pensiun']){
+			if ($usia == $key['pensiun']) {
 				$total2++;
 			}
 		}
 		foreach ($data_pegawai as $key) {
 			$tgl = substr($key['tanggal_lahir'], 0, 4);
 			$usia = (Date('Y') + 2) - $tgl;
-			if ($usia == $key['pensiun']){
+			if ($usia == $key['pensiun']) {
 				$total3++;
 			}
 		}
 		foreach ($data_pegawai as $key) {
 			$tgl = substr($key['tanggal_lahir'], 0, 4);
 			$usia = (Date('Y') + 3) - $tgl;
-			if ($usia == $key['pensiun']){
+			if ($usia == $key['pensiun']) {
 				$total4++;
 			}
 		}
 		foreach ($data_pegawai as $key) {
 			$tgl = substr($key['tanggal_lahir'], 0, 4);
 			$usia = (Date('Y') + 4) - $tgl;
-			if ($usia == $key['pensiun']){
+			if ($usia == $key['pensiun']) {
 				$total5++;
 			}
 		}
@@ -141,8 +144,9 @@ class Home extends CI_Controller {
 	}
 
 	//halaman home admin//////////////////////////////////////////////////////////////////////////////////////////////////////////
-	public function admin(){
-		if (!$this->session->userdata('admin_logged_in')){
+	public function admin()
+	{
+		if (!$this->session->userdata('admin_logged_in')) {
 			redirect(site_url('account'));
 		}
 		$data['title'] = "Home Admin";
@@ -157,35 +161,35 @@ class Home extends CI_Controller {
 		foreach ($data_pegawai as $key) {
 			$tgl = substr($key['tanggal_lahir'], 0, 4);
 			$usia = Date('Y') - $tgl;
-			if ($usia == $key['pensiun']){
+			if ($usia == $key['pensiun']) {
 				$total1++;
 			}
 		}
 		foreach ($data_pegawai as $key) {
 			$tgl = substr($key['tanggal_lahir'], 0, 4);
 			$usia = (Date('Y') + 1) - $tgl;
-			if ($usia == $key['pensiun']){
+			if ($usia == $key['pensiun']) {
 				$total2++;
 			}
 		}
 		foreach ($data_pegawai as $key) {
 			$tgl = substr($key['tanggal_lahir'], 0, 4);
 			$usia = (Date('Y') + 2) - $tgl;
-			if ($usia == $key['pensiun']){
+			if ($usia == $key['pensiun']) {
 				$total3++;
 			}
 		}
 		foreach ($data_pegawai as $key) {
 			$tgl = substr($key['tanggal_lahir'], 0, 4);
 			$usia = (Date('Y') + 3) - $tgl;
-			if ($usia == $key['pensiun']){
+			if ($usia == $key['pensiun']) {
 				$total4++;
 			}
 		}
 		foreach ($data_pegawai as $key) {
 			$tgl = substr($key['tanggal_lahir'], 0, 4);
 			$usia = (Date('Y') + 4) - $tgl;
-			if ($usia == $key['pensiun']){
+			if ($usia == $key['pensiun']) {
 				$total5++;
 			}
 		}

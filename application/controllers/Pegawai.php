@@ -1,15 +1,17 @@
-<?php 
-defined('BASEPATH') OR exit('No direct script access allowed');
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class Pegawai extends CI_Controller
 {
-	
-	public function __construct() {
+
+	public function __construct()
+	{
 		parent::__construct();
 		$this->load->model('account/UserModel');
 	}
 
-	public function index(){
+	public function index()
+	{
 		$data['title'] = "Pegawai BPSDMD Provinsi Jawa Tengah";
 		$data['pegawai'] = $this->UserModel->get_all_pegawai_byunit()->result_array();
 
@@ -18,7 +20,8 @@ class Pegawai extends CI_Controller
 		$this->load->view('user/includes/footer');
 	}
 
-	public function detail(){
+	public function detail()
+	{
 		$id_pegawai = $this->input->post('id_pegawai');
 		$dataPegawai = $this->UserModel->get_detail($id_pegawai)->row();
 		$data = $this->UserModel->get_kompetensi($id_pegawai)->result_array(); //get kompetensi pegawai
@@ -27,7 +30,7 @@ class Pegawai extends CI_Controller
 
 		echo "<div class='modal-content'>";
 		echo "<div class='modal-header'>";
-		echo "<h5 class='modal-title' id='exampleModalLabel'><strong>".$dataPegawai->nama."</strong></h5>";
+		echo "<h5 class='modal-title' id='exampleModalLabel'><strong>" . $dataPegawai->nama . "</strong></h5>";
 		echo "<button class='close' type='button' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>×</span></button>";
 		echo "</div>";
 		echo "<div class='modal-body'>";
@@ -43,26 +46,20 @@ class Pegawai extends CI_Controller
 		echo "</thead>";
 		echo "<tbody>";
 		//kompetensi bidang/////////////////////////////////////////////////////////////////////////////////////
-		if ($data != NULL){
-			$nomor=1;
+		if ($data != NULL) {
+			$nomor = 1;
 			foreach ($data as $key) {
 				echo "<tr>";
-				echo "<td style='text-align: center; vertical-align: middle;'>".$nomor++."</td>";
-				echo "<td style='vertical-align: middle;'>".$key['kompetensi']."</td>";
-				if ($key['keterangan'] != NULL){
-					echo "<td style='vertical-align: middle;'>".$key['keterangan']."</td>";
-				}
-				else{
-					echo "<td style='vertical-align: middle; text-align: center;'>-</td>";
-				}
+				echo "<td style='text-align: center; vertical-align: middle;'>" . $nomor++ . "</td>";
+				echo "<td style='vertical-align: middle;'>" . $key['kompetensi'] . "</td>";
+				($key['keterangan'] != NULL) ? "<td style='vertical-align: middle;'>" . $key['keterangan'] . "</td>" : "<td style='vertical-align: middle; text-align: center;'>-</td>";
 				echo "</tr>";
 			}
-		}
-		else{
+		} elseif ($data == NULL) {
 			echo "<tr>";
 			echo "<td colspan='3' style='text-align: center; vertical-align: middle;'>Belum mempunyai data kompetensi bidang</td>";
 			echo "</tr>";
-		}		
+		}
 		echo "</tbody>";
 		echo "</table>";
 		echo "</div><br>";
@@ -80,7 +77,7 @@ class Pegawai extends CI_Controller
 		echo "</tr>";
 		echo "</thead>";
 		echo "<tbody>";
-		
+
 		//riwayat unit kerja //////////////////////////////////////////////////////////////////////////////////////////
 		$bln = Date('m');
 		$recap = [
@@ -97,48 +94,45 @@ class Pegawai extends CI_Controller
 			'11' => 'November',
 			'12' => 'Desember'
 		];
-		if ($dataRiwayat != NULL){
-			$nomor=1;
+		if ($dataRiwayat != NULL) {
+			$nomor = 1;
 			foreach ($dataRiwayat as $key) {
 				echo "<tr>";
-				echo "<td style='text-align: center; vertical-align: middle;'>".$nomor++."</td>";
-				echo "<td style='vertical-align: middle;'>".$key['unit_kerja']."</td>";
-				echo "<td style='vertical-align: middle;'>".$key['sub_unit_kerja']."</td>";
-				
+				echo "<td style='text-align: center; vertical-align: middle;'>" . $nomor++ . "</td>";
+				echo "<td style='vertical-align: middle;'>" . $key['unit_kerja'] . "</td>";
+				echo "<td style='vertical-align: middle;'>" . $key['sub_unit_kerja'] . "</td>";
+
 				$tgl_mulai = $key['tanggal_mulai'];
-				if ($tgl_mulai != '0000-00-00'){
+				if ($tgl_mulai != '0000-00-00') {
 					$tgl = substr($tgl_mulai, 8, 2);
 					$bln_mulai = substr($tgl_mulai, 5, 2);
 					$thn_mulai = substr($tgl_mulai, 0, 4);
 					foreach ($recap as $bln => $value) {
-						if ($bln == $bln_mulai){
-							echo "<td style='vertical-align: middle; text-align: center;'>".$tgl." ".$value." ".$thn_mulai."</td>";
+						if ($bln == $bln_mulai) {
+							echo "<td style='vertical-align: middle; text-align: center;'>" . $tgl . " " . $value . " " . $thn_mulai . "</td>";
 						}
 					}
-				}
-				else{
+				} elseif ($tgl_mulai == '0000-00-00') {
 					echo "<td style='vertical-align: middle; text-align: center;'>-</td>";
 				}
 
 				$tgl_selesai = $key['tanggal_selesai'];
-				if ($tgl_selesai != '0000-00-00'){
+				if ($tgl_selesai != '0000-00-00') {
 					$tgl1 = substr($tgl_selesai, 8, 2);
 					$bln_selesai = substr($tgl_selesai, 5, 2);
 					$thn_selesai = substr($tgl_selesai, 0, 4);
 
 					foreach ($recap as $bln => $value) {
-						if ($bln == $bln_selesai){
-							echo "<td style='vertical-align: middle; text-align: center;'>".$tgl1." ".$value." ".$thn_selesai."</td>";
+						if ($bln == $bln_selesai) {
+							echo "<td style='vertical-align: middle; text-align: center;'>" . $tgl1 . " " . $value . " " . $thn_selesai . "</td>";
 						}
 					}
-				}
-				else{
+				} elseif ($tgl_selesai == '0000-00-00') {
 					echo "<td style='vertical-align: middle; text-align: center;'>-</td>";
 				}
 				echo "</tr>";
 			}
-		}
-		else{
+		} elseif ($dataRiwayat == NULL) {
 			echo "<tr>";
 			echo "<td colspan='5' style='text-align: center; vertical-align: middle;'>Belum mempunyai data riwayat unit kerja</td>";
 			echo "</tr>";

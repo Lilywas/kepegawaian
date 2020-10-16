@@ -38,12 +38,15 @@ class Listpegawai extends CI_Controller
 	public function edit_pegawai($id_pegawai)
 	{
 		$status = $this->UserModel->get_status($id_pegawai)->row();
+		$data['unit'] = $this->UserModel->get_unit_kerja()->result_array();
+		$data['dataPegawai'] = $this->UserModel->get_detail($id_pegawai)->row();
 		$dataStatus = array('status' => $status->status);
+		$simpan = $this->input->post('simpan');
 
 		//kalau status pegawainya PNS/////////////////////////////////////////////////////////////////////////////////////////////////
 		if ($dataStatus['status'] == 'p') {
 			//kalau mau nyimpen hasil edit
-			if (isset($_POST['simpan'])) {
+			if ($simpan == 1) {
 				$this->form_validation->set_rules('nama', 'Nama', 'required');
 
 				$data_pegawai = array(
@@ -71,16 +74,13 @@ class Listpegawai extends CI_Controller
 					$this->db->update('pns_local', $data_pegawai, array('id_pegawai' => $id_pegawai));
 					$this->session->set_flashdata('msg_berhasil', '<div class="alert alert-success" role="alert"> Data berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 					redirect(site_url('listpegawai'));
-				} else {
+				} elseif ($this->form_validation->run() == FALSE) {
 					$this->session->set_flashdata('msg_gagal', '<div class="alert alert-danger" role="alert"> Data gagal diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 					$this->edit_pegawai($id_pegawai);
 				}
 			}
 			//menampilkan halaman buat edit data pegawai
-			else {
-				$data['dataPegawai'] = $this->UserModel->get_detail($id_pegawai)->row();
-				$data['unit'] = $this->UserModel->get_unit_kerja()->result_array();
-
+			elseif ($simpan != 1) {
 				$data_pegawai = array(
 					'id_pegawai' => $data['dataPegawai']->id_pegawai,
 					'nip' => $data['dataPegawai']->nip,
@@ -119,8 +119,8 @@ class Listpegawai extends CI_Controller
 			}
 		}
 		//kalau pegawainya non pns///////////////////////////////////////////////////////////////////////////////////////////////////
-		else {
-			if (isset($_POST['simpan'])) {
+		elseif ($dataStatus['status'] == 'n') {
+			if ($simpan == 1) {
 				$this->form_validation->set_rules('nama', 'Nama', 'required');
 
 				$data_pegawai = array(
@@ -147,17 +147,14 @@ class Listpegawai extends CI_Controller
 					$this->session->set_flashdata('msg_berhasil', '<div class="alert alert-success" role="alert"> Data berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 						<span aria-hidden="true">&times;</span></button></div>');
 					redirect(site_url('listpegawai'));
-				} else {
+				} elseif ($this->form_validation->run() == FALSE) {
 					$this->session->set_flashdata('msg_gagal', '<div class="alert alert-danger" role="alert"> Data gagal diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 						<span aria-hidden="true">&times;</span></button></div>');
 					$this->edit_pegawai($id_pegawai);
 				}
 			}
 			//menampilkan haalaman edit data pegawai
-			else {
-				$data['dataPegawai'] = $this->UserModel->get_detail($id_pegawai)->row();
-				$data['unit'] = $this->UserModel->get_unit_kerja()->result_array();
-
+			elseif ($simpan != 1) {
 				$data_pegawai = array(
 					'id_pegawai' => $data['dataPegawai']->id_pegawai,
 					'nama' => $data['dataPegawai']->nama,
@@ -204,10 +201,10 @@ class Listpegawai extends CI_Controller
 		$id_pegawai = $this->input->post('id_pegawai');
 		$data['dataPegawai'] = $this->UserModel->get_detail($id_pegawai)->row();
 		$dataStatus = array('status_kerja' => $data['dataPegawai']->status_kerja);
+		$simpan = $this->input->post('simpan');
 
 		//kalau mau meng-nonaktif-kan pegawai////////////////////////////////////////////////////////////////////////////////////////
 		if ($dataStatus['status_kerja'] == 1) {
-			$simpan = $this->input->post('simpan');
 			if ($simpan == 1) {
 				$this->form_validation->set_rules('status', 'Status', 'required');
 
@@ -215,18 +212,10 @@ class Listpegawai extends CI_Controller
 				$ketlai = $this->input->post('ketlai');
 				$ketmutasi = $this->input->post('ketmutasi');
 				if ($ket == 'Lainnya') {
-					if ($ketlai == NULL) {
-						$lain = $ket;
-					} else {
-						$lain = $ket . " (" . $ketlai . ")";
-					}
+					($ketlai == NULL) ? $lain = $ket : $lain = $ket . " (" . $ketlai . ")";
 				} elseif ($ket == 'Mutasi') {
-					if ($ketmutasi == NULL) {
-						$lain = $ket;
-					} else {
-						$lain = $ket . ' ke ' . $ketmutasi;
-					}
-				} else {
+					($ketmutasi == NULL) ? $lain = $ket : $lain = $ket . ' ke ' . $ketmutasi;
+				} elseif ($ket != 'Lainnya' && $ket != 'Mutasi') {
 					$lain = $ket;
 				}
 
@@ -241,7 +230,7 @@ class Listpegawai extends CI_Controller
 					$this->session->set_flashdata('msg_berhasil', '<div class="alert alert-success" role="alert"> Status pegawai berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							<span aria-hidden="true">&times;</span></button></div>');
 					redirect('listpegawai');
-				} else {
+				} elseif ($this->form_validation->run() == FALSE) {
 					$this->session->set_flashdata('msg_gagal', '<div class="alert alert-danger" role="alert"> Status pegawai gagal diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							<span aria-hidden="true">&times;</span></button></div>');
 					redirect('listpegawai');
@@ -249,8 +238,7 @@ class Listpegawai extends CI_Controller
 			}
 		}
 		//mengaktifkan kembali pegawai yang tadinya nonaktif//////////////////////////////////////////////////////////////////////////////
-		else {
-			$simpan = $this->input->post('simpan');
+		if ($dataStatus['status_kerja'] == 0) {
 			if ($simpan == 1) {
 				$this->form_validation->set_rules('status', 'Status', 'required');
 				$data_status = array(
@@ -263,7 +251,7 @@ class Listpegawai extends CI_Controller
 					$this->session->set_flashdata('msg_berhasil', '<div class="alert alert-success" role="alert"> Status pegawai berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 						<span aria-hidden="true">&times;</span></button></div>');
 					redirect('listpegawai/nonaktif');
-				} else {
+				} elseif ($this->form_validation->run() == FALSE) {
 					$this->session->set_flashdata('msg_gagal', '<div class="alert alert-danger" role="alert"> Status pegawai gagal diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 						<span aria-hidden="true">&times;</span></button></div>');
 					redirect('listpegawai/nonaktif');
@@ -286,12 +274,9 @@ class Listpegawai extends CI_Controller
 	public function ubah_status_pensiun()
 	{
 		$id_pegawai = $this->input->post('id_pegawai');
-		$data['dataPegawai'] = $this->UserModel->get_detail($id_pegawai)->row();
-
 		$simpan = $this->input->post('simpan');
 		if ($simpan == 1) {
 			$this->form_validation->set_rules('status', 'Status', 'required');
-			// var_dump($this->input->post('tgl_selesai')); exit();
 			$ket = $this->input->post('ket');
 
 			$data_status = array(
@@ -305,7 +290,7 @@ class Listpegawai extends CI_Controller
 				$this->session->set_flashdata('msg_berhasil', '<div class="alert alert-success" role="alert"> Status pegawai berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 					<span aria-hidden="true">&times;</span></button></div>');
 				redirect('listpegawai/pensiun');
-			} else {
+			} elseif ($this->form_validation->run() == FALSE) {
 				$this->session->set_flashdata('msg_gagal', '<div class="alert alert-danger" role="alert"> Status pegawai gagal diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 					<span aria-hidden="true">&times;</span></button></div>');
 				redirect('listpegawai/pensiun');
