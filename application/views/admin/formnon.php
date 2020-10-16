@@ -1,11 +1,10 @@
-
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
   <div>
     <h4 class="font-weight-bold text-black">Tambah Data Pegawai</h4>
   </div><br>
-  <form method="POST" action="<?= site_url('addpegawai/simpannonpns')?>" enctype="multipart/form-data">
+  <form method="POST" action="<?= site_url('addpegawai/simpannonpns') ?>" enctype="multipart/form-data">
     <div class="card bg-light">
       <div class="card bg-light mb-3" style="margin: 7px">
         <div class="card-header">Informasi Umum</div>
@@ -14,7 +13,7 @@
           <div class="form-row">
             <div class="form-group col-md-3">
               <label>Nama Lengkap <span style="color: red">*</span></label>
-              <input type="text" class="form-control" name="nama" value="<?php echo set_value('nama')?>" required="">
+              <input type="text" class="form-control" name="nama" value="<?php echo set_value('nama') ?>">
             </div>
             <div class="form-group col-md-3">
               <label>Jenis Kelamin <span style="color: red">*</span></label>
@@ -26,16 +25,16 @@
             </div>
             <div class="form-group col-md-3">
               <label>Tempat Lahir <span style="color: red">*</span></label>
-              <input type="text" class="form-control" name="tempat_lahir" value="<?php echo set_value('tempat_lahir')?>" required="">
+              <input type="text" class="form-control" name="tempat_lahir" value="<?php echo set_value('tempat_lahir') ?>" required="">
             </div>
             <div class="form-group col-md-3">
               <label>Tanggal Lahir <span style="color: red">*</span></label>
-              <input type="date" class="form-control" name="tgl_lahir" value="<?php echo set_value('tgl_lahir')?>" required="">
+              <input type="date" class="form-control" name="tgl_lahir" value="<?php echo set_value('tgl_lahir') ?>" required="">
             </div>
           </div>
           <div class="form-group">
             <label>Alamat <span style="color: red">*</span></label>
-            <input type="text" class="form-control" name="alamat" value="<?php echo set_value('alamat')?>" required="">
+            <input type="text" class="form-control" name="alamat" value="<?php echo set_value('alamat') ?>" required="">
           </div>
           <div class="form-row">
             <div class="form-group col-md-4">
@@ -68,7 +67,7 @@
             </div>
             <div class="form-group col-md-4">
               <label>Jurusan</label>
-              <input type="text" class="form-control" value="<?php echo set_value('jurusan')?>" name="jurusan">
+              <input type="text" class="form-control" value="<?php echo set_value('jurusan') ?>" name="jurusan">
             </div>
           </div>
         </div>
@@ -79,11 +78,11 @@
           <div class="form-row">
             <div class="form-group col-md-4">
               <label>No HP <span style="color: red">*</span></label>
-              <input type="text" class="form-control" name="hp" value="<?php echo set_value('hp')?>" required="">
+              <input type="text" class="form-control" name="hp" value="<?php echo set_value('hp') ?>" required="">
             </div>
             <div class="form-group col-md-4">
               <label>email</label>
-              <input type="email" class="form-control" name="email" value="<?php echo set_value('email')?>">
+              <input type="email" class="form-control" name="email" value="<?php echo set_value('email') ?>">
               <?php echo form_error('email', '<small class="text-danger pl-3">', '</small>') ?>
             </div>
           </div>
@@ -98,9 +97,8 @@
               <select id="unit" class="form-control" name="unit_master" required>
                 <option value="">----Pilih----</option>
                 <?php
-                foreach ($unit as $key) 
-                {
-                  echo '<option value="'.$key['id_unit'].'" >'.$key['nama_unit'].'</option>';
+                foreach ($unit as $key) {
+                  echo '<option value="' . $key['id_unit'] . '" >' . $key['nama_unit'] . '</option>';
                 }
                 ?>
               </select>
@@ -135,7 +133,7 @@
             </div>
             <div class="form-group col-md-4">
               <label>Tanggal Mulai Kerja</label>
-              <input type="date" class="form-control" name="tgl_kerja" value="<?php echo set_value('tgl_kerja')?>">
+              <input type="date" class="form-control" name="tgl_kerja" value="<?php echo set_value('tgl_kerja') ?>">
             </div>
           </div>
         </div>
@@ -146,5 +144,3 @@
     </div>
   </form>
 </div>
-
-
