@@ -97,12 +97,139 @@
     }
   }
 
+  //pns pensiun
+  $total1 = 0;
+  $total2 = 0;
+  $total3 = 0;
+  $total4 = 0;
+  $total5 = 0;
+
+  foreach ($allpns as $key) {
+    $tgl = substr($key->tanggal_lahir, 0, 4);
+    if ((Date('Y') - $tgl) == $key->pensiun) {
+      $total1++;
+    }
+    if (((Date('Y') + 1) - $tgl) == $key->pensiun) {
+      $total2++;
+    }
+    if (((Date('Y') + 1) - $tgl) == $key->pensiun) {
+      $total3++;
+    }
+    if (((Date('Y') + 1) - $tgl) == $key->pensiun) {
+      $total4++;
+    }
+    if (((Date('Y') + 1) - $tgl) == $key->pensiun) {
+      $total5++;
+    }
+  }
+
   //label dan data grafik kompetensi pegawai ////////////////////////////////////////////////////
   foreach ($komp as $item) {
     $st = $item->kompetensi;
     $hh .= "'$st'" . ", ";
     $jum = $item->jumlah;
     $totalkomp .= "$jum" . ", ";
+  }
+
+  // golongan pns
+  $satualk = 0;
+  $satuapr = 0;
+  $satublk = 0;
+  $satubpr = 0;
+  $satuclk = 0;
+  $satucpr = 0;
+  $satudlk = 0;
+  $satudpr = 0;
+
+  $duaalk = 0;
+  $duaapr = 0;
+  $duablk = 0;
+  $duabpr = 0;
+  $duaclk = 0;
+  $duacpr = 0;
+  $duadlk = 0;
+  $duadpr = 0;
+
+  $tigaalk = 0;
+  $tigaapr = 0;
+  $tigablk = 0;
+  $tigabpr = 0;
+  $tigaclk = 0;
+  $tigacpr = 0;
+  $tigadlk = 0;
+  $tigadpr = 0;
+
+  $empatalk = 0;
+  $empatapr = 0;
+  $empatblk = 0;
+  $empatbpr = 0;
+  $empatclk = 0;
+  $empatcpr = 0;
+  $empatdlk = 0;
+  $empatdpr = 0;
+  $empatelk = 0;
+  $empatepr = 0;
+
+  foreach ($gol as $item) {
+    $gol = $item->pangkat;
+    $jk = $item->jk;
+    if ($gol == 'Juru Muda (I/A)') {
+      ($jk == 'Laki-laki') ? $satualk++ : $satuapr++;
+    }
+    if ($gol == 'Juru Muda Tingkat I (I/B)') {
+      ($jk == 'Laki-laki') ? $satublk++ : $satubpr++;
+    }
+    if ($gol == 'Juru (I/C)') {
+      ($jk == 'Laki-laki') ? $satuclk++ : $satucpr++;
+    }
+    if ($gol == 'Juru Tingkat I (I/D)') {
+      ($jk == 'Laki-laki') ? $satudlk++ : $satudpr++;
+    }
+
+    //dua
+    if ($gol == 'Pengatur Muda (II/A)') {
+      ($jk == 'Laki-laki') ? $duaalk++ : $duaapr++;
+    }
+    if ($gol == 'Pengatur Muda Tingkat I (II/B)') {
+      ($jk == 'Laki-laki') ? $duablk++ : $duabpr++;
+    }
+    if ($gol == 'Pengatur (II/C)') {
+      ($jk == 'Laki-laki') ? $duaclk++ : $duacpr++;
+    }
+    if ($gol == 'Pengatur Tingkat I (II/D)') {
+      ($jk == 'Laki-laki') ? $duadlk++ : $duadpr++;
+    }
+
+    //tiga
+    if ($gol == 'Penata Muda (III/A)') {
+      ($jk == 'Laki-laki') ? $tigaalk++ : $tigaapr++;
+    }
+    if ($gol == 'Penata Muda Tingkat I (III/B)') {
+      ($jk == 'Laki-laki') ? $tigablk++ : $tigabpr++;
+    }
+    if ($gol == 'Penata (III/C)') {
+      ($jk == 'Laki-laki') ? $tigaclk++ : $tigacpr++;
+    }
+    if ($gol == 'Penata Tingkat I (III/D)') {
+      ($jk == 'Laki-laki') ? $tigadlk++ : $tigadpr++;
+    }
+
+    //empat
+    if ($gol == 'Pembina (IV/A)') {
+      ($jk == 'Laki-laki') ? $empatalk++ : $empatapr++;
+    }
+    if ($gol == 'Pembina Tingkat I (IV/B)') {
+      ($jk == 'Laki-laki') ? $empatblk++ : $empatbpr++;
+    }
+    if ($gol == 'Pembina Utama Muda (IV/C)') {
+      ($jk == 'Laki-laki') ? $empatclk++ : $empatcpr++;
+    }
+    if ($gol == 'Pembina Utama Madya (IV/D)') {
+      ($jk == 'Laki-laki') ? $empatdlk++ : $empatdpr++;
+    }
+    if ($gol == 'Pembina Utama (IV/E)') {
+      ($jk == 'Laki-laki') ? $empatelk++ : $empatepr++;
+    }
   }
   ?>
 
@@ -850,46 +977,46 @@
         label: "Laki-laki",
         backgroundColor: '#DAA520',
         data: [
-          <?php echo $jumlah_1a_lk; ?>,
-          <?php echo $jumlah_1b_lk; ?>,
-          <?php echo $jumlah_1c_lk; ?>,
-          <?php echo $jumlah_1d_lk; ?>,
-          <?php echo $jumlah_2a_lk; ?>,
-          <?php echo $jumlah_2b_lk; ?>,
-          <?php echo $jumlah_2c_lk; ?>,
-          <?php echo $jumlah_2d_lk; ?>,
-          <?php echo $jumlah_3a_lk; ?>,
-          <?php echo $jumlah_3b_lk; ?>,
-          <?php echo $jumlah_3c_lk; ?>,
-          <?php echo $jumlah_3d_lk; ?>,
-          <?php echo $jumlah_4a_lk; ?>,
-          <?php echo $jumlah_4b_lk; ?>,
-          <?php echo $jumlah_4c_lk; ?>,
-          <?php echo $jumlah_4d_lk; ?>,
-          <?php echo $jumlah_4e_lk; ?>
+          <?php echo $satualk; ?>,
+          <?php echo $satublk; ?>,
+          <?php echo $satuclk; ?>,
+          <?php echo $satudlk; ?>,
+          <?php echo $duaalk; ?>,
+          <?php echo $duablk; ?>,
+          <?php echo $duaclk; ?>,
+          <?php echo $duadlk; ?>,
+          <?php echo $tigaalk; ?>,
+          <?php echo $tigablk; ?>,
+          <?php echo $tigaclk; ?>,
+          <?php echo $tigadlk; ?>,
+          <?php echo $empatalk; ?>,
+          <?php echo $empatblk; ?>,
+          <?php echo $empatclk; ?>,
+          <?php echo $empatdlk; ?>,
+          <?php echo $empatelk; ?>
         ],
         hoverBorderColor: "rgba(234, 236, 244, 1)",
       }, {
         label: "Perempuan",
         backgroundColor: '#FFD700',
         data: [
-          <?php echo $jumlah_1a_pr; ?>,
-          <?php echo $jumlah_1b_pr; ?>,
-          <?php echo $jumlah_1c_pr; ?>,
-          <?php echo $jumlah_1d_pr; ?>,
-          <?php echo $jumlah_2a_pr; ?>,
-          <?php echo $jumlah_2b_pr; ?>,
-          <?php echo $jumlah_2c_pr; ?>,
-          <?php echo $jumlah_2d_pr; ?>,
-          <?php echo $jumlah_3a_pr; ?>,
-          <?php echo $jumlah_3b_pr; ?>,
-          <?php echo $jumlah_3c_pr; ?>,
-          <?php echo $jumlah_3d_pr; ?>,
-          <?php echo $jumlah_4a_pr; ?>,
-          <?php echo $jumlah_4b_pr; ?>,
-          <?php echo $jumlah_4c_pr; ?>,
-          <?php echo $jumlah_4d_pr; ?>,
-          <?php echo $jumlah_4e_pr; ?>
+          <?php echo $satuapr; ?>,
+          <?php echo $satubpr; ?>,
+          <?php echo $satucpr; ?>,
+          <?php echo $satudpr; ?>,
+          <?php echo $duaapr; ?>,
+          <?php echo $duabpr; ?>,
+          <?php echo $duacpr; ?>,
+          <?php echo $duadpr; ?>,
+          <?php echo $tigaapr; ?>,
+          <?php echo $tigabpr; ?>,
+          <?php echo $tigacpr; ?>,
+          <?php echo $tigadpr; ?>,
+          <?php echo $empatapr; ?>,
+          <?php echo $empatbpr; ?>,
+          <?php echo $empatcpr; ?>,
+          <?php echo $empatdpr; ?>,
+          <?php echo $empatepr; ?>
         ],
         hoverBorderColor: "rgba(234, 236, 244, 1)",
       }],
