@@ -40,7 +40,18 @@ class Listpegawai extends CI_Controller
 		$status = $this->UserModel->get_status($id_pegawai)->row();
 		$data['unit'] = $this->UserModel->get_unit_kerja()->result_array();
 		$data['dataPegawai'] = $this->UserModel->get_detail($id_pegawai)->row();
-		$dataStatus = array('status' => $status->status);
+		$dataStatus = array(
+			'status' => $status->status,
+			'unit_kerja_pegawai' => $data['dataPegawai']->unit_kerja_pegawai,
+			'sub_pegawai' => $data['dataPegawai']->sub_pegawai,
+		);
+
+		if ($dataStatus['sub_pegawai'] == NULL || $dataStatus['sub_pegawai'] == '0') {
+			$data['subnull'] = $this->UserModel->get_sub_unit_fromunit($dataStatus['unit_kerja_pegawai'])->result_array();
+		} elseif ($dataStatus['sub_pegawai'] != NULL || $dataStatus['sub_pegawai'] != '0') {
+			$sub = $this->UserModel->get_sub_unit_fromsub($dataStatus['sub_pegawai'])->row();
+			$data['sub'] = $this->UserModel->get_sub_unit_fromunit($sub->id_unit)->result_array();
+		}
 
 		//kalau status pegawainya PNS/////////////////////////////////////////////////////////////////////////////////////////////////
 		if ($dataStatus['status'] == 'p') {
@@ -61,19 +72,11 @@ class Listpegawai extends CI_Controller
 				'jabatan' => $data['dataPegawai']->jabatan,
 				'bagian' => $data['dataPegawai']->jenis_jabatan,
 				'tgl_kerja' => $data['dataPegawai']->tanggal_mulai_kerja,
-				'unit_kerja_pegawai' => $data['dataPegawai']->unit_kerja_pegawai,
-				'sub_pegawai' => $data['dataPegawai']->sub_pegawai,
+				'unit_kerja_pegawai' => $dataStatus['unit_kerja_pegawai'],
+				'sub_pegawai' => $dataStatus['sub_pegawai'],
 				'pensiun' => $data['dataPegawai']->pensiun
 			);
 			$data['dataPegawai'] = $data_pegawai;
-
-			//kalau pegawai nya ngga punya sub unit kerja
-			if ($data_pegawai['sub_pegawai'] == NULL || $data_pegawai['sub_pegawai'] == '0') {
-				$data['subnull'] = $this->UserModel->get_sub_unit_fromunit($data_pegawai['unit_kerja_pegawai'])->result_array();
-			} elseif ($data_pegawai['sub_pegawai'] != NULL || $data_pegawai['sub_pegawai'] != '0') {
-				$sub = $this->UserModel->get_sub_unit_fromsub($data_pegawai['sub_pegawai'])->row();
-				$data['sub'] = $this->UserModel->get_sub_unit_fromunit($sub->id_unit)->result_array();
-			}
 
 			$data['title'] = 'Edit Data Pegawai';
 			$this->load->view('admin/includes/navbar', $data);
@@ -98,17 +101,10 @@ class Listpegawai extends CI_Controller
 				'email' => $data['dataPegawai']->email,
 				'bagian' => $data['dataPegawai']->jenis_jabatan,
 				'tgl_kerja' => $data['dataPegawai']->tanggal_mulai_kerja,
-				'unit_kerja_pegawai' => $data['dataPegawai']->unit_kerja_pegawai,
-				'sub_pegawai' => $data['dataPegawai']->sub_pegawai
+				'unit_kerja_pegawai' => $dataStatus['unit_kerja_pegawai'],
+				'sub_pegawai' => $dataStatus['sub_pegawai']
 			);
 			$data['dataPegawai'] = $data_pegawai;
-			//kalau pegawai tidak punya sub unit kerja
-			if ($data_pegawai['sub_pegawai'] == NULL || $data_pegawai['sub_pegawai'] == '0') {
-				$data['subnull'] = $this->UserModel->get_sub_unit_fromunit($data_pegawai['unit_kerja_pegawai'])->result_array();
-			} elseif ($data_pegawai['sub_pegawai'] != NULL || $data_pegawai['sub_pegawai'] != '0') {
-				$sub = $this->UserModel->get_sub_unit_fromsub($data_pegawai['sub_pegawai'])->row();
-				$data['sub'] = $this->UserModel->get_sub_unit_fromunit($sub->id_unit)->result_array();
-			}
 
 			$data['title'] = 'Edit Data Pegawai';
 			$this->load->view('admin/includes/navbar', $data);
@@ -199,37 +195,34 @@ class Listpegawai extends CI_Controller
 	public function ubah_status_pegawai()
 	{
 		$id_pegawai = $this->input->post('id_pegawai');
-		$simpan = $this->input->post('simpan');
-		if ($simpan == 1) {
-			$this->form_validation->set_rules('status', 'Status', 'required');
+		$this->form_validation->set_rules('status', 'Status', 'required');
 
-			$ket = $this->input->post('ket');
-			$ketlai = $this->input->post('ketlai');
-			$ketmutasi = $this->input->post('ketmutasi');
-			if ($ket == 'Lainnya') {
-				($ketlai == NULL) ? $lain = $ket : $lain = $ket . " (" . $ketlai . ")";
-			} elseif ($ket == 'Mutasi') {
-				($ketmutasi == NULL) ? $lain = $ket : $lain = $ket . ' ke ' . $ketmutasi;
-			} elseif ($ket != 'Lainnya' && $ket != 'Mutasi') {
-				$lain = $ket;
-			}
+		$ket = $this->input->post('ket');
+		$ketlai = $this->input->post('ketlai');
+		$ketmutasi = $this->input->post('ketmutasi');
+		if ($ket == 'Lainnya') {
+			($ketlai == NULL) ? $lain = $ket : $lain = $ket . " (" . $ketlai . ")";
+		} elseif ($ket == 'Mutasi') {
+			($ketmutasi == NULL) ? $lain = $ket : $lain = $ket . ' ke ' . $ketmutasi;
+		} elseif ($ket != 'Lainnya' && $ket != 'Mutasi') {
+			$lain = $ket;
+		}
 
-			$data_status = array(
-				'status_kerja' => 0,
-				'keterangan_status_kerja' => $lain,
-				'tanggal_selesai_kerja' => $this->input->post('tgl_selesai')
-			);
+		$data_status = array(
+			'status_kerja' => 0,
+			'keterangan_status_kerja' => $lain,
+			'tanggal_selesai_kerja' => $this->input->post('tgl_selesai')
+		);
 
-			if ($this->form_validation->run() == TRUE) {
-				$this->db->update('pns_local', $data_status, array('id_pegawai' => $id_pegawai));
-				$this->session->set_flashdata('msg_berhasil', '<div class="alert alert-success" role="alert"> Status pegawai berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		if ($this->form_validation->run() == TRUE) {
+			$this->db->update('pns_local', $data_status, array('id_pegawai' => $id_pegawai));
+			$this->session->set_flashdata('msg_berhasil', '<div class="alert alert-success" role="alert"> Status pegawai berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							<span aria-hidden="true">&times;</span></button></div>');
-				redirect('listpegawai');
-			} elseif ($this->form_validation->run() == FALSE) {
-				$this->session->set_flashdata('msg_gagal', '<div class="alert alert-danger" role="alert"> Status pegawai gagal diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			redirect('listpegawai');
+		} elseif ($this->form_validation->run() == FALSE) {
+			$this->session->set_flashdata('msg_gagal', '<div class="alert alert-danger" role="alert"> Status pegawai gagal diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							<span aria-hidden="true">&times;</span></button></div>');
-				redirect('listpegawai');
-			}
+			redirect('listpegawai');
 		}
 	}
 
