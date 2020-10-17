@@ -9,8 +9,8 @@
     <div class="card col-lg-12 shadow mb-4">
       <div class="card-body">
         <div class="table-responsive">
-          <?php echo $this->session->flashdata('msg_berhasil'); ?>
-          <?php echo $this->session->flashdata('msg_gagal'); ?>
+          <?= $this->session->flashdata('msg_berhasil'); ?>
+          <?= $this->session->flashdata('msg_gagal'); ?>
           <button data-toggle="modal" data-target="#add_unit" class="btn btn-success">Tambah Unit Kerja</button><br><br>
           <table class="display table table-bordered" id="" width="100%" cellspacing="0">
             <thead style="text-align: center;">
@@ -24,18 +24,18 @@
             <tbody>
               <?php
               $no = 0;
-              foreach ($unit as $item) { 
+              foreach ($unit as $item) {
                 $no++; ?>
                 <tr>
-                  <td style="text-align: center;"><?php echo $no; ?></td>
-                  <td><?php echo $item['nama_unit']; ?></td>
+                  <td style="text-align: center;"><?= $no; ?></td>
+                  <td><?= $item['nama_unit']; ?></td>
                   <td style="vertical-align: middle; text-align: center;">
                     <!-- Tombol Edit -->
-                    <button data-toggle="modal" data-target="#edit_unit<?=$item['id_unit'];?>" class="btn btn-warning"><i class="far fa-fw fa-edit" title="Edit Unit kerja"></i></button>
+                    <button data-toggle="modal" data-target="#edit_unit<?= $item['id_unit']; ?>" class="btn btn-warning"><i class="far fa-fw fa-edit" title="Edit Unit kerja"></i></button>
                   </td>
                   <td style="vertical-align: middle; text-align: center;">
                     <!-- Tombol Ubah Status -->
-                    <button onclick="hapus_unit(<?php echo $item['id_unit']; ?>)" value="<?php echo $item['id_unit']; ?>" data-toggle="modal" data-target="#hapusUnit" class="btn btn-danger" title="Hapus Unit Kerja"><i class="far fa-fw fa-trash-alt"></i></button>
+                    <button onclick="hapus_unit(<?= $item['id_unit']; ?>)" value="<?= $item['id_unit']; ?>" data-toggle="modal" data-target="#hapusUnit" class="btn btn-danger" title="Hapus Unit Kerja"><i class="far fa-fw fa-trash-alt"></i></button>
                   </td>
                 </tr>
               <?php } ?>
@@ -61,7 +61,7 @@
         </button>
       </div>
 
-      <form role="form" enctype="multipart/form-data" action="<?php echo site_url('Unit/addunit/');?>" method="POST">
+      <form role="form" enctype="multipart/form-data" action="<?= site_url('Unit/addunit/'); ?>" method="POST">
         <div class="modal-body">
           <div class="form-group">
             <label>Nama Unit Kerja <span style="color: red">*wajib diisi</span></label>
@@ -80,12 +80,12 @@
   </div>
 </div>
 
- 
+
 <!-- MODAL UBAH UNIT -->
 <?php
 foreach ($unit as $item) {
-  ?>
-  <div class="modal fade" id="edit_unit<?=$item['id_unit'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+?>
+  <div class="modal fade" id="edit_unit<?= $item['id_unit']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -95,7 +95,7 @@ foreach ($unit as $item) {
           </button>
         </div>
 
-        <form role="form" enctype="multipart/form-data" action="<?php echo site_url('Unit/editunit/');?>" method="POST">
+        <form role="form" enctype="multipart/form-data" action="<?= site_url('Unit/editunit/'); ?>" method="POST">
           <div class="modal-body">
             <div class="form-group">
               <label>Unit Kerja <span style="color: red">*wajib diisi</span></label>
@@ -128,7 +128,7 @@ foreach ($unit as $item) {
         </button>
       </div>
 
-      <form role="form" enctype="multipart/form-data" action="<?php echo site_url('Unit/delete_unit/');?>" method="POST">
+      <form role="form" enctype="multipart/form-data" action="<?= site_url('Unit/delete_unit/'); ?>" method="POST">
         <div class="modal-body">
           <p>Data sub unit kerja yang berada di bawah unit kerja ini akan ikut terhapus dan tidak bisa dikembalikan. Anda yakin ingin menghapus data unit kerja ini ?</p>
           <input hidden id="id_unit" type="text" name="id_unit" value="">
@@ -146,7 +146,7 @@ foreach ($unit as $item) {
 </div>
 
 <script type="text/javascript">
-  function hapus_unit(id_unit){
+  function hapus_unit(id_unit) {
     var data_id = document.getElementById('id_unit');
     data_id.value = id_unit;
   }

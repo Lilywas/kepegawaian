@@ -60,8 +60,8 @@ $jabatan = array(
     <h4 class="font-weight-bold text-black">Edit Data Pegawai</h4>
   </div>
   <div class="card bg-light">
-    <form method="POST" action="<?php echo site_url('listpegawai/update_pns') ?>" enctype="multipart/form-data">
-      <input hidden type="text" name="id_pegawai" value="<?php echo $dataPegawai['id_pegawai']; ?>">
+    <form method="POST" action="<?= site_url('listpegawai/update_pns') ?>" enctype="multipart/form-data">
+      <input hidden type="text" name="id_pegawai" value="<?= $dataPegawai['id_pegawai']; ?>">
       <div class="card bg-light mb-3" style="margin: 7px">
         <div class="card-header">Informasi Umum</div>
         <div class="card-body">
@@ -172,10 +172,10 @@ $jabatan = array(
                 foreach ($pangkat as $key => $value) {
                   if ($key == $dataPegawai['pangkat']) {
                 ?>
-                    <option selected=""><?php echo $value; ?></option>
+                    <option selected=""><?= $value; ?></option>
                   <?php } else {
                   ?>
-                    <option><?php echo $value; ?></option>
+                    <option><?= $value; ?></option>
                 <?php }
                 }
                 ?>

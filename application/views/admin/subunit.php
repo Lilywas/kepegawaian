@@ -1,6 +1,6 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
-  
+
   <!-- -------------------- SUB UNIT KERJA -------------------- -->
   <h2 class="h3 mb-2 text-gray-800 text-center">Daftar Sub Unit Kerja</strong></h2>
   <hr>
@@ -11,8 +11,8 @@
     <div class="card col-lg-12 shadow mb-4">
       <div class="card-body">
         <div class="table-responsive">
-          <?php echo $this->session->flashdata('msg_sub_berhasil'); ?>
-          <?php echo $this->session->flashdata('msg_sub_gagal'); ?>
+          <?= $this->session->flashdata('msg_sub_berhasil'); ?>
+          <?= $this->session->flashdata('msg_sub_gagal'); ?>
           <button data-toggle="modal" data-target="#add_subunit" class="btn btn-success">Tambah Sub Unit Kerja</button><br><br>
           <table class="display table table-bordered" id="" width="100%" cellspacing="0">
             <thead style="text-align: center;">
@@ -27,19 +27,19 @@
             <tbody>
               <?php
               $no = 0;
-              foreach ($sub as $item) { 
+              foreach ($sub as $item) {
                 $no++; ?>
                 <tr>
-                  <td style="text-align: center;"><?php echo $no; ?></td>
-                  <td><?php echo $item['nama_unitkerja']; ?></td>
-                  <td><?php echo $item['keterangan']; ?></td>
+                  <td style="text-align: center;"><?= $no; ?></td>
+                  <td><?= $item['nama_unitkerja']; ?></td>
+                  <td><?= $item['keterangan']; ?></td>
                   <td style="vertical-align: middle; text-align: center;">
                     <!-- Tombol Edit -->
-                    <button data-toggle="modal" data-target="#edit_sub<?=$item['id_sub_unit'];?>" class="btn btn-warning"><i class="far fa-fw fa-edit" title="Edit Sub Unit Kerja"></i></button>
+                    <button data-toggle="modal" data-target="#edit_sub<?= $item['id_sub_unit']; ?>" class="btn btn-warning"><i class="far fa-fw fa-edit" title="Edit Sub Unit Kerja"></i></button>
                   </td>
                   <td style="vertical-align: middle; text-align: center;">
                     <!-- Tombol Hapus -->
-                    <button onclick="hapus_sub(<?php echo $item['id_sub_unit']; ?>)" value="<?php echo $item['id_sub_unit']; ?>" data-toggle="modal" data-target="#hapusSub" class="btn btn-danger" title="Hapus Sub Unit Kerja"><i class="far fa-fw fa-trash-alt"></i></button>
+                    <button onclick="hapus_sub(<?= $item['id_sub_unit']; ?>)" value="<?= $item['id_sub_unit']; ?>" data-toggle="modal" data-target="#hapusSub" class="btn btn-danger" title="Hapus Sub Unit Kerja"><i class="far fa-fw fa-trash-alt"></i></button>
                   </td>
                 </tr>
               <?php } ?>
@@ -66,16 +66,15 @@
         </button>
       </div>
 
-      <form role="form" enctype="multipart/form-data" action="<?php echo site_url('Subunit/addsub/');?>" method="POST">
+      <form role="form" enctype="multipart/form-data" action="<?= site_url('Subunit/addsub/'); ?>" method="POST">
         <div class="modal-body">
           <div class="form-group">
             <label>Unit Kerja <span style="color: red">*wajib diisi</span></label>
             <select class="form-control" name="id_unit" required>
               <option value="">----Pilih----</option>
               <?php
-              foreach ($unit as $key) 
-              {
-                echo '<option value="'.$key['id_unit'].'" >'.$key['nama_unit'].'</option>';
+              foreach ($unit as $key) {
+                echo '<option value="' . $key['id_unit'] . '" >' . $key['nama_unit'] . '</option>';
               }
               ?>
             </select>
@@ -100,8 +99,8 @@
 <!-- MODAL UBAH SUB UNIT -->
 <?php
 foreach ($sub as $item) {
-  ?>
-  <div class="modal fade" id="edit_sub<?=$item['id_sub_unit'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+?>
+  <div class="modal fade" id="edit_sub<?= $item['id_sub_unit']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -111,21 +110,19 @@ foreach ($sub as $item) {
           </button>
         </div>
 
-        <form role="form" enctype="multipart/form-data" action="<?php echo site_url('Subunit/editsub/');?>" method="POST">
+        <form role="form" enctype="multipart/form-data" action="<?= site_url('Subunit/editsub/'); ?>" method="POST">
           <div class="modal-body">
             <div class="form-group">
               <label>Unit Kerja <span style="color: red">*wajib diisi</span></label>
               <select class="form-control" name="id_unit" required>
                 <option value="">----Pilih----</option>
                 <?php
-                foreach ($unit as $key) 
-                {
+                foreach ($unit as $key) {
                   $sub = $item['id_unit'];
-                  if ($key['id_unit'] == $sub){
-                    echo '<option value="'.$key['id_unit'].'" selected >'.$key['nama_unit'].'</option>';
-                  }
-                  else{
-                    echo '<option value="'.$key['id_unit'].'" >'.$key['nama_unit'].'</option>';
+                  if ($key['id_unit'] == $sub) {
+                    echo '<option value="' . $key['id_unit'] . '" selected >' . $key['nama_unit'] . '</option>';
+                  } else {
+                    echo '<option value="' . $key['id_unit'] . '" >' . $key['nama_unit'] . '</option>';
                   }
                 }
                 ?>
@@ -161,7 +158,7 @@ foreach ($sub as $item) {
         </button>
       </div>
 
-      <form role="form" enctype="multipart/form-data" action="<?php echo site_url('Subunit/delete_sub/');?>" method="POST">
+      <form role="form" enctype="multipart/form-data" action="<?= site_url('Subunit/delete_sub/'); ?>" method="POST">
         <div class="modal-body">
           <p>Anda yakin ingin menghapus data sub unit kerja ini ?</p>
           <input hidden id="id_sub" type="text" name="id_sub" value="">
@@ -179,7 +176,7 @@ foreach ($sub as $item) {
 </div>
 
 <script type="text/javascript">
-  function hapus_sub(id_sub){
+  function hapus_sub(id_sub) {
     var data_id = document.getElementById('id_sub');
     data_id.value = id_sub;
   }

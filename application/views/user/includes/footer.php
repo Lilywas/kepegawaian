@@ -4,7 +4,7 @@
 <footer class="sticky-footer" style="background-color: rgba(140, 169, 222, 0.8);">
 	<div class="container my-auto">
 		<div class="copyright text-center text-md my-auto" style="color: black">
-			<span style="line-height: 1.5">Copyright &copy; <?php echo site_name ?> <?= Date('Y') ?><br>Sistem Informasi Kepegawaian</span>
+			<span style="line-height: 1.5">Copyright &copy; <?= site_name ?> <?= Date('Y') ?><br>Sistem Informasi Kepegawaian</span>
 		</div>
 	</div>
 </footer>
@@ -20,10 +20,10 @@
 </a>
 
 <!-- JavaScript -->
-<script src="<?php echo base_url('assets/jquery/jquery.min.js') ?>"></script>
+<script src="<?= base_url('assets/jquery/jquery.min.js') ?>"></script>
 
 <!-- Core plugin JavaScript-->
-<script src="<?php echo base_url('assets/jquery-easing/jquery.easing.min.js') ?>"></script>
+<script src="<?= base_url('assets/jquery-easing/jquery.easing.min.js') ?>"></script>
 
 <?php
 if ($this->uri->segment('1') == 'pegawai') {
@@ -39,7 +39,7 @@ if ($this->uri->segment('1') == 'pegawai') {
 
 		function tampil_riwayat_ajax(id_pegawai) {
 			$.ajax({
-				url: '<?php echo site_url('pegawai/detail'); ?>',
+				url: '<?= site_url('pegawai/detail'); ?>',
 				type: 'post',
 				data: {
 					id_pegawai: id_pegawai
@@ -59,19 +59,19 @@ if ($this->uri->segment('1') == 'pegawai') {
 <?php } ?>
 
 <!-- Custom scripts for all pages-->
-<script src="<?php echo base_url('assets/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
-<script src="<?php echo base_url('assets/js/sb-admin-2.min.js') ?>"></script>
+<script src="<?= base_url('assets/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
+<script src="<?= base_url('assets/js/sb-admin-2.min.js') ?>"></script>
 
 <!-- Page level plugins -->
-<script src="<?php echo base_url('assets/datatables/jquery.dataTables.min.js'); ?>"></script>
-<script src="<?php echo base_url('assets/datatables/dataTables.bootstrap4.min.js'); ?>"></script>
+<script src="<?= base_url('assets/datatables/jquery.dataTables.min.js'); ?>"></script>
+<script src="<?= base_url('assets/datatables/dataTables.bootstrap4.min.js'); ?>"></script>
 
 <!-- Page level custom scripts -->
-<script src="<?php echo base_url('assets/js/demo/datatables-demo.js'); ?>"></script>
+<script src="<?= base_url('assets/js/demo/datatables-demo.js'); ?>"></script>
 
 <!-- Page level plugins -->
-<script src="<?php echo base_url('assets/chart.js/Chart.min.js') ?>"></script>
-<script src="<?php echo base_url('assets/chart.js/Chart.js') ?>"></script>
+<script src="<?= base_url('assets/chart.js/Chart.min.js') ?>"></script>
+<script src="<?= base_url('assets/chart.js/Chart.js') ?>"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.7.3/dist/Chart.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.min.js"></script>

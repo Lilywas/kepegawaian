@@ -9,9 +9,9 @@
     <div class="card col-lg-12 shadow mb-4">
       <div class="card-body">
         <div class="table-responsive">
-          <?php echo $this->session->flashdata('msg_berhasil'); ?>
-          <?php echo $this->session->flashdata('msg_gagal'); ?>
-          <button onclick="get_id(<?php echo $pegawai['id_pegawai']; ?>)" value="<?php echo $pegawai['id_pegawai']; ?>" data-toggle="modal" data-target="#add_komp" class="btn btn-success">Tambah Kompetensi Bidang</button><br><br>
+          <?= $this->session->flashdata('msg_berhasil'); ?>
+          <?= $this->session->flashdata('msg_gagal'); ?>
+          <button onclick="get_id(<?= $pegawai['id_pegawai']; ?>)" value="<?= $pegawai['id_pegawai']; ?>" data-toggle="modal" data-target="#add_komp" class="btn btn-success">Tambah Kompetensi Bidang</button><br><br>
           <table class="display table table-bordered" id="" width="100%" cellspacing="0">
             <thead style="text-align: center;">
               <tr>
@@ -25,19 +25,19 @@
             <tbody>
               <?php
               $no = 0;
-              foreach ($dataKom as $item) { 
+              foreach ($dataKom as $item) {
                 $no++; ?>
                 <tr>
-                  <td style="text-align: center;"><?php echo $no; ?></td>
-                  <td><?php echo $item['kompetensi']; ?></td>
-                  <td><?php echo $item['keterangan']; ?></td>
+                  <td style="text-align: center;"><?= $no; ?></td>
+                  <td><?= $item['kompetensi']; ?></td>
+                  <td><?= $item['keterangan']; ?></td>
                   <td style="vertical-align: middle; text-align: center;">
                     <!-- Tombol Edit -->
-                    <button data-toggle="modal" data-target="#edit_komp<?=$item['id_kompetensi'];?>" class="btn btn-warning"><i class="far fa-fw fa-edit"></i> Edit</button>
+                    <button data-toggle="modal" data-target="#edit_komp<?= $item['id_kompetensi']; ?>" class="btn btn-warning"><i class="far fa-fw fa-edit"></i> Edit</button>
                   </td>
                   <td style="vertical-align: middle; text-align: center;">
                     <!-- Tombol Ubah Status -->
-                    <button onclick="hapus_kompetensi(<?php echo $item['id_kompetensi']; ?>)" value="<?php echo $item['id_kompetensi']; ?>" data-toggle="modal" data-target="#hapusKomp" class="btn btn-danger"><i class="far fa-fw fa-trash-alt"></i> Hapus</button>
+                    <button onclick="hapus_kompetensi(<?= $item['id_kompetensi']; ?>)" value="<?= $item['id_kompetensi']; ?>" data-toggle="modal" data-target="#hapusKomp" class="btn btn-danger"><i class="far fa-fw fa-trash-alt"></i> Hapus</button>
                   </td>
                 </tr>
               <?php } ?>
@@ -58,9 +58,9 @@
     <div class="card col-lg-12 shadow mb-4">
       <div class="card-body">
         <div class="table-responsive">
-          <?php echo $this->session->flashdata('msg_riwayat_berhasil'); ?>
-          <?php echo $this->session->flashdata('msg_riwayat_gagal'); ?>
-          <button onclick="get_riwayat_id(<?php echo $pegawai['id_pegawai']; ?>)" value="<?php echo $pegawai['id_pegawai']; ?>" data-toggle="modal" data-target="#add_riwayat" class="btn btn-success">Tambah Riwayat Unit Kerja</button><br><br>
+          <?= $this->session->flashdata('msg_riwayat_berhasil'); ?>
+          <?= $this->session->flashdata('msg_riwayat_gagal'); ?>
+          <button onclick="get_riwayat_id(<?= $pegawai['id_pegawai']; ?>)" value="<?= $pegawai['id_pegawai']; ?>" data-toggle="modal" data-target="#add_riwayat" class="btn btn-success">Tambah Riwayat Unit Kerja</button><br><br>
           <table class="display table table-bordered" id="" width="100%" cellspacing="0">
             <thead style="text-align: center;">
               <tr>
@@ -76,21 +76,21 @@
             <tbody>
               <?php
               $no = 0;
-              foreach ($dataRiwayat as $item) { 
+              foreach ($dataRiwayat as $item) {
                 $no++; ?>
                 <tr>
-                  <td style="text-align: center;"><?php echo $no; ?></td>
-                  <td><?php echo $item['unit_kerja']; ?></td>
-                  <td><?php echo $item['sub_unit_kerja']; ?></td>
-                  <td><?php echo $item['tanggal_mulai']; ?></td>
-                  <td><?php echo $item['tanggal_selesai']; ?></td>
+                  <td style="text-align: center;"><?= $no; ?></td>
+                  <td><?= $item['unit_kerja']; ?></td>
+                  <td><?= $item['sub_unit_kerja']; ?></td>
+                  <td><?= $item['tanggal_mulai']; ?></td>
+                  <td><?= $item['tanggal_selesai']; ?></td>
                   <td style="vertical-align: middle; text-align: center;">
                     <!-- Tombol Edit -->
-                    <button data-toggle="modal" data-target="#edit_riwayat<?=$item['id_riwayat_unit_kerja'];?>" class="btn btn-warning"><i class="far fa-fw fa-edit"></i> Edit</button>
+                    <button data-toggle="modal" data-target="#edit_riwayat<?= $item['id_riwayat_unit_kerja']; ?>" class="btn btn-warning"><i class="far fa-fw fa-edit"></i> Edit</button>
                   </td>
                   <td style="vertical-align: middle; text-align: center;">
                     <!-- Tombol Hapus -->
-                    <button onclick="hapus_riwayat(<?php echo $item['id_riwayat_unit_kerja']; ?>)" value="<?php echo $item['id_riwayat_unit_kerja']; ?>" data-toggle="modal" data-target="#hapusRiwayat" class="btn btn-danger"><i class="far fa-fw fa-trash-alt"></i> Hapus</button>
+                    <button onclick="hapus_riwayat(<?= $item['id_riwayat_unit_kerja']; ?>)" value="<?= $item['id_riwayat_unit_kerja']; ?>" data-toggle="modal" data-target="#hapusRiwayat" class="btn btn-danger"><i class="far fa-fw fa-trash-alt"></i> Hapus</button>
                   </td>
                 </tr>
               <?php } ?>
@@ -118,7 +118,7 @@
         </button>
       </div>
 
-      <form role="form" enctype="multipart/form-data" action="<?php echo site_url('Kompetensi/addkomp/');?>" method="POST">
+      <form role="form" enctype="multipart/form-data" action="<?= site_url('Kompetensi/addkomp/'); ?>" method="POST">
         <div class="modal-body">
           <div class="form-group">
             <label>Kompetensi Bidang</label>
@@ -160,7 +160,7 @@
         </button>
       </div>
 
-      <form role="form" enctype="multipart/form-data" action="<?php echo site_url('Kompetensi/addriwayat/');?>" method="POST">
+      <form role="form" enctype="multipart/form-data" action="<?= site_url('Kompetensi/addriwayat/'); ?>" method="POST">
         <div class="modal-body">
           <div class="form-group">
             <label>Unit Kerja<span style="color: red">*</span></label>
@@ -194,10 +194,10 @@
 
 <!-------------------------------------------------------------------------------------------------------------------------------------------->
 <!-- MODAL UBAH KOMPETENSI ------------------------------------------------------------------------------------------------------------------->
-<?php 
+<?php
 foreach ($dataKom as $item) {
-  ?>
-  <div class="modal fade" id="edit_komp<?=$item['id_kompetensi'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+?>
+  <div class="modal fade" id="edit_komp<?= $item['id_kompetensi']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -207,12 +207,12 @@ foreach ($dataKom as $item) {
           </button>
         </div>
 
-        <form role="form" enctype="multipart/form-data" action="<?php echo site_url('Kompetensi/editkomp/');?>" method="POST">
+        <form role="form" enctype="multipart/form-data" action="<?= site_url('Kompetensi/editkomp/'); ?>" method="POST">
           <div class="modal-body">
             <div class="form-group">
               <?php
               $kompetensi = array(
-                'Sertifikat TOC' => 'Sertifikat TOC', 
+                'Sertifikat TOC' => 'Sertifikat TOC',
                 'Sertifikat MOT' => 'Sertifikat MOT',
                 'Kompetensi IT' => 'Kompetensi IT',
                 'Lainnya' => 'Lainnya'
@@ -222,14 +222,12 @@ foreach ($dataKom as $item) {
               <select class="form-control" name="komp" required>
                 <option value="">----Pilih------</option>
                 <?php
-                foreach ($kompetensi as $key => $jenis) 
-                {
+                foreach ($kompetensi as $key => $jenis) {
                   $kmp = $item['kompetensi'];
-                  if ($key == $kmp){
-                    echo '<option selected >'.$jenis.'</option>';
-                  }
-                  else{
-                    echo '<option >'.$jenis.'</option>';
+                  if ($key == $kmp) {
+                    echo '<option selected >' . $jenis . '</option>';
+                  } else {
+                    echo '<option >' . $jenis . '</option>';
                   }
                 }
                 ?>
@@ -259,8 +257,8 @@ foreach ($dataKom as $item) {
 <!-- MODAL EDIT RIWAYAT UNIT KERJA --------------------------------------------------------------------------------------------------------->
 <?php
 foreach ($dataRiwayat as $item) {
-  ?>
-  <div class="modal fade" id="edit_riwayat<?=$item['id_riwayat_unit_kerja'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+?>
+  <div class="modal fade" id="edit_riwayat<?= $item['id_riwayat_unit_kerja']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -270,7 +268,7 @@ foreach ($dataRiwayat as $item) {
           </button>
         </div>
 
-        <form role="form" enctype="multipart/form-data" action="<?php echo site_url('Kompetensi/editriwayat/');?>" method="POST">
+        <form role="form" enctype="multipart/form-data" action="<?= site_url('Kompetensi/editriwayat/'); ?>" method="POST">
           <div class="modal-body">
             <div class="form-group">
               <label>Unit Kerja<span style="color: red">*</span></label>
@@ -316,7 +314,7 @@ foreach ($dataRiwayat as $item) {
         </button>
       </div>
 
-      <form role="form" enctype="multipart/form-data" action="<?php echo site_url('Kompetensi/delete_komp/');?>" method="POST">
+      <form role="form" enctype="multipart/form-data" action="<?= site_url('Kompetensi/delete_komp/'); ?>" method="POST">
         <div class="modal-body">
           <p>Anda yakin ingin menghapus data kompetensi bidang ?</p>
           <input hidden id="id_hapus_komp" type="text" name="id_kompetensi" value="">
@@ -345,7 +343,7 @@ foreach ($dataRiwayat as $item) {
         </button>
       </div>
 
-      <form role="form" enctype="multipart/form-data" action="<?php echo site_url('Kompetensi/delete_riwayat/');?>" method="POST">
+      <form role="form" enctype="multipart/form-data" action="<?= site_url('Kompetensi/delete_riwayat/'); ?>" method="POST">
         <div class="modal-body">
           <p>Anda yakin ingin menghapus data riwayat unit kerja ?</p>
           <input hidden id="id_hapus_riwayat" type="text" name="id_riwayat" value="">
@@ -363,31 +361,27 @@ foreach ($dataRiwayat as $item) {
 </div>
 
 <script type="text/javascript">
-  function get_id(id_pegawai)
-  {
+  function get_id(id_pegawai) {
     var data_id = document.getElementById('id_pegawai');
     var klik = 1;
     data_id.value = id_pegawai;
   }
-
 </script>
 <script type="text/javascript">
-  function get_riwayat_id(id_pegawai)
-  {
+  function get_riwayat_id(id_pegawai) {
     var data_id = document.getElementById('id_pegawai2');
     var klik = 1;
     data_id.value = id_pegawai;
   }
-
 </script>
 <script type="text/javascript">
-  function hapus_kompetensi(id_kompetensi){
+  function hapus_kompetensi(id_kompetensi) {
     var data_id = document.getElementById('id_hapus_komp');
     data_id.value = id_kompetensi;
   }
-  function hapus_riwayat(id_riwayat_unit_kerja){
+
+  function hapus_riwayat(id_riwayat_unit_kerja) {
     var data_id = document.getElementById('id_hapus_riwayat');
     data_id.value = id_riwayat_unit_kerja;
   }
-
 </script>

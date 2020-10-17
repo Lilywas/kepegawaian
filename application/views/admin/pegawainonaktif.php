@@ -3,8 +3,8 @@
   <!-- Page Heading -->
   <h1 class="h3 mb-2 text-gray-800 text-center">Daftar Pegawai Non Aktif</h1>
   <hr>
-  <?php echo $this->session->flashdata('msg_berhasil'); ?>
-  <?php echo $this->session->flashdata('msg_gagal'); ?>
+  <?= $this->session->flashdata('msg_berhasil'); ?>
+  <?= $this->session->flashdata('msg_gagal'); ?>
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-body">
@@ -31,8 +31,8 @@
             foreach ($pegawai as $item) {
               $no++; ?>
               <tr>
-                <td style="text-align: center;"><?php echo $no; ?></td>
-                <td><a href="#" data-toggle="modal" data-target="#detailModal<?= $item['id_pegawai']; ?>"><?php echo htmlspecialchars($item['nama']); ?></a></td>
+                <td style="text-align: center;"><?= $no; ?></td>
+                <td><a href="#" data-toggle="modal" data-target="#detailModal<?= $item['id_pegawai']; ?>"><?= htmlspecialchars($item['nama']); ?></a></td>
                 <td style="text-align: center;"><?php $key = $item['status'];
                                                 if ($key == "p") {
                                                   echo "PNS";
@@ -40,20 +40,20 @@
                                                   echo "Non-PNS";
                                                 }
                                                 ?></td>
-                <td><?php echo htmlspecialchars($item['nip']); ?></td>
-                <td><?php echo htmlspecialchars($item['jk']); ?></td>
-                <td><?php echo htmlspecialchars($item['pangkat']); ?></td>
-                <td><?php echo htmlspecialchars($item['jenis_jabatan']); ?></td>
-                <td><?php echo htmlspecialchars($item['no_telp']); ?></td>
-                <td><?php echo htmlspecialchars($item['keterangan_status_kerja']); ?></td>
+                <td><?= htmlspecialchars($item['nip']); ?></td>
+                <td><?= htmlspecialchars($item['jk']); ?></td>
+                <td><?= htmlspecialchars($item['pangkat']); ?></td>
+                <td><?= htmlspecialchars($item['jenis_jabatan']); ?></td>
+                <td><?= htmlspecialchars($item['no_telp']); ?></td>
+                <td><?= htmlspecialchars($item['keterangan_status_kerja']); ?></td>
                 <!--  -->
                 <td style="vertical-align: middle;">
                   <!-- Tombol Ubah Status -->
-                  <button id="button_ubah" onclick="ubah_status_pegawai(<?php echo htmlspecialchars($item['id_pegawai']); ?>)" value="<?php echo $item['id_pegawai']; ?>" data-toggle="modal" data-target="#ubahStatusModal" class="btn btn-info" title="Ubah Status Pegawai"><i class="fas fa-fw fa-info-circle"></i></button>
+                  <button id="button_ubah" onclick="ubah_status_pegawai(<?= htmlspecialchars($item['id_pegawai']); ?>)" value="<?= $item['id_pegawai']; ?>" data-toggle="modal" data-target="#ubahStatusModal" class="btn btn-info" title="Ubah Status Pegawai"><i class="fas fa-fw fa-info-circle"></i></button>
                 </td>
                 <!-- <td style="vertical-align: middle;"> -->
                 <!-- Tombol Hapus -->
-                <!-- <button onclick="hapus_pegawai(<?php echo htmlspecialchars($item['id_pegawai']); ?>)" value="<?php echo $item['id_pegawai']; ?>" data-toggle="modal" data-target="#hapusPegawai" class="btn btn-danger"><i class="far fa-fw fa-trash-alt"></i> Hapus</button>
+                <!-- <button onclick="hapus_pegawai(<?= htmlspecialchars($item['id_pegawai']); ?>)" value="<?= $item['id_pegawai']; ?>" data-toggle="modal" data-target="#hapusPegawai" class="btn btn-danger"><i class="far fa-fw fa-trash-alt"></i> Hapus</button>
                   </td> -->
               </tr>
             <?php } ?>
@@ -75,7 +75,7 @@
         </button>
       </div>
 
-      <form role="form" enctype="multipart/form-data" action="<?php echo site_url('Listpegawai/aktifkan_pegawai/'); ?>" method="POST">
+      <form role="form" enctype="multipart/form-data" action="<?= site_url('Listpegawai/aktifkan_pegawai/'); ?>" method="POST">
         <div class="modal-body">
           <div class="form-group">
             <label>Ubah status menjadi</label>

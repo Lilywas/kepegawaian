@@ -1,4 +1,4 @@
-<div class="jumbotron jumbotron-fluid" style="background-image: url(<?php echo base_url('assets/img/img.png'); ?>); padding-top: 6rem;">
+<div class="jumbotron jumbotron-fluid" style="background-image: url(<?= base_url('assets/img/img.png'); ?>); padding-top: 6rem;">
   <div class="container-fluid text-center">
     <!-- <div class="card-img-overlay" > -->
     <h6 class="display-4" style="color: white; font-size: 4vw">Selamat Datang di</h6>

@@ -240,7 +240,7 @@
   var data = {
     labels: [<?php print_r($aa); ?>],
     datasets: [{
-      data: [<?php echo $totalpn; ?>],
+      data: [<?= $totalpn; ?>],
       backgroundColor: ['#DEB887', '#5F9EA0'],
       hoverBorderColor: "rgba(234, 236, 244, 1)",
     }]
@@ -297,9 +297,9 @@
   //-----------------------------------------------------------------------------------------------------------------------JENIS KELAMIN
   var ctx = document.getElementById("jkchart").getContext("2d");
   var data = {
-    labels: [<?php echo $bb; ?>],
+    labels: [<?= $bb; ?>],
     datasets: [{
-      data: [<?php echo $totaljk; ?>],
+      data: [<?= $totaljk; ?>],
       backgroundColor: ['#DEB887', '#5F9EA0'],
       hoverBorderColor: "rgba(234, 236, 244, 1)",
     }]
@@ -353,9 +353,9 @@
   //--------------------------------------------------------------------------------------------------------------PENDIDIKAN
   var ctx = document.getElementById("pendchart").getContext("2d");
   var data = {
-    labels: [<?php echo $dd; ?>],
+    labels: [<?= $dd; ?>],
     datasets: [{
-      data: [<?php echo $totalpend; ?>],
+      data: [<?= $totalpend; ?>],
       backgroundColor: ['#DEB887', '#5F9EA0', '#7FFF00', '#D2691E', '#FF7F50', '#6495ED', '#FFF8DC', '#DC143C', '#8B008B', '#FF8C00'],
       hoverBorderColor: "rgba(234, 236, 244, 1)",
     }]
@@ -410,9 +410,9 @@
   //----------------------------------------------------------------------------------------------------------------AGAMA
   var ctx = document.getElementById("agamachart").getContext("2d");
   var data = {
-    labels: [<?php echo $ee; ?>],
+    labels: [<?= $ee; ?>],
     datasets: [{
-      data: [<?php echo $totalagama; ?>],
+      data: [<?= $totalagama; ?>],
       backgroundColor: ['#DEB887', '#5F9EA0', '#7FFF00', '#D2691E', '#FF7F50', '#6495ED'],
       hoverBorderColor: "rgba(234, 236, 244, 1)",
     }]
@@ -469,7 +469,7 @@
   var data = {
     labels: ["18 - 30", "31 - 40", "41 - 50", ">50"],
     datasets: [{
-      data: [<?php echo $satu; ?>, <?php echo $dua; ?>, <?php echo $tiga; ?>, <?php echo $empat; ?>],
+      data: [<?= $satu; ?>, <?= $dua; ?>, <?= $tiga; ?>, <?= $empat; ?>],
       backgroundColor: ['#DEB887', '#5F9EA0', '#7FFF00', '#D2691E'],
       hoverBorderColor: "rgba(234, 236, 244, 1)",
     }]
@@ -529,7 +529,7 @@
     return "rgb(" + r + "," + g + "," + b + ")";
   }
   var color = [];
-  var dataaa = [<?php echo $totalkomp ?>];
+  var dataaa = [<?= $totalkomp ?>];
   for (var i in data) {
     color.push(dynamicColors());
   }
@@ -539,9 +539,9 @@
   ?>
     var ctx = document.getElementById("kompchart").getContext("2d");
     var data = {
-      labels: [<?php echo $hh; ?>],
+      labels: [<?= $hh; ?>],
       datasets: [{
-        data: [<?php echo $totalkomp; ?>],
+        data: [<?= $totalkomp; ?>],
         backgroundColor: color,
         hoverBorderColor: "rgba(234, 236, 244, 1)",
       }]
@@ -603,15 +603,15 @@
       label: 'Laki-laki',
       backgroundColor: '#008000',
       data: [
-        <?php echo $jumlah_lk_pns; ?>,
-        <?php echo $jumlah_lk_nonpns; ?>
+        <?= $jumlah_lk_pns; ?>,
+        <?= $jumlah_lk_nonpns; ?>
       ]
     }, {
       label: 'Perempuan',
       backgroundColor: '#DC143C',
       data: [
-        <?php echo $jumlah_pr_pns; ?>,
-        <?php echo $jumlah_pr_nonpns; ?>
+        <?= $jumlah_pr_pns; ?>,
+        <?= $jumlah_pr_nonpns; ?>
       ]
     }]
   };
@@ -692,31 +692,31 @@
       label: 'PNS',
       backgroundColor: '#8B008B',
       data: [
-        <?php echo $jumlah_sd_pns; ?>,
-        <?php echo $jumlah_smp_pns; ?>,
-        <?php echo $jumlah_smak_pns; ?>,
-        <?php echo $jumlah_d1_pns; ?>,
-        <?php echo $jumlah_d2_pns; ?>,
-        <?php echo $jumlah_d3_pns; ?>,
-        <?php echo $jumlah_d4_pns; ?>,
-        <?php echo $jumlah_s1_pns; ?>,
-        <?php echo $jumlah_s2_pns; ?>,
-        <?php echo $jumlah_s3_pns; ?>
+        <?= $jumlah_sd_pns; ?>,
+        <?= $jumlah_smp_pns; ?>,
+        <?= $jumlah_smak_pns; ?>,
+        <?= $jumlah_d1_pns; ?>,
+        <?= $jumlah_d2_pns; ?>,
+        <?= $jumlah_d3_pns; ?>,
+        <?= $jumlah_d4_pns; ?>,
+        <?= $jumlah_s1_pns; ?>,
+        <?= $jumlah_s2_pns; ?>,
+        <?= $jumlah_s3_pns; ?>
       ]
     }, {
       label: 'Non-PNS',
       backgroundColor: '#FF8C00',
       data: [
-        <?php echo $jumlah_sd_nonpns; ?>,
-        <?php echo $jumlah_smp_nonpns; ?>,
-        <?php echo $jumlah_smak_nonpns; ?>,
-        <?php echo $jumlah_d1_nonpns; ?>,
-        <?php echo $jumlah_d2_nonpns; ?>,
-        <?php echo $jumlah_d3_nonpns; ?>,
-        <?php echo $jumlah_d4_nonpns; ?>,
-        <?php echo $jumlah_s1_nonpns; ?>,
-        <?php echo $jumlah_s2_nonpns; ?>,
-        <?php echo $jumlah_s3_nonpns; ?>
+        <?= $jumlah_sd_nonpns; ?>,
+        <?= $jumlah_smp_nonpns; ?>,
+        <?= $jumlah_smak_nonpns; ?>,
+        <?= $jumlah_d1_nonpns; ?>,
+        <?= $jumlah_d2_nonpns; ?>,
+        <?= $jumlah_d3_nonpns; ?>,
+        <?= $jumlah_d4_nonpns; ?>,
+        <?= $jumlah_s1_nonpns; ?>,
+        <?= $jumlah_s2_nonpns; ?>,
+        <?= $jumlah_s3_nonpns; ?>
       ]
     }]
   };
@@ -802,7 +802,7 @@
       labels: ["18 - 30", "31 - 40", "41 - 50", ">50"],
       datasets: [{
         label: "Jumlah",
-        data: [<?php echo $satupns; ?>, <?php echo $duapns; ?>, <?php echo $tigapns; ?>, <?php echo $empatpns; ?>],
+        data: [<?= $satupns; ?>, <?= $duapns; ?>, <?= $tigapns; ?>, <?= $empatpns; ?>],
         backgroundColor: "rgba(43, 191, 254, 0)",
         hoverBorderColor: "rgba(43, 191, 254, 1)",
         borderColor: "rgb(43, 191, 254)",
@@ -887,10 +887,10 @@
   var pensiunchart = new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: [<?php echo Date('Y'); ?>, <?php echo (Date('Y') + 1); ?>, <?php echo (Date('Y') + 2); ?>, <?php echo (Date('Y') + 3); ?>, <?php echo (Date('Y') + 4); ?>],
+      labels: [<?= Date('Y'); ?>, <?= (Date('Y') + 1); ?>, <?= (Date('Y') + 2); ?>, <?= (Date('Y') + 3); ?>, <?= (Date('Y') + 4); ?>],
       datasets: [{
         label: "Jumlah",
-        data: [<?php echo $total1; ?>, <?php echo $total2; ?>, <?php echo $total3; ?>, <?php echo $total4; ?>, <?php echo $total5; ?>],
+        data: [<?= $total1; ?>, <?= $total2; ?>, <?= $total3; ?>, <?= $total4; ?>, <?= $total5; ?>],
         backgroundColor: ['#DEB887', '#5F9EA0', '#7FFF00', '#D2691E', '#FF7F50'],
         // hoverBackgroundColor: ['#DAA520', '#2e59d9'],
         hoverBorderColor: "rgba(234, 236, 244, 1)",
@@ -977,46 +977,46 @@
         label: "Laki-laki",
         backgroundColor: '#DAA520',
         data: [
-          <?php echo $satualk; ?>,
-          <?php echo $satublk; ?>,
-          <?php echo $satuclk; ?>,
-          <?php echo $satudlk; ?>,
-          <?php echo $duaalk; ?>,
-          <?php echo $duablk; ?>,
-          <?php echo $duaclk; ?>,
-          <?php echo $duadlk; ?>,
-          <?php echo $tigaalk; ?>,
-          <?php echo $tigablk; ?>,
-          <?php echo $tigaclk; ?>,
-          <?php echo $tigadlk; ?>,
-          <?php echo $empatalk; ?>,
-          <?php echo $empatblk; ?>,
-          <?php echo $empatclk; ?>,
-          <?php echo $empatdlk; ?>,
-          <?php echo $empatelk; ?>
+          <?= $satualk; ?>,
+          <?= $satublk; ?>,
+          <?= $satuclk; ?>,
+          <?= $satudlk; ?>,
+          <?= $duaalk; ?>,
+          <?= $duablk; ?>,
+          <?= $duaclk; ?>,
+          <?= $duadlk; ?>,
+          <?= $tigaalk; ?>,
+          <?= $tigablk; ?>,
+          <?= $tigaclk; ?>,
+          <?= $tigadlk; ?>,
+          <?= $empatalk; ?>,
+          <?= $empatblk; ?>,
+          <?= $empatclk; ?>,
+          <?= $empatdlk; ?>,
+          <?= $empatelk; ?>
         ],
         hoverBorderColor: "rgba(234, 236, 244, 1)",
       }, {
         label: "Perempuan",
         backgroundColor: '#FFD700',
         data: [
-          <?php echo $satuapr; ?>,
-          <?php echo $satubpr; ?>,
-          <?php echo $satucpr; ?>,
-          <?php echo $satudpr; ?>,
-          <?php echo $duaapr; ?>,
-          <?php echo $duabpr; ?>,
-          <?php echo $duacpr; ?>,
-          <?php echo $duadpr; ?>,
-          <?php echo $tigaapr; ?>,
-          <?php echo $tigabpr; ?>,
-          <?php echo $tigacpr; ?>,
-          <?php echo $tigadpr; ?>,
-          <?php echo $empatapr; ?>,
-          <?php echo $empatbpr; ?>,
-          <?php echo $empatcpr; ?>,
-          <?php echo $empatdpr; ?>,
-          <?php echo $empatepr; ?>
+          <?= $satuapr; ?>,
+          <?= $satubpr; ?>,
+          <?= $satucpr; ?>,
+          <?= $satudpr; ?>,
+          <?= $duaapr; ?>,
+          <?= $duabpr; ?>,
+          <?= $duacpr; ?>,
+          <?= $duadpr; ?>,
+          <?= $tigaapr; ?>,
+          <?= $tigabpr; ?>,
+          <?= $tigacpr; ?>,
+          <?= $tigadpr; ?>,
+          <?= $empatapr; ?>,
+          <?= $empatbpr; ?>,
+          <?= $empatcpr; ?>,
+          <?= $empatdpr; ?>,
+          <?= $empatepr; ?>
         ],
         hoverBorderColor: "rgba(234, 236, 244, 1)",
       }],

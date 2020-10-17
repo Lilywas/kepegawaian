@@ -66,8 +66,8 @@ $recap = [
                   foreach ($pegawai as $item) {
                     $no++; ?>
                     <tr>
-                      <td style="text-align: center; vertical-align: middle;"><?php echo $no; ?></td>
-                      <td style="vertical-align: middle;"><a href="#" type="submit" onclick="tampil_riwayat_ajax(<?php echo htmlspecialchars($item['id_pegawai']); ?>)"><?php echo htmlspecialchars($item['nama']); ?></a></td>
+                      <td style="text-align: center; vertical-align: middle;"><?= $no; ?></td>
+                      <td style="vertical-align: middle;"><a href="#" type="submit" onclick="tampil_riwayat_ajax(<?= htmlspecialchars($item['id_pegawai']); ?>)"><?= htmlspecialchars($item['nama']); ?></a></td>
                       <?php
                       if ($item['status'] == 'p') {
                       ?>
@@ -82,9 +82,9 @@ $recap = [
                         <td style="text-align: center; vertical-align: middle;">-</td>
                       <?php } else {
                       ?>
-                        <td style="text-align: center; vertical-align: middle;"><?php echo htmlspecialchars($item['nip']); ?></td>
+                        <td style="text-align: center; vertical-align: middle;"><?= htmlspecialchars($item['nip']); ?></td>
                       <?php } ?>
-                      <td style="text-align: center; vertical-align: middle;"><?php echo ucwords(strtolower(htmlspecialchars($item['jenis_jabatan']))); ?></td>
+                      <td style="text-align: center; vertical-align: middle;"><?= ucwords(strtolower(htmlspecialchars($item['jenis_jabatan']))); ?></td>
                     </tr>
                   <?php } ?>
                 </tbody>
@@ -128,25 +128,25 @@ $recap = [
                       $no++;
                   ?>
                       <tr>
-                        <td style="text-align: center;"><?php echo $no; ?></td>
-                        <td><?php echo htmlspecialchars($item['nama']); ?></td>
+                        <td style="text-align: center;"><?= $no; ?></td>
+                        <td><?= htmlspecialchars($item['nama']); ?></td>
                         <?php
                         if ($item['nip'] == '') {
                         ?>
                           <td style="text-align: center;">-</td>
                         <?php } else {
                         ?>
-                          <td style="text-align: center;"><?php echo htmlspecialchars($item['nip']); ?></td>
+                          <td style="text-align: center;"><?= htmlspecialchars($item['nip']); ?></td>
                         <?php } ?>
                         <?php
                         foreach ($recap as $key => $value) {
                           if ($key == $bln) {
                         ?>
-                            <td style="text-align: center;"><?php echo $tgl . " " . $value . " " . $thn;; ?></td>
+                            <td style="text-align: center;"><?= $tgl . " " . $value . " " . $thn;; ?></td>
                         <?php }
                         }
                         ?>
-                        <td style="text-align: center;"><?php echo $usia . " Tahun"; ?></td>
+                        <td style="text-align: center;"><?= $usia . " Tahun"; ?></td>
                       </tr>
                   <?php }
                   } ?>
@@ -195,11 +195,11 @@ $recap = [
                           $no++;
                   ?>
                           <tr>
-                            <td style="text-align: center;"><?php echo $no; ?></td>
-                            <td><?php echo htmlspecialchars($item['nama']); ?></td>
-                            <td style="text-align: center;"><?php echo htmlspecialchars($item['nip']); ?></td>
-                            <td style="text-align: center;"><?php echo $usia; ?></td>
-                            <td style="text-align: center;"><?php echo $masa . ' Tahun'; ?></td>
+                            <td style="text-align: center;"><?= $no; ?></td>
+                            <td><?= htmlspecialchars($item['nama']); ?></td>
+                            <td style="text-align: center;"><?= htmlspecialchars($item['nip']); ?></td>
+                            <td style="text-align: center;"><?= $usia; ?></td>
+                            <td style="text-align: center;"><?= $masa . ' Tahun'; ?></td>
                           </tr>
                   <?php }
                       }
