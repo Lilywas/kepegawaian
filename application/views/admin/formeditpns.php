@@ -60,7 +60,7 @@ $jabatan = array(
     <h4 class="font-weight-bold text-black">Edit Data Pegawai</h4>
   </div>
   <div class="card bg-light">
-    <form method="POST" action="<?php echo site_url('listpegawai/edit_pegawai/' . $dataPegawai['id_pegawai']) ?>" enctype="multipart/form-data">
+    <form method="POST" action="<?php echo site_url('listpegawai/update_pns') ?>" enctype="multipart/form-data">
       <input hidden type="text" name="id_pegawai" value="<?php echo $dataPegawai['id_pegawai']; ?>">
       <div class="card bg-light mb-3" style="margin: 7px">
         <div class="card-header">Informasi Umum</div>

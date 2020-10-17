@@ -21,13 +21,13 @@
 
 <!-- JavaScript -->
 <script src="<?php echo base_url('assets/jquery/jquery.min.js') ?>"></script>
- 
+
 <!-- Core plugin JavaScript-->
 <script src="<?php echo base_url('assets/jquery-easing/jquery.easing.min.js') ?>"></script>
 
 <?php
-if ($this->uri->segment('1') == 'pegawai'){
-	?>
+if ($this->uri->segment('1') == 'pegawai') {
+?>
 	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 	<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
@@ -36,17 +36,23 @@ if ($this->uri->segment('1') == 'pegawai'){
 		$(document).ready(function() {
 			$('table.display').DataTable();
 		});
-		function tampil_riwayat_ajax(id_pegawai)
-		{
+
+		function tampil_riwayat_ajax(id_pegawai) {
 			$.ajax({
-				url: '<?php echo site_url('pegawai/detail');?>',
+				url: '<?php echo site_url('pegawai/detail'); ?>',
 				type: 'post',
-				data: {id_pegawai:id_pegawai},
-				success: function(a){
-            		$('#modalKomp').modal('show'); //buka modal detail
-            		$('#tabelkompetensi').html(a);
-            	}
-            });
+				data: {
+					id_pegawai: id_pegawai
+				},
+				success: function(response) {
+					if (response.sukses) {
+						$(".viewmodal")
+							.html(response.sukses)
+							.show();
+						$("#modalKomp").modal("show");
+					}
+				}
+			});
 		}
 	</script>
 
@@ -61,7 +67,7 @@ if ($this->uri->segment('1') == 'pegawai'){
 <script src="<?php echo base_url('assets/datatables/dataTables.bootstrap4.min.js'); ?>"></script>
 
 <!-- Page level custom scripts -->
-<script src="<?php echo base_url('assets/js/demo/datatables-demo.js');?>"></script>
+<script src="<?php echo base_url('assets/js/demo/datatables-demo.js'); ?>"></script>
 
 <!-- Page level plugins -->
 <script src="<?php echo base_url('assets/chart.js/Chart.min.js') ?>"></script>
@@ -72,8 +78,8 @@ if ($this->uri->segment('1') == 'pegawai'){
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 
-<?php 
-if ($this->uri->segment('1') == '' || $this->uri->segment('1') == 'home'){
+<?php
+if ($this->uri->segment('1') == '' || $this->uri->segment('1') == 'home') {
 	$this->load->view("admin/includes/chart");
 }
 ?>
