@@ -31,7 +31,7 @@
                 $no++; ?>
                 <tr>
                   <td style="text-align: center;"><?= $no; ?></td>
-                  <td><?= html_escape($item['nama_unitkerja']); ?></td>
+                  <td><?= xss_clean($item['nama_unitkerja']); ?></td>
                   <td><?= html_escape($item['keterangan']); ?></td>
                   <td style="vertical-align: middle; text-align: center;">
                     <!-- Tombol Edit -->
