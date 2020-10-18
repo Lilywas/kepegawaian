@@ -31,8 +31,8 @@
                 $no++; ?>
                 <tr>
                   <td style="text-align: center;"><?= $no; ?></td>
-                  <td><?= $item['nama_unitkerja']; ?></td>
-                  <td><?= $item['keterangan']; ?></td>
+                  <td><?= html_escape($item['nama_unitkerja']); ?></td>
+                  <td><?= html_escape($item['keterangan']); ?></td>
                   <td style="vertical-align: middle; text-align: center;">
                     <!-- Tombol Edit -->
                     <button data-toggle="modal" data-target="#edit_sub<?= $item['id_sub_unit']; ?>" class="btn btn-warning"><i class="far fa-fw fa-edit" title="Edit Sub Unit Kerja"></i></button>
