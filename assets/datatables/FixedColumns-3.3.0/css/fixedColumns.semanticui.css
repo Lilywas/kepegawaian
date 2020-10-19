@@ -24,6 +24,7 @@ div.DTFC_LeftBodyWrapper table.ui.table.dataTable,
 div.DTFC_RightBodyWrapper table.ui.table.dataTable {
   border-top: none;
 }
+
 div.DTFC_LeftBodyWrapper table.ui.table.dataTable thead .sorting:after,
 div.DTFC_LeftBodyWrapper table.ui.table.dataTable thead .sorting_asc:after,
 div.DTFC_LeftBodyWrapper table.ui.table.dataTable thead .sorting_desc:after,
