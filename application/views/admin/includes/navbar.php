@@ -41,9 +41,7 @@
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Dashboard -->
-      <li class="nav-item <?php if ($this->uri->segment('1') == 'home') {
-                            echo ('active');
-                          } ?>">
+      <li class="nav-item <?php if ($this->uri->segment('1') == 'home') { ?> active <?php } ?>">
         <a class="nav-link" href="<?= site_url('home/admin') ?>">
           <i class="fas fa-fw fa-home"></i>
           <span>Home</span>
@@ -53,9 +51,7 @@
       <!-- Divider -->
       <hr class="sidebar-divider">
 
-      <li class="nav-item <?php if ($this->uri->segment('1') == 'addpegawai') {
-                            echo ('active');
-                          } ?>">
+      <li class="nav-item <?php if ($this->uri->segment('1') == 'addpegawai') { ?> active <?php } ?>">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-user-plus"></i>
           <span>Tambah Pegawai</span>
@@ -68,18 +64,14 @@
         </div>
       </li>
 
-      <li class="nav-item <?php if ($this->uri->segment('1') == 'unit') {
-                            echo ('active');
-                          } ?>">
+      <li class="nav-item <?php if ($this->uri->segment('1') == 'unit') { ?> active <?php } ?>">
         <a class="nav-link" href="<?= site_url('unit') ?>">
           <i class="far fa-building fa-fw"></i>
           <span>Unit Kerja</span>
         </a>
       </li>
 
-      <li class="nav-item <?php if ($this->uri->segment('1') == 'subunit') {
-                            echo ('active');
-                          } ?>">
+      <li class="nav-item <?php if ($this->uri->segment('1') == 'subunit') { ?> active <?php } ?>">
         <a class="nav-link" href="<?= site_url('subunit') ?>">
           <i class="fas fa-network-wired fa-fw"></i>
           <span>Sub Unit Kerja</span>
@@ -88,9 +80,7 @@
 
       <hr class="sidebar-divider">
       <!-- Nav Item - Utilities Collapse Menu -->
-      <li class="nav-item <?php if ((($this->uri->segment('1') == 'listpegawai') && ($this->uri->segment('2') != 'nonaktif')) || ($this->uri->segment('1') == 'kompetensi')) {
-                            echo ('active');
-                          } ?>">
+      <li class="nav-item <?php if ((($this->uri->segment('1') == 'listpegawai') && ($this->uri->segment('2') != 'nonaktif')) || ($this->uri->segment('1') == 'kompetensi')) { ?> active <?php } ?>">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-fw fa-table"></i>
           <span>Daftar Pegawai</span>
@@ -102,9 +92,7 @@
           </div>
         </div>
       </li>
-      <li class="nav-item <?php if ($this->uri->segment('2') == 'nonaktif') {
-                            echo ('active');
-                          } ?>">
+      <li class="nav-item <?php if ($this->uri->segment('2') == 'nonaktif') { ?> active <?php } ?>">
         <a class="nav-link" href="<?= site_url('listpegawai/nonaktif') ?>">
           <i class="fas fa-history fa-fw"></i>
           <span>Daftar Pegawai Non-Aktif</span>
