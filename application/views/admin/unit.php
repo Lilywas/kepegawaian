@@ -23,11 +23,11 @@
             </thead>
             <tbody>
               <?php
-              $no = 0;
+              $nomor = 0;
               foreach ($unit as $item) {
-                $no++; ?>
+                $nomor++; ?>
                 <tr>
-                  <td style="text-align: center;"><?= $no; ?></td>
+                  <td style="text-align: center;"><?= $nomor; ?></td>
                   <td><?= $item['nama_unit']; ?></td>
                   <td style="vertical-align: middle; text-align: center;">
                     <!-- Tombol Edit -->

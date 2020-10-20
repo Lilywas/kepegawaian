@@ -62,28 +62,21 @@ $recap = [
                 </thead>
                 <tbody>
                   <?php
-                  $no = 0;
+                  $nomor = 0;
                   foreach ($pegawai as $item) {
-                    $no++; ?>
+                    $nomor++; ?>
                     <tr>
-                      <td style="text-align: center; vertical-align: middle;"><?= $no; ?></td>
+                      <td style="text-align: center; vertical-align: middle;"><?= $nomor; ?></td>
                       <td style="vertical-align: middle;"><a href="#" type="submit" onclick="tampil_riwayat_ajax(<?= htmlspecialchars($item['id_pegawai']); ?>)"><?= htmlspecialchars($item['nama']); ?></a></td>
                       <?php
                       if ($item['status'] == 'p') {
-                      ?>
-                        <td style="text-align: center; vertical-align: middle;">PNS</td>
-                      <?php } else {
-                      ?>
-                        <td style="text-align: center; vertical-align: middle;">Non-PNS</td>
+                      ?><td style="text-align: center; vertical-align: middle;">PNS</td>
+                      <?php } elseif ($item['status'] == 'n') {
+                      ?><td style="text-align: center; vertical-align: middle;">Non-PNS</td>
                       <?php } ?>
                       <?php
-                      if ($item['nip'] == '') {
+                      echo ($item['nip'] == '') ? '<td style="text-align: center; vertical-align: middle;">-</td>' : '<td style="text-align: center; vertical-align: middle;">' . htmlspecialchars($item['nip']) . '</td>';
                       ?>
-                        <td style="text-align: center; vertical-align: middle;">-</td>
-                      <?php } else {
-                      ?>
-                        <td style="text-align: center; vertical-align: middle;"><?= htmlspecialchars($item['nip']); ?></td>
-                      <?php } ?>
                       <td style="text-align: center; vertical-align: middle;"><?= ucwords(strtolower(htmlspecialchars($item['jenis_jabatan']))); ?></td>
                     </tr>
                   <?php } ?>
@@ -117,7 +110,7 @@ $recap = [
                 </thead>
                 <tbody>
                   <?php
-                  $no = 0;
+                  $nomor = 0;
                   foreach ($pegawai as $item) {
                     $nip = $item['tanggal_lahir'];
                     $thn = substr($nip, 0, 4);
@@ -125,19 +118,14 @@ $recap = [
                     $tgl = substr($nip, 8, 2);
                     if (Date('m') == $bln) {
                       $usia = Date('Y') - $thn;
-                      $no++;
+                      $nomor++;
                   ?>
                       <tr>
-                        <td style="text-align: center;"><?= $no; ?></td>
+                        <td style="text-align: center;"><?= $nomor; ?></td>
                         <td><?= htmlspecialchars($item['nama']); ?></td>
                         <?php
-                        if ($item['nip'] == '') {
+                        echo ($item['nip'] == '') ? '<td style="text-align: center;">-</td>' : '<td style="text-align: center;">' . htmlspecialchars($item['nip']) . '</td>';
                         ?>
-                          <td style="text-align: center;">-</td>
-                        <?php } else {
-                        ?>
-                          <td style="text-align: center;"><?= htmlspecialchars($item['nip']); ?></td>
-                        <?php } ?>
                         <?php
                         foreach ($recap as $key => $value) {
                           if ($key == $bln) {
@@ -150,7 +138,6 @@ $recap = [
                       </tr>
                   <?php }
                   } ?>
-
                 </tbody>
               </table>
             </div>
@@ -180,7 +167,7 @@ $recap = [
                 </thead>
                 <tbody>
                   <?php
-                  $no = 0;
+                  $nomor = 0;
                   foreach ($pegawai as $item) {
                     if ($item['status'] == 'p') {
                       $nip = $item['tanggal_lahir'];
@@ -192,10 +179,10 @@ $recap = [
                         $nip1 = $item['nip'];
                         if (Date('m') == $bln) {
                           $masa = Date('Y') - (int) substr($nip1, 8, 4);
-                          $no++;
+                          $nomor++;
                   ?>
                           <tr>
-                            <td style="text-align: center;"><?= $no; ?></td>
+                            <td style="text-align: center;"><?= $nomor; ?></td>
                             <td><?= htmlspecialchars($item['nama']); ?></td>
                             <td style="text-align: center;"><?= htmlspecialchars($item['nip']); ?></td>
                             <td style="text-align: center;"><?= $usia; ?></td>

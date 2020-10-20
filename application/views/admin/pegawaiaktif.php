@@ -28,38 +28,24 @@
           </thead>
           <tbody>
             <?php
-            $no = 0;
+            $nomor = 0;
             foreach ($pegawai as $item) {
-              $no++; ?>
+              $nomor++; ?>
               <tr>
-                <td style="text-align: center;"><?= $no; ?></td>
+                <td style="text-align: center;"><?= $nomor; ?></td>
                 <td><a href="#" data-toggle="modal" data-target="#detailModal<?= $item['id_pegawai']; ?>"><?= htmlspecialchars($item['nama']); ?></a></td>
                 <td style="text-align: center;"><?php $key = $item['status'];
-                                                if ($key == "p") {
-                                                  echo "PNS";
-                                                } else {
-                                                  echo "Non-PNS";
-                                                }
+                                                echo ($key == "p") ? "PNS" : "Non-PNS";
                                                 ?></td>
                 <?php
                 $key = $item['status'];
-                if ($key == "p") {
+                echo ($key == "p")  ? '<td>' . htmlspecialchars($item['nip']) . '</td>' : '<td class="text-center">-</td>';
                 ?>
-                  <td><?= htmlspecialchars($item['nip']); ?></td>
-                <?php } else {
-                ?>
-                  <td class="text-center">-</td>
-                <?php } ?>
                 <td><?= htmlspecialchars($item['jk']); ?></td>
                 <?php
                 $key = $item['status'];
-                if ($key == "p") {
+                echo ($key == "p") ? '<td>' . htmlspecialchars($item['pangkat']) . '</td>' : '<td class="text-center">-</td>';
                 ?>
-                  <td><?= htmlspecialchars($item['pangkat']); ?></td>
-                <?php } else {
-                ?>
-                  <td class="text-center">-</td>
-                <?php } ?>
                 <td><?php $key = $item['jabatan'];
                     if ($key == 'umum') {
                       echo "Fungsional Umum";
@@ -73,7 +59,6 @@
                     if ($key == 'non') {
                       echo "Non-ASN";
                     }
-
                     ?></td>
                 <td><?= htmlspecialchars($item['jenis_jabatan']); ?></td>
                 <td><?= htmlspecialchars($item['no_telp']); ?></td>
@@ -182,7 +167,7 @@ foreach ($pegawai as $item) {
               if ($item['status'] == 'p') {
               ?>
                 <td>PNS</td>
-              <?php } else {
+              <?php } elseif ($item['status'] == 'n') {
               ?>
                 <td>Non-PNS</td>
               <?php } ?>
@@ -191,13 +176,8 @@ foreach ($pegawai as $item) {
               <td>NIP</td>
               <td>:</td>
               <?php
-              if ($item['status'] == 'p') {
+              echo ($item['status'] == 'p') ? '<td>' . htmlspecialchars($item['nip']) . '</td>' : '<td>-</td>';
               ?>
-                <td><?= htmlspecialchars($item['nip']); ?></td>
-              <?php } else {
-              ?>
-                <td>-</td>
-              <?php } ?>
             </tr>
             <tr>
               <td>Jenis Kelamin</td>
@@ -265,7 +245,7 @@ foreach ($pegawai as $item) {
               if ($pend == 'SMP') {
               ?>
                 <td>-</td>
-              <?php } else { ?>
+              <?php } elseif (($pend != 'SD') && ($pend != 'SMP')) { ?>
                 <td><?= strtoupper(strtolower(htmlspecialchars($item['jurusan']))); ?></td>
               <?php } ?>
             </tr>
@@ -273,37 +253,22 @@ foreach ($pegawai as $item) {
               <td>Nomor HP</td>
               <td>:</td>
               <?php
-              if ($item['no_telp'] != NULL) {
+              echo ($item['no_telp'] != NULL) ? '<td>' . htmlspecialchars($item['no_telp']) . '</td>' : '<td>-</td>';
               ?>
-                <td><?= htmlspecialchars($item['no_telp']); ?></td>
-              <?php } else {
-              ?>
-                <td>-</td>
-              <?php } ?>
             </tr>
             <tr>
               <td>Email</td>
               <td>:</td>
               <?php
-              if ($item['email'] != NULL) {
+              echo ($item['email'] != NULL) ? '<td>' . htmlspecialchars($item['email']) . '</td>' : '<td>-</td>';
               ?>
-                <td><?= htmlspecialchars($item['email']); ?></td>
-              <?php } else {
-              ?>
-                <td>-</td>
-              <?php } ?>
             </tr>
             <tr>
               <td>Pangkat/Golongan</td>
               <td>:</td>
               <?php
-              if ($item['status'] == 'p') {
+              echo ($item['status'] == 'p') ? '<td>' . htmlspecialchars($item['pangkat']) . '</td>' : '<td>-</td>';
               ?>
-                <td><?= htmlspecialchars($item['pangkat']); ?></td>
-              <?php } else {
-              ?>
-                <td>-</td>
-              <?php } ?>
             </tr>
             <tr>
               <td>Jabatan</td>
@@ -317,11 +282,9 @@ foreach ($pegawai as $item) {
                 'non' => 'Non-PNS'
               ];
               foreach ($recap as $key => $value) {
-                if ($key == $jabatan) {
+                echo ($key == $jabatan) ? '<td>' . $value . '</td>' : '';
+              }
               ?>
-                  <td><?= $value; ?></td>
-              <?php }
-              } ?>
             </tr>
             <tr>
               <td>Jenis Jabatan</td>
@@ -337,25 +300,14 @@ foreach ($pegawai as $item) {
               <td>Sub Unit Kerja</td>
               <td>:</td>
               <?php
-              if ($item['nama_subunit'] != NULL) {
+              echo ($item['nama_subunit'] != NULL) ? '<td>' . htmlspecialchars($item['nama_subunit']) . '</td>' : '<td>-</td>';
               ?>
-                <td><?= htmlspecialchars($item['nama_subunit']); ?></td>
-              <?php } else {
-              ?>
-                <td>-</td>
-              <?php } ?>
             </tr>
             <tr>
               <td>Status Kerja</td>
               <td>:</td>
               <?php
-              if ($item['status_kerja'] == 1) {
-              ?>
-                <td>Aktif</td>
-              <?php } else {
-              ?>
-                <td>Tidak Aktif</td>
-              <?php }
+              echo ($item['status_kerja'] == 1) ? '<td>Aktif</td>' : '<td>Tidak Aktif</td>';
               ?>
             </tr>
             <tr>

@@ -24,11 +24,11 @@
             </thead>
             <tbody>
               <?php
-              $no = 0;
+              $nomor = 0;
               foreach ($dataKom as $item) {
-                $no++; ?>
+                $nomor++; ?>
                 <tr>
-                  <td style="text-align: center;"><?= $no; ?></td>
+                  <td style="text-align: center;"><?= $nomor; ?></td>
                   <td><?= $item['kompetensi']; ?></td>
                   <td><?= $item['keterangan']; ?></td>
                   <td style="vertical-align: middle; text-align: center;">
@@ -75,11 +75,11 @@
             </thead>
             <tbody>
               <?php
-              $no = 0;
+              $nomor = 0;
               foreach ($dataRiwayat as $item) {
-                $no++; ?>
+                $nomor++; ?>
                 <tr>
-                  <td style="text-align: center;"><?= $no; ?></td>
+                  <td style="text-align: center;"><?= $nomor; ?></td>
                   <td><?= $item['unit_kerja']; ?></td>
                   <td><?= $item['sub_unit_kerja']; ?></td>
                   <td><?= $item['tanggal_mulai']; ?></td>
@@ -224,11 +224,7 @@ foreach ($dataKom as $item) {
                 <?php
                 foreach ($kompetensi as $key => $jenis) {
                   $kmp = $item['kompetensi'];
-                  if ($key == $kmp) {
-                    echo '<option selected >' . $jenis . '</option>';
-                  } else {
-                    echo '<option >' . $jenis . '</option>';
-                  }
+                  echo ($key == $kmp) ? '<option selected >' . $jenis . '</option>' : '<option >' . $jenis . '</option>';
                 }
                 ?>
               </select>

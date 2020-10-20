@@ -27,18 +27,14 @@
           </thead>
           <tbody>
             <?php
-            $no = 0;
+            $nomor = 0;
             foreach ($pegawai as $item) {
-              $no++; ?>
+              $nomor++; ?>
               <tr>
-                <td style="text-align: center;"><?= $no; ?></td>
+                <td style="text-align: center;"><?= $nomor; ?></td>
                 <td><a href="#" data-toggle="modal" data-target="#detailModal<?= $item['id_pegawai']; ?>"><?= htmlspecialchars($item['nama']); ?></a></td>
                 <td style="text-align: center;"><?php $key = $item['status'];
-                                                if ($key == "p") {
-                                                  echo "PNS";
-                                                } else {
-                                                  echo "Non-PNS";
-                                                }
+                                                echo ($key == "p") ? "PNS" : "Non-PNS";
                                                 ?></td>
                 <td><?= htmlspecialchars($item['nip']); ?></td>
                 <td><?= htmlspecialchars($item['jk']); ?></td>
@@ -51,10 +47,6 @@
                   <!-- Tombol Ubah Status -->
                   <button id="button_ubah" onclick="ubah_status_pegawai(<?= htmlspecialchars($item['id_pegawai']); ?>)" value="<?= $item['id_pegawai']; ?>" data-toggle="modal" data-target="#ubahStatusModal" class="btn btn-info" title="Ubah Status Pegawai"><i class="fas fa-fw fa-info-circle"></i></button>
                 </td>
-                <!-- <td style="vertical-align: middle;"> -->
-                <!-- Tombol Hapus -->
-                <!-- <button onclick="hapus_pegawai(<?= htmlspecialchars($item['id_pegawai']); ?>)" value="<?= $item['id_pegawai']; ?>" data-toggle="modal" data-target="#hapusPegawai" class="btn btn-danger"><i class="far fa-fw fa-trash-alt"></i> Hapus</button>
-                  </td> -->
               </tr>
             <?php } ?>
           </tbody>
@@ -122,7 +114,7 @@ foreach ($pegawai as $item) {
               if ($item['status'] == 'p') {
               ?>
                 <td>PNS</td>
-              <?php } else {
+              <?php } elseif ($item['status'] == 'n') {
               ?>
                 <td>Non-PNS</td>
               <?php } ?>
@@ -131,13 +123,8 @@ foreach ($pegawai as $item) {
               <td>NIP</td>
               <td>:</td>
               <?php
-              if ($item['status'] == 'p') {
+              echo ($item['status'] == 'p') ? '<td>' . htmlspecialchars($item['nip']) . '</td>' : '<td>-</td>';
               ?>
-                <td><?= htmlspecialchars($item['nip']); ?></td>
-              <?php } else {
-              ?>
-                <td>-</td>
-              <?php } ?>
             </tr>
             <tr>
               <td>Jenis Kelamin</td>
@@ -202,7 +189,7 @@ foreach ($pegawai as $item) {
               if ($pend == 'SMP') {
               ?>
                 <td>-</td>
-              <?php } else { ?>
+              <?php } elseif (($pend != 'SD') && ($pend != 'SMP')) { ?>
                 <td><?= ucwords(strtolower(htmlspecialchars($item['jurusan']))); ?></td>
               <?php } ?>
             </tr>
@@ -220,13 +207,8 @@ foreach ($pegawai as $item) {
               <td>Pangkat/Golongan</td>
               <td>:</td>
               <?php
-              if ($item['status'] == 'p') {
+              echo ($item['status'] == 'p') ? '<td>' . htmlspecialchars($item['pangkat']) . '</td>' : '<td>-</td>';
               ?>
-                <td><?= htmlspecialchars($item['pangkat']); ?></td>
-              <?php } else {
-              ?>
-                <td>-</td>
-              <?php } ?>
             </tr>
             <tr>
               <td>Jabatan</td>
@@ -240,10 +222,7 @@ foreach ($pegawai as $item) {
                 'non' => 'Non-PNS'
               ];
               foreach ($recap as $key => $value) {
-                if ($key == $jabatan) {
-              ?>
-                  <td><?= $value; ?></td>
-              <?php }
+                echo ($key == $jabatan) ? '<td>' . $value . '</td>' : '';
               } ?>
             </tr>
             <tr>
@@ -255,37 +234,21 @@ foreach ($pegawai as $item) {
               <td>Unit Kerja</td>
               <td>:</td>
               <?php
-              if ($item['nama_unitkerja'] != NULL) {
+              echo ($item['nama_unitkerja'] != NULL) ? '<td>' . htmlspecialchars($item['nama_unitkerja']) . '</td>' : '<td>-</td>';
               ?>
-                <td><?= htmlspecialchars($item['nama_unitkerja']); ?></td>
-              <?php } else {
-              ?>
-                <td>-</td>
-              <?php } ?>
             </tr>
             <tr>
               <td>Sub Unit Kerja</td>
               <td>:</td>
               <?php
-              if ($item['nama_subunit'] != NULL) {
+              echo ($item['nama_subunit'] != NULL) ? '<td>' . htmlspecialchars($item['nama_subunit']) . '</td>' : '<td>-</td>';
               ?>
-                <td><?= htmlspecialchars($item['nama_subunit']); ?></td>
-              <?php } else {
-              ?>
-                <td>-</td>
-              <?php } ?>
             </tr>
             <tr>
               <td>Status Kerja</td>
               <td>:</td>
               <?php
-              if ($item['status_kerja'] == 1) {
-              ?>
-                <td>Aktif</td>
-              <?php } else {
-              ?>
-                <td>Tidak Aktif</td>
-              <?php }
+              echo ($item['status_kerja'] == 1) ? '<td>Aktif</td>' : '<td>Tidak Aktif</td>';
               ?>
             </tr>
             <tr>
@@ -319,13 +282,11 @@ foreach ($pegawai as $item) {
               foreach ($recap as $key => $value) {
                 if ($key == $bln) {
                   $ada = 1;
-              ?>
-                  <td><?= $hari . ' ' . $value . ' ' . $tahun; ?></td>
+              ?><td><?= $hari . ' ' . $value . ' ' . $tahun; ?></td>
                 <?php }
               }
               if ($ada == 0) {
-                ?>
-                <td><?= $tgl; ?></td>
+                ?><td><?= $tgl; ?></td>
               <?php } ?>
             </tr>
             <tr>
@@ -354,13 +315,11 @@ foreach ($pegawai as $item) {
               foreach ($recap as $key => $value) {
                 if ($key == $bln) {
                   $ada = 1;
-              ?>
-                  <td><?= $hari . ' ' . $value . ' ' . $tahun; ?></td>
+              ?><td><?= $hari . ' ' . $value . ' ' . $tahun; ?></td>
                 <?php }
               }
               if ($ada == 0) {
-                ?>
-                <td><?= $tgl; ?></td>
+                ?><td><?= $tgl; ?></td>
               <?php } ?>
             </tr>
           </table>

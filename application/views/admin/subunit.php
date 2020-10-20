@@ -26,11 +26,11 @@
             </thead>
             <tbody>
               <?php
-              $no = 0;
+              $nomor = 0;
               foreach ($sub as $item) {
-                $no++; ?>
+                $nomor++; ?>
                 <tr>
-                  <td style="text-align: center;"><?= $no; ?></td>
+                  <td style="text-align: center;"><?= $nomor; ?></td>
                   <td><?= html_escape($item['nama_unitkerja']); ?></td>
                   <td><?= html_escape($item['keterangan']); ?></td>
                   <td style="vertical-align: middle; text-align: center;">
@@ -119,11 +119,8 @@ foreach ($sub as $item) {
                 <?php
                 foreach ($unit as $key) {
                   $sub = $item['id_unit'];
-                  if ($key['id_unit'] == $sub) {
-                    echo '<option value="' . $key['id_unit'] . '" selected >' . $key['nama_unit'] . '</option>';
-                  } else {
-                    echo '<option value="' . $key['id_unit'] . '" >' . $key['nama_unit'] . '</option>';
-                  }
+                  echo ($key['id_unit'] == $sub) ? '<option value="' . $key['id_unit'] . '" selected >' . $key['nama_unit'] . '</option>'
+                    : '<option value="' . $key['id_unit'] . '" >' . $key['nama_unit'] . '</option>';
                 }
                 ?>
               </select>

@@ -69,11 +69,8 @@ $jenis_jabatan = array(
                 <option value="">----Pilih----</option>
                 <?php
                 foreach ($jk as $key => $jenis) {
-                  if ($key == $dataPegawai['jk']) {
-                    echo '<option value="' . $key . '" selected>' . $jenis . '</option>';
-                  } else {
-                    echo '<option value="' . $key . '">' . $jenis . '</option>';
-                  }
+                  echo ($key == $dataPegawai['jk']) ? '<option value="' . $key . '" selected>' . $jenis . '</option>'
+                    : '<option value="' . $key . '">' . $jenis . '</option>';
                 }
                 ?>
               </select>
@@ -101,11 +98,8 @@ $jenis_jabatan = array(
                 <option value="">----Pilih----</option>
                 <?php
                 foreach ($agama as $key => $jenis) {
-                  if ($key == $dataPegawai['agama']) {
-                    echo '<option value="' . $key . '" selected>' . $jenis . '</option>';
-                  } else {
-                    echo '<option value="' . $key . '">' . $jenis . '</option>';
-                  }
+                  echo ($key == $dataPegawai['agama']) ? '<option value="' . $key . '" selected>' . $jenis . '</option>'
+                    : '<option value="' . $key . '">' . $jenis . '</option>';
                 }
                 ?>
               </select>
@@ -116,11 +110,8 @@ $jenis_jabatan = array(
                 <option value="">----Pilih----</option>
                 <?php
                 foreach ($pendidikan as $key => $jenis) {
-                  if ($key == $dataPegawai['pend']) {
-                    echo '<option value="' . $key . '" selected>' . $jenis . '</option>';
-                  } else {
-                    echo '<option value="' . $key . '">' . $jenis . '</option>';
-                  }
+                  echo ($key == $dataPegawai['pend']) ? '<option value="' . $key . '" selected>' . $jenis . '</option>'
+                    : '<option value="' . $key . '">' . $jenis . '</option>';
                 }
                 ?>
               </select>
@@ -158,11 +149,8 @@ $jenis_jabatan = array(
                 <?php
                 $unitkerja = $dataPegawai['unit_kerja_pegawai'];
                 foreach ($unit as $key) {
-                  if ($unitkerja == $key['id_unit']) {
-                    echo '<option value="' . $key['id_unit'] . '" selected>' . $key['nama_unit'] . '</option>';
-                  } else {
-                    echo '<option value="' . $key['id_unit'] . '" >' . $key['nama_unit'] . '</option>';
-                  }
+                  echo ($unitkerja == $key['id_unit']) ? '<option value="' . $key['id_unit'] . '" selected>' . $key['nama_unit'] . '</option>'
+                    : '<option value="' . $key['id_unit'] . '" >' . $key['nama_unit'] . '</option>';
                 }
                 ?>
               </select>
@@ -177,13 +165,10 @@ $jenis_jabatan = array(
                   foreach ($subnull as $key) {
                     echo '<option value="' . $key['id_sub_unit'] . '" >' . $key['keterangan'] . '</option>';
                   }
-                } else {
+                } elseif ($subunit != NULL || $subunit != '0') {
                   foreach ($sub as $key) {
-                    if ($subunit == $key['id_sub_unit']) {
-                      echo '<option value="' . $key['id_sub_unit'] . '" selected>' . $key['keterangan'] . '</option>';
-                    } else {
-                      echo '<option value="' . $key['id_sub_unit'] . '" >' . $key['keterangan'] . '</option>';
-                    }
+                    echo ($subunit == $key['id_sub_unit']) ? '<option value="' . $key['id_sub_unit'] . '" selected>' . $key['keterangan'] . '</option>'
+                      : '<option value="' . $key['id_sub_unit'] . '" >' . $key['keterangan'] . '</option>';
                   }
                 }
                 ?>
@@ -201,11 +186,8 @@ $jenis_jabatan = array(
                 <option value="">----Pilih----</option>
                 <?php
                 foreach ($jenis_jabatan as $key => $jenis) {
-                  if ($key == $dataPegawai['bagian']) {
-                    echo '<option value="' . $key . '" selected>' . $jenis . '</option>';
-                  } else {
-                    echo '<option value="' . $key . '">' . $jenis . '</option>';
-                  }
+                  echo ($key == $dataPegawai['bagian']) ? '<option value="' . $key . '" selected>' . $jenis . '</option>'
+                    : '<option value="' . $key . '">' . $jenis . '</option>';
                 }
                 ?>
               </select>
@@ -227,5 +209,4 @@ $jenis_jabatan = array(
 </button>
 </div>
 </form>
-</div>
 </div>
