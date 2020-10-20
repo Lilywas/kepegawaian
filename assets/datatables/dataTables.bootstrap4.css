@@ -101,47 +101,47 @@ table.dataTable thead .sorting_desc_disabled {
   position: relative;
 }
 
-table.dataTable thead .sorting:before,
-table.dataTable thead .sorting:after,
-table.dataTable thead .sorting_asc:before,
-table.dataTable thead .sorting_asc:after,
-table.dataTable thead .sorting_desc:before,
-table.dataTable thead .sorting_desc:after,
-table.dataTable thead .sorting_asc_disabled:before,
-table.dataTable thead .sorting_asc_disabled:after,
-table.dataTable thead .sorting_desc_disabled:before,
-table.dataTable thead .sorting_desc_disabled:after {
+table.dataTable thead .sorting::before,
+table.dataTable thead .sorting::after,
+table.dataTable thead .sorting_asc::before,
+table.dataTable thead .sorting_asc::after,
+table.dataTable thead .sorting_desc::before,
+table.dataTable thead .sorting_desc::after,
+table.dataTable thead .sorting_asc_disabled::before,
+table.dataTable thead .sorting_asc_disabled::after,
+table.dataTable thead .sorting_desc_disabled::before,
+table.dataTable thead .sorting_desc_disabled::after {
   position: absolute;
   bottom: 0.9em;
   display: block;
   opacity: 0.3;
 }
 
-table.dataTable thead .sorting:before,
-table.dataTable thead .sorting_asc:before,
-table.dataTable thead .sorting_desc:before,
-table.dataTable thead .sorting_asc_disabled:before,
-table.dataTable thead .sorting_desc_disabled:before {
+table.dataTable thead .sorting::before,
+table.dataTable thead .sorting_asc::before,
+table.dataTable thead .sorting_desc::before,
+table.dataTable thead .sorting_asc_disabled::before,
+table.dataTable thead .sorting_desc_disabled::before {
   right: 1em;
   content: "\2191";
 }
 
-table.dataTable thead .sorting:after,
-table.dataTable thead .sorting_asc:after,
-table.dataTable thead .sorting_desc:after,
-table.dataTable thead .sorting_asc_disabled:after,
-table.dataTable thead .sorting_desc_disabled:after {
+table.dataTable thead .sorting::after,
+table.dataTable thead .sorting_asc::after,
+table.dataTable thead .sorting_desc::after,
+table.dataTable thead .sorting_asc_disabled::after,
+table.dataTable thead .sorting_desc_disabled::after {
   right: 0.5em;
   content: "\2193";
 }
 
-table.dataTable thead .sorting_asc:before,
-table.dataTable thead .sorting_desc:after {
+table.dataTable thead .sorting_asc::before,
+table.dataTable thead .sorting_desc::after {
   opacity: 1;
 }
 
-table.dataTable thead .sorting_asc_disabled:before,
-table.dataTable thead .sorting_desc_disabled:after {
+table.dataTable thead .sorting_asc_disabled::before,
+table.dataTable thead .sorting_desc_disabled::after {
   opacity: 0;
 }
 
@@ -155,12 +155,12 @@ div.dataTables_scrollBody table {
   margin-bottom: 0 !important;
 }
 
-div.dataTables_scrollBody table thead .sorting:before,
-div.dataTables_scrollBody table thead .sorting_asc:before,
-div.dataTables_scrollBody table thead .sorting_desc:before,
-div.dataTables_scrollBody table thead .sorting:after,
-div.dataTables_scrollBody table thead .sorting_asc:after,
-div.dataTables_scrollBody table thead .sorting_desc:after {
+div.dataTables_scrollBody table thead .sorting::before,
+div.dataTables_scrollBody table thead .sorting_asc::before,
+div.dataTables_scrollBody table thead .sorting_desc::before,
+div.dataTables_scrollBody table thead .sorting::after,
+div.dataTables_scrollBody table thead .sorting_asc::after,
+div.dataTables_scrollBody table thead .sorting_desc::after {
   display: none;
 }
 
@@ -191,16 +191,16 @@ table.dataTable.table-sm > thead > tr > th {
   padding-right: 20px;
 }
 
-table.dataTable.table-sm .sorting:before,
-table.dataTable.table-sm .sorting_asc:before,
-table.dataTable.table-sm .sorting_desc:before {
+table.dataTable.table-sm .sorting::before,
+table.dataTable.table-sm .sorting_asc::before,
+table.dataTable.table-sm .sorting_desc::before {
   top: 5px;
   right: 0.85em;
 }
 
-table.dataTable.table-sm .sorting:after,
-table.dataTable.table-sm .sorting_asc:after,
-table.dataTable.table-sm .sorting_desc:after {
+table.dataTable.table-sm .sorting::after,
+table.dataTable.table-sm .sorting_asc::after,
+table.dataTable.table-sm .sorting_desc::after {
   top: 5px;
 }
 
@@ -209,8 +209,7 @@ table.table-bordered.dataTable td {
   border-left-width: 0;
 }
 
-table.table-bordered.dataTable th:last-child, table.table-bordered.dataTable th:last-child,
-table.table-bordered.dataTable td:last-child,
+table.table-bordered.dataTable th:last-child,
 table.table-bordered.dataTable td:last-child {
   border-right-width: 0;
 }
