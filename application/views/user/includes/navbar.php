@@ -31,7 +31,6 @@
   </style>
 
   <link href="<?= base_url('assets/datatables/dataTables.bootstrap4.min.css'); ?>" rel="stylesheet">
-  <link href="<?= base_url('assets/datepicker/css/bootstrap-datepicker3.css'); ?>" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Kreon:500&display=swap" rel="stylesheet">
 </head>
 

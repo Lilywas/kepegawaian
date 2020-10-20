@@ -66,9 +66,6 @@ if ($this->uri->segment('1') == 'pegawai') {
 <script src="<?= base_url('assets/datatables/jquery.dataTables.min.js'); ?>"></script>
 <script src="<?= base_url('assets/datatables/dataTables.bootstrap4.min.js'); ?>"></script>
 
-<!-- Page level custom scripts -->
-<script src="<?= base_url('assets/js/demo/datatables-demo.js'); ?>"></script>
-
 <!-- Page level plugins -->
 <script src="<?= base_url('assets/chart.js/Chart.min.js') ?>"></script>
 <script src="<?= base_url('assets/chart.js/Chart.js') ?>"></script>
