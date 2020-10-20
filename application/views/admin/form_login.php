@@ -44,13 +44,15 @@
 											<div class="input-group-prepend">
 												<span class="input-group-text"><i class="far fa-fw fa-user"></i></span>
 											</div>
-											<input type="text" class="form-control form-control-user" name="username" placeholder="Masukkan Username" required>
+											<input type="text" class="form-control form-control-user" name="username" placeholder="Masukkan Username" value="<?= set_value('username') ?>" required>
+											<?= form_error('username', '<small class="text-danger pl-3">', '</small>') ?>
 										</div>
 										<div class="input-group mb-3">
 											<div class="input-group-prepend">
 												<span class="input-group-text"><i class="fas fa-fw fa-key"></i></span>
 											</div>
 											<input type="password" class="form-control form-control-user" id="exampleInputPassword" name="password" placeholder="Masukkan Password">
+											<?= form_error('password', '<small class="text-danger pl-3">', '</small>') ?>
 										</div>
 										<hr>
 										<button type="submit" name="login" class="btn btn-primary btn-user btn-block">

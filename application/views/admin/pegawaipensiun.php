@@ -49,17 +49,17 @@
                 </thead>
                 <tbody>
                   <?php
-                  $nomor = 0;
+                  $no = 0;
                   foreach ($pegawai as $item) {
                     $nip = $item['tanggal_lahir'];
                     $thn = substr($nip, 0, 4);
                     $usia = Date('Y') - $thn;
                     $pensiun = $item['pensiun'];
                     if ($usia == $pensiun) {
-                      $nomor++;
+                      $no++;
                   ?>
                       <tr>
-                        <td style="text-align: center;"><?= $nomor; ?></td>
+                        <td style="text-align: center;"><?= $no; ?></td>
                         <td><a href="#" data-toggle="modal" data-target="#detailModal<?= $item['id_pegawai']; ?>"><?= htmlspecialchars($item['nama']); ?></a></td>
                         <td style="text-align: center;">PNS</td>
                         <td><?= htmlspecialchars($item['nip']); ?></td>
@@ -110,17 +110,17 @@
                 </thead>
                 <tbody>
                   <?php
-                  $nomor = 0;
+                  $no = 0;
                   foreach ($pegawai as $item) {
                     $nip = $item['tanggal_lahir'];
                     $thn = substr($nip, 0, 4);
                     $usia = (Date('Y') + 1) - $thn;
                     $pensiun = $item['pensiun'];
                     if ($usia == $pensiun) {
-                      $nomor++;
+                      $no++;
                   ?>
                       <tr>
-                        <td style="text-align: center;"><?= $nomor; ?></td>
+                        <td style="text-align: center;"><?= $no; ?></td>
                         <td><a href="#" data-toggle="modal" data-target="#detailModal<?= $item['id_pegawai']; ?>"><?= htmlspecialchars($item['nama']); ?></a></td>
                         <td style="text-align: center;">PNS</td>
                         <td><?= htmlspecialchars($item['nip']); ?></td>
@@ -170,17 +170,17 @@
                 </thead>
                 <tbody>
                   <?php
-                  $nomor = 0;
+                  $no = 0;
                   foreach ($pegawai as $item) {
                     $nip = $item['tanggal_lahir'];
                     $thn = substr($nip, 0, 4);
                     $usia = (Date('Y') + 2) - $thn;
                     $pensiun = $item['pensiun'];
                     if ($usia == $pensiun) {
-                      $nomor++;
+                      $no++;
                   ?>
                       <tr>
-                        <td style="text-align: center;"><?= $nomor; ?></td>
+                        <td style="text-align: center;"><?= $no; ?></td>
                         <td><a href="#" data-toggle="modal" data-target="#detailModal<?= $item['id_pegawai']; ?>"><?= htmlspecialchars($item['nama']); ?></a></td>
                         <td style="text-align: center;">PNS</td>
                         <td><?= htmlspecialchars($item['nip']); ?></td>
@@ -230,17 +230,17 @@
                 </thead>
                 <tbody>
                   <?php
-                  $nomor = 0;
+                  $no = 0;
                   foreach ($pegawai as $item) {
                     $nip = $item['tanggal_lahir'];
                     $thn = substr($nip, 0, 4);
                     $usia = (Date('Y') + 3) - $thn;
                     $pensiun = $item['pensiun'];
                     if ($usia == $pensiun) {
-                      $nomor++;
+                      $no++;
                   ?>
                       <tr>
-                        <td style="text-align: center;"><?= $nomor; ?></td>
+                        <td style="text-align: center;"><?= $no; ?></td>
                         <td><a href="#" data-toggle="modal" data-target="#detailModal<?= $item['id_pegawai']; ?>"><?= htmlspecialchars($item['nama']); ?></a></td>
                         <td style="text-align: center;">PNS</td>
                         <td><?= htmlspecialchars($item['nip']); ?></td>
@@ -290,17 +290,17 @@
                 </thead>
                 <tbody>
                   <?php
-                  $nomor = 0;
+                  $no = 0;
                   foreach ($pegawai as $item) {
                     $nip = $item['tanggal_lahir'];
                     $thn = substr($nip, 0, 4);
                     $usia = (Date('Y') + 4) - $thn;
                     $pensiun = $item['pensiun'];
                     if ($usia == $pensiun) {
-                      $nomor++;
+                      $no++;
                   ?>
                       <tr>
-                        <td style="text-align: center;"><?= $nomor; ?></td>
+                        <td style="text-align: center;"><?= $no; ?></td>
                         <td><a href="#" data-toggle="modal" data-target="#detailModal<?= $item['id_pegawai']; ?>"><?= htmlspecialchars($item['nama']); ?></a></td>
                         <td style="text-align: center;">PNS</td>
                         <td><?= htmlspecialchars($item['nip']); ?></td>
@@ -397,6 +397,9 @@ foreach ($pegawai as $item) {
               if ($item['status'] == 'p') {
               ?>
                 <td>PNS</td>
+              <?php } else {
+              ?>
+                <td>Non-PNS</td>
               <?php } ?>
             </tr>
             <tr>
@@ -406,6 +409,9 @@ foreach ($pegawai as $item) {
               if ($item['status'] == 'p') {
               ?>
                 <td><?= htmlspecialchars($item['nip']); ?></td>
+              <?php } else {
+              ?>
+                <td>-</td>
               <?php } ?>
             </tr>
             <tr>
@@ -474,7 +480,7 @@ foreach ($pegawai as $item) {
               if ($pend == 'SMP') {
               ?>
                 <td>-</td>
-              <?php } elseif (($pend != 'SD') && ($pend != 'SMP')) { ?>
+              <?php } else { ?>
                 <td><?= strtoupper(strtolower(htmlspecialchars($item['jurusan']))); ?></td>
               <?php } ?>
             </tr>
@@ -482,15 +488,25 @@ foreach ($pegawai as $item) {
               <td>Nomor HP</td>
               <td>:</td>
               <?php
-              echo ($item['no_telp'] != NULL) ? '<td>' . htmlspecialchars($item['no_telp']) . '</td>' : '<td>-</td>';
+              if ($item['no_telp'] != NULL) {
               ?>
+                <td><?= htmlspecialchars($item['no_telp']); ?></td>
+              <?php } else {
+              ?>
+                <td>-</td>
+              <?php } ?>
             </tr>
             <tr>
               <td>Email</td>
               <td>:</td>
               <?php
-              echo ($item['email'] != NULL) ? '<td>' . htmlspecialchars($item['email']) . '</td>' : '<td>-</td>';
+              if ($item['email'] != NULL) {
               ?>
+                <td><?= htmlspecialchars($item['email']); ?></td>
+              <?php } else {
+              ?>
+                <td>-</td>
+              <?php } ?>
             </tr>
             <tr>
               <td>Pangkat/Golongan</td>
@@ -499,6 +515,9 @@ foreach ($pegawai as $item) {
               if ($item['status'] == 'p') {
               ?>
                 <td><?= htmlspecialchars($item['pangkat']); ?></td>
+              <?php } else {
+              ?>
+                <td>-</td>
               <?php } ?>
             </tr>
             <tr>
@@ -514,7 +533,8 @@ foreach ($pegawai as $item) {
               ];
               foreach ($recap as $key => $value) {
                 if ($key == $jabatan) {
-              ?><td><?= $value; ?></td>
+              ?>
+                  <td><?= $value; ?></td>
               <?php }
               } ?>
             </tr>
@@ -532,14 +552,25 @@ foreach ($pegawai as $item) {
               <td>Sub Unit Kerja</td>
               <td>:</td>
               <?php
-              echo ($item['nama_subunit'] != NULL) ? '<td>' . htmlspecialchars($item['nama_subunit']) . '</td>' : '<td>-</td>';
+              if ($item['nama_subunit'] != NULL) {
               ?>
+                <td><?= htmlspecialchars($item['nama_subunit']); ?></td>
+              <?php } else {
+              ?>
+                <td>-</td>
+              <?php } ?>
             </tr>
             <tr>
               <td>Status Kerja</td>
               <td>:</td>
               <?php
-              echo ($item['status_kerja'] == 1) ? '<td>Aktif</td>' : '<td>Tidak Aktif</td>';
+              if ($item['status_kerja'] == 1) {
+              ?>
+                <td>Aktif</td>
+              <?php } else {
+              ?>
+                <td>Tidak Aktif</td>
+              <?php }
               ?>
             </tr>
             <tr>
