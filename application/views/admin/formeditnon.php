@@ -65,18 +65,7 @@ $jenis_jabatan = array(
             </div>
             <div class="form-group col-md-3">
               <label>Jenis Kelamin </label>
-              <select class="form-control" name="jk" disabled>
-                <option value="">----Pilih----</option>
-                <?php
-                foreach ($jk as $key => $jenis) {
-                  if ($key == $dataPegawai['jk']) {
-                    echo '<option value="' . $key . '" selected>' . $jenis . '</option>';
-                  } else {
-                    echo '<option value="' . $key . '">' . $jenis . '</option>';
-                  }
-                }
-                ?>
-              </select>
+              <input type="text" class="form-control" name="jk" value="<?= filter_var($dataPegawai['jk'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>" readonly>
             </div>
             <div class="form-group col-md-3">
               <label>Tempat Lahir </label>
@@ -101,11 +90,11 @@ $jenis_jabatan = array(
                 <option value="">----Pilih----</option>
                 <?php
                 foreach ($agama as $key => $jenis) {
-                  if ($key == $dataPegawai['agama']) {
-                    echo '<option value="' . $key . '" selected>' . $jenis . '</option>';
-                  } else {
-                    echo '<option value="' . $key . '">' . $jenis . '</option>';
-                  }
+                  if ($key == $dataPegawai['agama']) { ?>
+                    <option value="<?= filter_var($key, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?>" selected><?= filter_var($jenis, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?></option>
+                  <?php } else { ?>
+                    <option value="<?= filter_var($key, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?>"><?= filter_var($jenis, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?></option>
+                <?php }
                 }
                 ?>
               </select>
@@ -116,11 +105,11 @@ $jenis_jabatan = array(
                 <option value="">----Pilih----</option>
                 <?php
                 foreach ($pendidikan as $key => $jenis) {
-                  if ($key == $dataPegawai['pend']) {
-                    echo '<option value="' . $key . '" selected>' . $jenis . '</option>';
-                  } else {
-                    echo '<option value="' . $key . '">' . $jenis . '</option>';
-                  }
+                  if ($key == $dataPegawai['pend']) { ?>
+                    <option value="<?= filter_var($key, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?>" selected><?= filter_var($jenis, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?></option>
+                  <?php } else { ?>
+                    <option value="<?= filter_var($key, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?>"><?= filter_var($jenis, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?></option>
+                <?php }
                 }
                 ?>
               </select>
@@ -158,11 +147,11 @@ $jenis_jabatan = array(
                 <?php
                 $unitkerja = $dataPegawai['unit_kerja_pegawai'];
                 foreach ($unit as $key) {
-                  if ($unitkerja == $key['id_unit']) {
-                    echo '<option value="' . $key['id_unit'] . '" selected>' . $key['nama_unit'] . '</option>';
-                  } else {
-                    echo '<option value="' . $key['id_unit'] . '" >' . $key['nama_unit'] . '</option>';
-                  }
+                  if ($unitkerja == $key['id_unit']) { ?>
+                    <option value="<?= filter_var($key['id_unit'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?>" selected><?= filter_var($key['nama_unit'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?></option>
+                  <?php } else { ?>
+                    <option value="<?= filter_var($key['id_unit'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?>"><?= filter_var($key['nama_unit'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?></option>
+                <?php }
                 }
                 ?>
               </select>
@@ -174,16 +163,16 @@ $jenis_jabatan = array(
                 <?php
                 $subunit = $dataPegawai['sub_pegawai'];
                 if ($subunit == NULL || $subunit == '0') {
-                  foreach ($subnull as $key) {
-                    echo '<option value="' . $key['id_sub_unit'] . '" >' . $key['keterangan'] . '</option>';
-                  }
+                  foreach ($subnull as $key) { ?>
+                    <option value="<?= filter_var($key['id_sub_unit'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?>"><?= filter_var($key['keterangan'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?></option>
+                    <?php }
                 } else {
                   foreach ($sub as $key) {
-                    if ($subunit == $key['id_sub_unit']) {
-                      echo '<option value="' . $key['id_sub_unit'] . '" selected>' . $key['keterangan'] . '</option>';
-                    } else {
-                      echo '<option value="' . $key['id_sub_unit'] . '" >' . $key['keterangan'] . '</option>';
-                    }
+                    if ($subunit == $key['id_sub_unit']) { ?>
+                      <option value="<?= filter_var($key['id_sub_unit'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?>" selected><?= filter_var($key['keterangan'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?></option>
+                    <?php } else { ?>
+                      <option value="<?= filter_var($key['id_sub_unit'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?>"><?= filter_var($key['keterangan'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?></option>
+                <?php }
                   }
                 }
                 ?>
@@ -201,11 +190,11 @@ $jenis_jabatan = array(
                 <option value="">----Pilih----</option>
                 <?php
                 foreach ($jenis_jabatan as $key => $jenis) {
-                  if ($key == $dataPegawai['bagian']) {
-                    echo '<option value="' . $key . '" selected>' . $jenis . '</option>';
-                  } else {
-                    echo '<option value="' . $key . '">' . $jenis . '</option>';
-                  }
+                  if ($key == $dataPegawai['bagian']) { ?>
+                    <option value="<?= filter_var($key, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?>" selected><?= filter_var($jenis, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?></option>
+                  <?php } else { ?>
+                    <option value="<?= filter_var($key, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?>"><?= filter_var($jenis, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?></option>
+                <?php }
                 }
                 ?>
               </select>

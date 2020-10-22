@@ -240,11 +240,11 @@ foreach ($dataKom as $item) {
                 <?php
                 foreach ($kompetensi as $key => $jenis) {
                   $kmp = $item['kompetensi'];
-                  if ($key == $kmp) {
-                    echo '<option selected >' . $jenis . '</option>';
-                  } else {
-                    echo '<option >' . $jenis . '</option>';
-                  }
+                  if ($key == $kmp) { ?>
+                    <option selected><?= filter_var($jenis, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?></option>
+                  <?php } else { ?>
+                    <option><?= filter_var($jenis, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?></option>
+                <?php }
                 }
                 ?>
               </select>

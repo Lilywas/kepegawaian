@@ -97,10 +97,9 @@
               <select id="unit" class="form-control" name="unit_master" required>
                 <option value="">----Pilih----</option>
                 <?php
-                foreach ($unit as $key) {
-                  echo '<option value="' . $key['id_unit'] . '" >' . $key['nama_unit'] . '</option>';
-                }
-                ?>
+                foreach ($unit as $key) { ?>
+                  <option value="<?= filter_var($key['id_unit'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?>"><?= filter_var($key['nama_unit'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?></option>
+                <?php } ?>
               </select>
             </div>
             <div class="form-group col-md-6">

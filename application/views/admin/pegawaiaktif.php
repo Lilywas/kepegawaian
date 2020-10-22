@@ -44,12 +44,9 @@
                 <td style="text-align: center;"><?= filter_var($nomor, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
                 <td><a href="#" data-toggle="modal" data-target="#detailModal<?= filter_var($item['id_pegawai'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>"><?= filter_var($item['nama'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></a></td>
                 <td style="text-align: center;"><?php $key = $item['status'];
-                                                if ($key == "p") {
-                                                  echo filter_var("PNS", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-                                                } else {
-                                                  echo filter_var("Non-PNS", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-                                                }
-                                                ?></td>
+                                                if ($key == "p") { ?> PNS
+                    <?php } else { ?>Non-PNS
+                  <?php } ?></td>
                 <?php
                 $key = $item['status'];
                 if ($key == "p") {
@@ -70,20 +67,14 @@
                   <td class="text-center">-</td>
                 <?php } ?>
                 <td><?php $key = $item['jabatan'];
-                    if ($key == 'umum') {
-                      echo filter_var("Fungsional Umum", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-                    }
-                    if ($key == 'khusus') {
-                      echo filter_var("Fungsional Khusus", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-                    }
-                    if ($key == 'struktural') {
-                      echo filter_var("Struktural", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-                    }
-                    if ($key == 'non') {
-                      echo filter_var("Non-ASN", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-                    }
-
-                    ?></td>
+                    if ($key == 'umum') { ?> Fungsional Umum
+                  <?php }
+                    if ($key == 'khusus') { ?> Fungsional Khusus
+                  <?php }
+                    if ($key == 'struktural') { ?> Struktural
+                  <?php }
+                    if ($key == 'non') { ?> Non-ASN
+                  <?php } ?></td>
                 <td><?= filter_var($item['jenis_jabatan'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
                 <td><?= filter_var($item['no_telp'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
                 <td style="vertical-align: middle;">
@@ -240,10 +231,10 @@ foreach ($pegawai as $item) {
               foreach ($recap as $key => $value) {
                 if ($key == $bln) {
               ?>
-                  <td><?= filter_var($tmp, FILTER_SANITIZE_FULL_SPECIAL_CHARS) . ', ' . filter_var($hari, FILTER_SANITIZE_FULL_SPECIAL_CHARS) . ' ' . filter_var($value, FILTER_SANITIZE_FULL_SPECIAL_CHARS) . ' ' . filter_var($tahun, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
+                  <td><?= filter_var($tmp, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?>, <?= filter_var($hari, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?> <?= filter_var($value, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?> <?= filter_var($tahun, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
                 <?php } elseif ($tmp == NULL) {
                 ?>
-                  <td><?= '-, ' . filter_var($hari, FILTER_SANITIZE_FULL_SPECIAL_CHARS) . ' ' . filter_var($value, FILTER_SANITIZE_FULL_SPECIAL_CHARS) . ' ' . filter_var($tahun, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
+                  <td>-, <?= filter_var($hari, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?> <?= filter_var($value, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?> <?= filter_var($tahun, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
               <?php }
               } ?>
             </tr>
