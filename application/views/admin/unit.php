@@ -93,7 +93,7 @@
 <?php
 foreach ($unit as $item) {
 ?>
-  <div class="modal fade" id="edit_unit<?= $item['id_unit']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="edit_unit<?= filter_var($item['id_unit'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
