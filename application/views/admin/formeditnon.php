@@ -53,7 +53,7 @@ $jenis_jabatan = array(
     <h4 class="font-weight-bold text-black">Edit Data Pegawai</h4>
   </div>
   <form method="POST" action="<?= filter_var(site_url('listpegawai/update_non'), FILTER_SANITIZE_URL) ?>" enctype="multipart/form-data">
-    <input hidden type="text" id="id" name="id_pegawai" value="<?= $dataPegawai['id_pegawai']; ?>">
+    <input hidden type="text" id="id" name="id_pegawai" value="<?= filter_var($dataPegawai['id_pegawai'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>">
     <div class="card bg-light">
       <div class="card bg-light mb-3" style="margin: 7px">
         <div class="card-header">Informasi Umum</div>
