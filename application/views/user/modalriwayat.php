@@ -20,12 +20,17 @@
                             <!-- kompetensi bidang -->
                             <?php
                             if ($dataKomp != NULL) {
-                                $nomor = 1;
-                                foreach ($dataKomp as $key) { ?>
+                                $nomor = 0;
+                                foreach ($dataKomp as $key) {
+                                    $nomor++; ?>
                                     <tr>
-                                        <td style="text-align: center; vertical-align: middle;"><?= $nomor++ ?></td>
-                                        <td style="vertical-align: middle;"><?= $key['kompetensi'] ?></td>
-                                        <?= ($key['keterangan'] != NULL) ? "<td style='vertical-align: middle;'>" . $key['keterangan'] . "</td>" : "<td style='vertical-align: middle; text-align: center;'>-</td>"; ?>
+                                        <td style="text-align: center; vertical-align: middle;"><?= filter_var($nomor, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
+                                        <td style="vertical-align: middle;"><?= filter_var($key['kompetensi'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?></td>
+                                        <?php if ($key['keterangan'] != NULL) { ?>
+                                            <td style='vertical-align: middle;'><?= filter_var($key['keterangan'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?></td>
+                                        <?php } else { ?>
+                                            <td style='vertical-align: middle; text-align: center;'>-</td>
+                                        <?php } ?>
                                     </tr>
                                 <?php }
                             } elseif ($dataKomp == NULL) { ?>
@@ -68,12 +73,13 @@
                                 '12' => 'Desember'
                             ];
                             if ($dataRiwayat != NULL) {
-                                $nomor = 1;
-                                foreach ($dataRiwayat as $key) { ?>
+                                $nomor = 0;
+                                foreach ($dataRiwayat as $key) {
+                                    $nomor++; ?>
                                     <tr>
-                                        <td style="text-align: center; vertical-align: middle;"><?= $nomor++ ?></td>
-                                        <td style="vertical-align: middle;"><?= $key['unit_kerja'] ?></td>
-                                        <td style="vertical-align: middle;"><?= $key['sub_unit_kerja'] ?></td>
+                                        <td style="text-align: center; vertical-align: middle;"><?= filter_var($nomor, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?></td>
+                                        <td style="vertical-align: middle;"><?= filter_var($key['unit_kerja'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?></td>
+                                        <td style="vertical-align: middle;"><?= filter_var($key['sub_unit_kerja'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?></td>
                                         <?php
                                         $tgl_mulai = $key['tanggal_mulai'];
                                         if ($tgl_mulai != '0000-00-00') {
@@ -81,13 +87,13 @@
                                             $bln_mulai = substr($tgl_mulai, 5, 2);
                                             $thn_mulai = substr($tgl_mulai, 0, 4);
                                             foreach ($recap as $bln => $value) {
-                                                if ($bln == $bln_mulai) {
-                                                    echo "<td style='vertical-align: middle; text-align: center;'>" . $tgl . " " . $value . " " . $thn_mulai . "</td>";
-                                                }
+                                                if ($bln == $bln_mulai) { ?>
+                                                    <td style='vertical-align: middle; text-align: center;'><?= filter_var($tgl, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?> <?= filter_var($value, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?> <?= filter_var($thn_mulai, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?></td>
+                                            <?php }
                                             }
-                                        } elseif ($tgl_mulai == '0000-00-00') {
-                                            echo "<td style='vertical-align: middle; text-align: center;'>-</td>";
-                                        }
+                                        } elseif ($tgl_mulai == '0000-00-00') { ?>
+                                            <td style='vertical-align: middle; text-align: center;'>-</td>
+                                            <?php }
 
                                         $tgl_selesai = $key['tanggal_selesai'];
                                         if ($tgl_selesai != '0000-00-00') {
@@ -95,13 +101,13 @@
                                             $bln_selesai = substr($tgl_selesai, 5, 2);
                                             $thn_selesai = substr($tgl_selesai, 0, 4);
                                             foreach ($recap as $bln => $value) {
-                                                if ($bln == $bln_selesai) {
-                                                    echo "<td style='vertical-align: middle; text-align: center;'>" . $tgl1 . " " . $value . " " . $thn_selesai . "</td>";
-                                                }
+                                                if ($bln == $bln_selesai) { ?>
+                                                    <td style='vertical-align: middle; text-align: center;'><?= filter_var($tgl1, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?> <?= filter_var($value, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?> <?= filter_var($thn_selesai, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?></td>
+                                            <?php }
                                             }
-                                        } elseif ($tgl_selesai == '0000-00-00') {
-                                            echo "<td style='vertical-align: middle; text-align: center;'>-</td>";
-                                        } ?>
+                                        } elseif ($tgl_selesai == '0000-00-00') { ?>
+                                            <td style='vertical-align: middle; text-align: center;'>-</td>
+                                        <?php } ?>
                                     </tr>
                                 <?php }
                             } elseif ($dataRiwayat == NULL) { ?>

@@ -3,8 +3,16 @@
   <!-- Page Heading -->
   <h1 class="h3 mb-2 text-gray-800 text-center">Daftar Pegawai Non Aktif</h1>
   <hr>
-  <?= $this->session->flashdata('msg_berhasil'); ?>
-  <?= $this->session->flashdata('msg_gagal'); ?>
+  <?php
+  if ($this->session->flashdata('msg_berhasil')) { ?>
+    <div class="alert alert-success" role="alert"><?= filter_var($this->session->flashdata('msg_berhasil'), FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?> <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span></button></div>
+  <?php }
+  if ($this->session->flashdata('msg_gagal')) { ?>
+    <div class="alert alert-success" role="alert"><?= filter_var($this->session->flashdata('msg_gagal'), FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?> <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span></button></div>
+  <?php }
+  ?>
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
     <div class="card-body">
@@ -27,34 +35,27 @@
           </thead>
           <tbody>
             <?php
-            $no = 0;
+            $nomor = 0;
             foreach ($pegawai as $item) {
-              $no++; ?>
+              $nomor++; ?>
               <tr>
-                <td style="text-align: center;"><?= $no; ?></td>
-                <td><a href="#" data-toggle="modal" data-target="#detailModal<?= $item['id_pegawai']; ?>"><?= htmlspecialchars($item['nama']); ?></a></td>
+                <td style="text-align: center;"><?= filter_var($nomor, FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
+                <td><a href="#" data-toggle="modal" data-target="#detailModal<?= filter_var($item['id_pegawai'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>"><?= filter_var($item['nama'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></a></td>
                 <td style="text-align: center;"><?php $key = $item['status'];
-                                                if ($key == "p") {
-                                                  echo "PNS";
-                                                } else {
-                                                  echo "Non-PNS";
-                                                }
-                                                ?></td>
-                <td><?= htmlspecialchars($item['nip']); ?></td>
-                <td><?= htmlspecialchars($item['jk']); ?></td>
-                <td><?= htmlspecialchars($item['pangkat']); ?></td>
-                <td><?= htmlspecialchars($item['jenis_jabatan']); ?></td>
-                <td><?= htmlspecialchars($item['no_telp']); ?></td>
-                <td><?= htmlspecialchars($item['keterangan_status_kerja']); ?></td>
+                                                if ($key == "p") { ?> PNS
+                  <?php } else { ?> Non-PNS
+                  <?php } ?></td>
+                <td><?= filter_var($item['nip'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
+                <td><?= filter_var($item['jk'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
+                <td><?= filter_var($item['pangkat'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
+                <td><?= filter_var($item['jenis_jabatan'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
+                <td><?= filter_var($item['no_telp'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
+                <td><?= filter_var($item['keterangan_status_kerja'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
                 <!--  -->
                 <td style="vertical-align: middle;">
                   <!-- Tombol Ubah Status -->
-                  <button id="button_ubah" onclick="ubah_status_pegawai(<?= htmlspecialchars($item['id_pegawai']); ?>)" value="<?= $item['id_pegawai']; ?>" data-toggle="modal" data-target="#ubahStatusModal" class="btn btn-info" title="Ubah Status Pegawai"><i class="fas fa-fw fa-info-circle"></i></button>
+                  <button id="button_ubah" onclick="ubah_status_pegawai(<?= filter_var($item['id_pegawai'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>)" value="<?= filter_var($item['id_pegawai'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>" data-toggle="modal" data-target="#ubahStatusModal" class="btn btn-info" title="Ubah Status Pegawai"><i class="fas fa-fw fa-info-circle"></i></button>
                 </td>
-                <!-- <td style="vertical-align: middle;"> -->
-                <!-- Tombol Hapus -->
-                <!-- <button onclick="hapus_pegawai(<?= htmlspecialchars($item['id_pegawai']); ?>)" value="<?= $item['id_pegawai']; ?>" data-toggle="modal" data-target="#hapusPegawai" class="btn btn-danger"><i class="far fa-fw fa-trash-alt"></i> Hapus</button>
-                  </td> -->
               </tr>
             <?php } ?>
           </tbody>
@@ -75,7 +76,7 @@
         </button>
       </div>
 
-      <form role="form" enctype="multipart/form-data" action="<?= site_url('Listpegawai/aktifkan_pegawai/'); ?>" method="POST">
+      <form role="form" enctype="multipart/form-data" action="<?= filter_var(site_url('Listpegawai/aktifkan_pegawai/'), FILTER_SANITIZE_URL); ?>" method="POST">
         <div class="modal-body">
           <div class="form-group">
             <label>Ubah status menjadi</label>
@@ -99,7 +100,7 @@
 <?php
 foreach ($pegawai as $item) {
 ?>
-  <div class="modal fade" id="detailModal<?= $item['id_pegawai']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="detailModal<?= filter_var($item['id_pegawai'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -113,7 +114,7 @@ foreach ($pegawai as $item) {
             <tr>
               <td>Nama</td>
               <td>:</td>
-              <td><?= htmlspecialchars($item['nama']); ?></td>
+              <td><?= filter_var($item['nama'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
             </tr>
             <tr>
               <td>Status Kepegawaian</td>
@@ -133,7 +134,7 @@ foreach ($pegawai as $item) {
               <?php
               if ($item['status'] == 'p') {
               ?>
-                <td><?= htmlspecialchars($item['nip']); ?></td>
+                <td><?= filter_var($item['nip'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
               <?php } else {
               ?>
                 <td>-</td>
@@ -142,7 +143,7 @@ foreach ($pegawai as $item) {
             <tr>
               <td>Jenis Kelamin</td>
               <td>:</td>
-              <td><?= htmlspecialchars($item['jk']); ?></td>
+              <td><?= filter_var($item['jk'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
             </tr>
             <tr>
               <td>Tempat, Tanggal Lahir</td>
@@ -171,24 +172,24 @@ foreach ($pegawai as $item) {
               foreach ($recap as $key => $value) {
                 if ($key == $bln) {
               ?>
-                  <td><?= $tmp . ', ' . $hari . ' ' . $value . ' ' . $tahun; ?></td>
+                  <td><?= filter_var($tmp, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?>, <?= filter_var($hari, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?> <?= filter_var($value, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?> <?= filter_var($tahun, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?></td>
               <?php }
               } ?>
             </tr>
             <tr>
               <td>Agama</td>
               <td>:</td>
-              <td><?= htmlspecialchars($item['agama']); ?></td>
+              <td><?= filter_var($item['agama'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
             </tr>
             <tr>
               <td>Alamat</td>
               <td>:</td>
-              <td><?= ucwords(strtolower(htmlspecialchars($item['alamat']))); ?></td>
+              <td><?= filter_var(ucwords(strtolower(htmlspecialchars($item['alamat']))), FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
             </tr>
             <tr>
               <td>Pendidikan Terakhir</td>
               <td>:</td>
-              <td><?= htmlspecialchars($item['pend_terakhir']); ?></td>
+              <td><?= filter_var($item['pend_terakhir'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
             </tr>
             <tr>
               <td>Jurusan</td>
@@ -203,18 +204,18 @@ foreach ($pegawai as $item) {
               ?>
                 <td>-</td>
               <?php } else { ?>
-                <td><?= ucwords(strtolower(htmlspecialchars($item['jurusan']))); ?></td>
+                <td><?= filter_var(ucwords(strtolower(htmlspecialchars($item['jurusan']))), FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
               <?php } ?>
             </tr>
             <tr>
               <td>Nomor HP</td>
               <td>:</td>
-              <td><?= htmlspecialchars($item['no_telp']); ?></td>
+              <td><?= filter_var($item['no_telp'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
             </tr>
             <tr>
               <td>Email</td>
               <td>:</td>
-              <td><?= htmlspecialchars($item['email']); ?></td>
+              <td><?= filter_var($item['email'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
             </tr>
             <tr>
               <td>Pangkat/Golongan</td>
@@ -222,7 +223,7 @@ foreach ($pegawai as $item) {
               <?php
               if ($item['status'] == 'p') {
               ?>
-                <td><?= htmlspecialchars($item['pangkat']); ?></td>
+                <td><?= filter_var($item['pangkat'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
               <?php } else {
               ?>
                 <td>-</td>
@@ -242,14 +243,14 @@ foreach ($pegawai as $item) {
               foreach ($recap as $key => $value) {
                 if ($key == $jabatan) {
               ?>
-                  <td><?= $value; ?></td>
+                  <td><?= filter_var($value, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
               <?php }
               } ?>
             </tr>
             <tr>
               <td>Jenis Jabatan</td>
               <td>:</td>
-              <td><?= ucwords(strtolower(htmlspecialchars($item['jenis_jabatan']))); ?></td>
+              <td><?= filter_var(ucwords(strtolower(htmlspecialchars($item['jenis_jabatan']))), FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
             </tr>
             <tr>
               <td>Unit Kerja</td>
@@ -257,7 +258,7 @@ foreach ($pegawai as $item) {
               <?php
               if ($item['nama_unitkerja'] != NULL) {
               ?>
-                <td><?= htmlspecialchars($item['nama_unitkerja']); ?></td>
+                <td><?= filter_var($item['nama_unitkerja'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
               <?php } else {
               ?>
                 <td>-</td>
@@ -269,7 +270,7 @@ foreach ($pegawai as $item) {
               <?php
               if ($item['nama_subunit'] != NULL) {
               ?>
-                <td><?= htmlspecialchars($item['nama_subunit']); ?></td>
+                <td><?= filter_var($item['nama_subunit'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
               <?php } else {
               ?>
                 <td>-</td>
@@ -291,7 +292,7 @@ foreach ($pegawai as $item) {
             <tr>
               <td>Keterangan Tidak Aktif</td>
               <td>:</td>
-              <td><?= htmlspecialchars($item['keterangan_status_kerja']); ?></td>
+              <td><?= filter_var($item['keterangan_status_kerja'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
             </tr>
             <tr>
               <td>Tanggal Mulai Kerja</td>
@@ -320,12 +321,12 @@ foreach ($pegawai as $item) {
                 if ($key == $bln) {
                   $ada = 1;
               ?>
-                  <td><?= $hari . ' ' . $value . ' ' . $tahun; ?></td>
+                  <td><?= filter_var($hari, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?> <?= filter_var($value, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?> <?= filter_var($tahun, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
                 <?php }
               }
               if ($ada == 0) {
                 ?>
-                <td><?= $tgl; ?></td>
+                <td><?= filter_var($tgl, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
               <?php } ?>
             </tr>
             <tr>
@@ -355,12 +356,12 @@ foreach ($pegawai as $item) {
                 if ($key == $bln) {
                   $ada = 1;
               ?>
-                  <td><?= $hari . ' ' . $value . ' ' . $tahun; ?></td>
+                  <td><?= filter_var($hari, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?> <?= filter_var($value, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?> <?= filter_var($tahun, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
                 <?php }
               }
               if ($ada == 0) {
                 ?>
-                <td><?= $tgl; ?></td>
+                <td><?= filter_var($tgl, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
               <?php } ?>
             </tr>
           </table>

@@ -11,8 +11,16 @@
     <div class="card col-lg-12 shadow mb-4">
       <div class="card-body">
         <div class="table-responsive">
-          <?= $this->session->flashdata('msg_sub_berhasil'); ?>
-          <?= $this->session->flashdata('msg_sub_gagal'); ?>
+          <?php
+          if ($this->session->flashdata('msg_sub_berhasil')) { ?>
+            <div class="alert alert-success" role="alert"><?= filter_var($this->session->flashdata('msg_sub_berhasil'), FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?> <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button></div>
+          <?php }
+          if ($this->session->flashdata('msg_sub_gagal')) { ?>
+            <div class="alert alert-success" role="alert"><?= filter_var($this->session->flashdata('msg_sub_gagal'), FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?> <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button></div>
+          <?php }
+          ?>
           <button data-toggle="modal" data-target="#add_subunit" class="btn btn-success">Tambah Sub Unit Kerja</button><br><br>
           <table class="display table table-bordered" id="" width="100%" cellspacing="0">
             <thead style="text-align: center;">
@@ -26,20 +34,20 @@
             </thead>
             <tbody>
               <?php
-              $no = 0;
+              $nomor = 0;
               foreach ($sub as $item) {
-                $no++; ?>
+                $nomor++; ?>
                 <tr>
-                  <td style="text-align: center;"><?= $no; ?></td>
-                  <td><?= html_escape($item['nama_unitkerja']); ?></td>
-                  <td><?= html_escape($item['keterangan']); ?></td>
+                  <td style="text-align: center;"><?= filter_var($nomor, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
+                  <td><?= filter_var($item['nama_unitkerja'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
+                  <td><?= filter_var($item['keterangan'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
                   <td style="vertical-align: middle; text-align: center;">
                     <!-- Tombol Edit -->
-                    <button data-toggle="modal" data-target="#edit_sub<?= $item['id_sub_unit']; ?>" class="btn btn-warning"><i class="far fa-fw fa-edit" title="Edit Sub Unit Kerja"></i></button>
+                    <button data-toggle="modal" data-target="#edit_sub<?= filter_var($item['id_sub_unit'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>" class="btn btn-warning"><i class="far fa-fw fa-edit" title="Edit Sub Unit Kerja"></i></button>
                   </td>
                   <td style="vertical-align: middle; text-align: center;">
                     <!-- Tombol Hapus -->
-                    <button onclick="hapus_sub(<?= $item['id_sub_unit']; ?>)" value="<?= $item['id_sub_unit']; ?>" data-toggle="modal" data-target="#hapusSub" class="btn btn-danger" title="Hapus Sub Unit Kerja"><i class="far fa-fw fa-trash-alt"></i></button>
+                    <button onclick="hapus_sub(<?= filter_var($item['id_sub_unit'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>)" value="<?= filter_var($item['id_sub_unit'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>" data-toggle="modal" data-target="#hapusSub" class="btn btn-danger" title="Hapus Sub Unit Kerja"><i class="far fa-fw fa-trash-alt"></i></button>
                   </td>
                 </tr>
               <?php } ?>
@@ -66,17 +74,16 @@
         </button>
       </div>
 
-      <form role="form" enctype="multipart/form-data" action="<?= site_url('Subunit/addsub/'); ?>" method="POST">
+      <form role="form" enctype="multipart/form-data" action="<?= filter_var(site_url('Subunit/addsub/'), FILTER_SANITIZE_URL); ?>" method="POST">
         <div class="modal-body">
           <div class="form-group">
             <label>Unit Kerja <span style="color: red">*wajib diisi</span></label>
             <select class="form-control" name="id_unit" required>
               <option value="">----Pilih----</option>
               <?php
-              foreach ($unit as $key) {
-                echo '<option value="' . $key['id_unit'] . '" >' . $key['nama_unit'] . '</option>';
-              }
-              ?>
+              foreach ($unit as $key) { ?>
+                <option value="<?= filter_var($key['id_unit'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?>"><?= filter_var($key['nama_unit'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?></option>
+              <?php } ?>
             </select>
           </div>
           <div class="form-group">
@@ -100,7 +107,7 @@
 <?php
 foreach ($sub as $item) {
 ?>
-  <div class="modal fade" id="edit_sub<?= $item['id_sub_unit']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="edit_sub<?= filter_var($item['id_sub_unit'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -110,7 +117,7 @@ foreach ($sub as $item) {
           </button>
         </div>
 
-        <form role="form" enctype="multipart/form-data" action="<?= site_url('Subunit/editsub/'); ?>" method="POST">
+        <form role="form" enctype="multipart/form-data" action="<?= filter_var(site_url('Subunit/editsub/'), FILTER_SANITIZE_URL); ?>" method="POST">
           <div class="modal-body">
             <div class="form-group">
               <label>Unit Kerja <span style="color: red">*wajib diisi</span></label>
@@ -119,20 +126,20 @@ foreach ($sub as $item) {
                 <?php
                 foreach ($unit as $key) {
                   $sub = $item['id_unit'];
-                  if ($key['id_unit'] == $sub) {
-                    echo '<option value="' . $key['id_unit'] . '" selected >' . $key['nama_unit'] . '</option>';
-                  } else {
-                    echo '<option value="' . $key['id_unit'] . '" >' . $key['nama_unit'] . '</option>';
-                  }
+                  if ($key['id_unit'] == $sub) { ?>
+                    <option value="<?= filter_var($key['id_unit'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?>" selected><?= filter_var($key['nama_unit'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?></option>
+                  <?php } else { ?>
+                    <option value="<?= filter_var($key['id_unit'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?>"><?= filter_var($key['nama_unit'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?></option>
+                <?php }
                 }
                 ?>
               </select>
             </div>
             <div class="form-group">
               <label>Nama Sub Unit Kerja <span style="color: red">*wajib diisi</span></label>
-              <input type="text" name="sub" class="form-control" value="<?= $item['keterangan']; ?>" required>
+              <input type="text" name="sub" class="form-control" value="<?= filter_var($item['keterangan'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>" required>
             </div>
-            <input hidden type="text" name="id_sub" value="<?= $item['id_sub_unit']; ?>">
+            <input hidden type="text" name="id_sub" value="<?= filter_var($item['id_sub_unit'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>">
           </div>
 
           <div class="modal-footer">
@@ -158,7 +165,7 @@ foreach ($sub as $item) {
         </button>
       </div>
 
-      <form role="form" enctype="multipart/form-data" action="<?= site_url('Subunit/delete_sub/'); ?>" method="POST">
+      <form role="form" enctype="multipart/form-data" action="<?= filter_var(site_url('Subunit/delete_sub/'), FILTER_SANITIZE_URL); ?>" method="POST">
         <div class="modal-body">
           <p>Anda yakin ingin menghapus data sub unit kerja ini ?</p>
           <input hidden id="id_sub" type="text" name="id_sub" value="">

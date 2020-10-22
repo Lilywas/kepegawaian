@@ -1,10 +1,10 @@
-<div class="jumbotron jumbotron-fluid" style="background-image: url(<?= base_url('assets/img/img.png'); ?>); padding-top: 6rem;">
+<div class="jumbotron jumbotron-fluid" style="background-image: url(<?= filter_var(base_url('assets/img/img.png'), FILTER_SANITIZE_URL); ?>); padding-top: 6rem;">
   <div class="container-fluid text-center">
     <!-- <div class="card-img-overlay" > -->
     <h6 class="display-4" style="color: white; font-size: 4vw">Selamat Datang di</h6>
     <h4 class="lead" style="color: white; font-size: 4.5vw; font-family: 'Kreon', serif; line-height: 1.5;">Sistem Informasi Kepegawaian</h4>
     <hr><br>
-    <a class="btn btn-primary btn-lg text-ehite" href="<?= site_url('pegawai'); ?>" role="button" style="border-radius: 2.5vw;">Lihat Daftar Pegawai</a>
+    <a class="btn btn-primary btn-lg text-ehite" href="<?= filter_var(site_url('pegawai'), FILTER_SANITIZE_URL); ?>" role="button" style="border-radius: 2.5vw;">Lihat Daftar Pegawai</a>
     <!-- </div> -->
   </div>
 </div>

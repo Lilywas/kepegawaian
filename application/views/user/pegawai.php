@@ -31,10 +31,10 @@ $recap = [
       if (Date('m') == $key) {
     ?>
         <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#ultah" role="tab" aria-controls="ultah" aria-selected="false">Pegawai yang Ulang Tahun Bulan <?= $value . " " . Date('Y'); ?></a>
+          <a class="nav-link" data-toggle="tab" href="#ultah" role="tab" aria-controls="ultah" aria-selected="false">Pegawai yang Ulang Tahun Bulan <?= filter_var($value, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?> <?= filter_var(Date('Y'), FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#pensiun" role="tab" aria-controls="pensiun" aria-selected="false">Pegawai yang Akan Pensiun Bulan <?= $value . " " . Date('Y'); ?></a>
+          <a class="nav-link" data-toggle="tab" href="#pensiun" role="tab" aria-controls="pensiun" aria-selected="false">Pegawai yang Akan Pensiun Bulan <?= filter_var($value, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?> <?= filter_var(Date('Y'), FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></a>
         </li>
     <?php }
     } ?>
@@ -62,12 +62,12 @@ $recap = [
                 </thead>
                 <tbody>
                   <?php
-                  $no = 0;
+                  $nomor = 0;
                   foreach ($pegawai as $item) {
-                    $no++; ?>
+                    $nomor++; ?>
                     <tr>
-                      <td style="text-align: center; vertical-align: middle;"><?= $no; ?></td>
-                      <td style="vertical-align: middle;"><a href="#" type="submit" onclick="tampil_riwayat_ajax(<?= htmlspecialchars($item['id_pegawai']); ?>)"><?= htmlspecialchars($item['nama']); ?></a></td>
+                      <td style="text-align: center; vertical-align: middle;"><?= filter_var($nomor, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
+                      <td style="vertical-align: middle;"><a href="#" type="submit" onclick="tampil_riwayat_ajax(<?= filter_var($item['id_pegawai'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>)"><?= filter_var($item['nama'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></a></td>
                       <?php
                       if ($item['status'] == 'p') {
                       ?>
@@ -82,9 +82,9 @@ $recap = [
                         <td style="text-align: center; vertical-align: middle;">-</td>
                       <?php } else {
                       ?>
-                        <td style="text-align: center; vertical-align: middle;"><?= htmlspecialchars($item['nip']); ?></td>
+                        <td style="text-align: center; vertical-align: middle;"><?= filter_var($item['nip'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
                       <?php } ?>
-                      <td style="text-align: center; vertical-align: middle;"><?= ucwords(strtolower(htmlspecialchars($item['jenis_jabatan']))); ?></td>
+                      <td style="text-align: center; vertical-align: middle;"><?= filter_var(ucwords(strtolower(htmlspecialchars($item['jenis_jabatan']))), FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
                     </tr>
                   <?php } ?>
                 </tbody>
@@ -117,7 +117,7 @@ $recap = [
                 </thead>
                 <tbody>
                   <?php
-                  $no = 0;
+                  $nomor = 0;
                   foreach ($pegawai as $item) {
                     $nip = $item['tanggal_lahir'];
                     $thn = substr($nip, 0, 4);
@@ -125,28 +125,28 @@ $recap = [
                     $tgl = substr($nip, 8, 2);
                     if (Date('m') == $bln) {
                       $usia = Date('Y') - $thn;
-                      $no++;
+                      $nomor++;
                   ?>
                       <tr>
-                        <td style="text-align: center;"><?= $no; ?></td>
-                        <td><?= htmlspecialchars($item['nama']); ?></td>
+                        <td style="text-align: center;"><?= filter_var($nomor, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
+                        <td><?= filter_var($item['nama'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
                         <?php
                         if ($item['nip'] == '') {
                         ?>
                           <td style="text-align: center;">-</td>
                         <?php } else {
                         ?>
-                          <td style="text-align: center;"><?= htmlspecialchars($item['nip']); ?></td>
+                          <td style="text-align: center;"><?= filter_var($item['nip'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
                         <?php } ?>
                         <?php
                         foreach ($recap as $key => $value) {
                           if ($key == $bln) {
                         ?>
-                            <td style="text-align: center;"><?= $tgl . " " . $value . " " . $thn;; ?></td>
+                            <td style="text-align: center;"><?= filter_var($tgl, FILTER_SANITIZE_FULL_SPECIAL_CHARS) . " " . filter_var($value, FILTER_SANITIZE_FULL_SPECIAL_CHARS) . " " . filter_var($thn, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
                         <?php }
                         }
                         ?>
-                        <td style="text-align: center;"><?= $usia . " Tahun"; ?></td>
+                        <td style="text-align: center;"><?= filter_var($usia, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?> Tahun</td>
                       </tr>
                   <?php }
                   } ?>
@@ -180,7 +180,7 @@ $recap = [
                 </thead>
                 <tbody>
                   <?php
-                  $no = 0;
+                  $nomor = 0;
                   foreach ($pegawai as $item) {
                     if ($item['status'] == 'p') {
                       $nip = $item['tanggal_lahir'];
@@ -192,14 +192,14 @@ $recap = [
                         $nip1 = $item['nip'];
                         if (Date('m') == $bln) {
                           $masa = Date('Y') - (int) substr($nip1, 8, 4);
-                          $no++;
+                          $nomor++;
                   ?>
                           <tr>
-                            <td style="text-align: center;"><?= $no; ?></td>
-                            <td><?= htmlspecialchars($item['nama']); ?></td>
-                            <td style="text-align: center;"><?= htmlspecialchars($item['nip']); ?></td>
-                            <td style="text-align: center;"><?= $usia; ?></td>
-                            <td style="text-align: center;"><?= $masa . ' Tahun'; ?></td>
+                            <td style="text-align: center;"><?= filter_var($nomor, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
+                            <td><?= filter_var($item['nama'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
+                            <td style="text-align: center;"><?= filter_var($item['nip'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
+                            <td style="text-align: center;"><?= filter_var($usia, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></td>
+                            <td style="text-align: center;"><?= filter_var($masa, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?> Tahun</td>
                           </tr>
                   <?php }
                       }

@@ -60,7 +60,7 @@ if ($this->uri->segment('1') == 'kompetensi' || $this->uri->segment('1') == 'sub
 		$('#unit').change(function() {
 			var id = $(this).val();
 			$.ajax({
-				url: "<?= site_url('listpegawai/get_sub_unit'); ?>",
+				url: "<?= filter_var(site_url('listpegawai/get_sub_unit'), FILTER_SANITIZE_URL); ?>",
 				method: "POST",
 				data: {
 					id: id
