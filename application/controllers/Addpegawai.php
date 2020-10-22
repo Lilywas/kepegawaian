@@ -38,9 +38,7 @@ class Addpegawai extends CI_Controller
     $this->form_validation->set_rules('nama', 'Nama', 'required');
 
     if ($this->form_validation->run() == FALSE) {
-      $this->session->set_flashdata('msg_gagal', '<div class="alert alert-danger" role="alert"> Data gagal ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-      </button></div>');
+      $this->session->set_flashdata('msg_gagal', 'Data gagal ditambahkan');
       redirect(site_url('listpegawai'));
     }
 
@@ -68,8 +66,7 @@ class Addpegawai extends CI_Controller
     );
 
     $this->db->insert('pns_local', $data_pegawai);
-    $this->session->set_flashdata('msg_berhasil', '<div class="alert alert-success" role="alert"> Data berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span></button></div>');
+    $this->session->set_flashdata('msg_berhasil', 'Data berhasil ditambahkan');
     redirect(site_url('listpegawai'));
   }
 
@@ -101,9 +98,7 @@ class Addpegawai extends CI_Controller
       );
 
       $this->db->insert('pns_local', $data_pegawai);
-      $this->session->set_flashdata('msg_berhasil', '<div class="alert alert-success" role="alert"> Data berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-      </button></div>');
+      $this->session->set_flashdata('msg_berhasil', 'Data berhasil ditambahkan');
       redirect(site_url('listpegawai'));
     } elseif ($this->form_validation->run() == FALSE) {
       $data['title'] = "Tambah Data Pegawai";

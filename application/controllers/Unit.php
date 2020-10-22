@@ -37,13 +37,10 @@ class Unit extends CI_Controller
 			);
 
 			$this->db->insert('unit_kerja', $data_unit);
-			$this->session->set_flashdata('msg_berhasil', '<div class="alert alert-success" role="alert"> Data unit kerja berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-				<span aria-hidden="true">&times;</span></button></div>');
+			$this->session->set_flashdata('msg_berhasil', 'Data unit kerja berhasil ditambahkan');
 			redirect(site_url('unit'));
 		} elseif ($this->form_validation->run() == FALSE) {
-			$this->session->set_flashdata('msg_gagal', '<div class="alert alert-danger" role="alert"> Data unit kerja gagal ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-				</button></div>');
+			$this->session->set_flashdata('msg_gagal', 'Data unit kerja gagal ditambahkan');
 			redirect(site_url('unit'));
 		}
 	}
@@ -58,13 +55,10 @@ class Unit extends CI_Controller
 
 		if ($this->form_validation->run() == TRUE) {
 			$this->db->update('unit_kerja', $data_unit, array('id_unit' => $id_unit));
-			$this->session->set_flashdata('msg_berhasil', '<div class="alert alert-success" role="alert"> Data unit kerja berhasil diperbarui <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-				<span aria-hidden="true">&times;</span></button></div>');
+			$this->session->set_flashdata('msg_berhasil', 'Data unit kerja berhasil diperbarui');
 			redirect(site_url('unit'));
 		} elseif ($this->form_validation->run() == FALSE) {
-			$this->session->set_flashdata('msg_gagal', '<div class="alert alert-danger" role="alert"> Data unit kerja gagal diperbarui <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-				</button></div>');
+			$this->session->set_flashdata('msg_gagal', 'Data unit kerja gagal diperbarui');
 			redirect(site_url('unit'));
 		}
 	}
@@ -74,8 +68,7 @@ class Unit extends CI_Controller
 		$id_unit = $this->input->post('id_unit');
 		$this->UserModel->delete_sub_by_unit($id_unit);
 		$this->UserModel->delete_unit($id_unit);
-		$this->session->set_flashdata('msg_berhasil', '<div class="alert alert-success" role="alert"> Data unit kerja berhasil dihapus <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-			<span aria-hidden="true">&times;</span></button></div>');
+		$this->session->set_flashdata('msg_berhasil', 'Data unit kerja berhasil dihapus');
 		redirect(site_url('unit'));
 	}
 }

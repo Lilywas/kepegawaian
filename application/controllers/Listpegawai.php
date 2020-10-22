@@ -141,10 +141,10 @@ class Listpegawai extends CI_Controller
 
 		if ($this->form_validation->run() == TRUE) {
 			$this->db->update('pns_local', $data_pegawai, array('id_pegawai' => $id_pegawai));
-			$this->session->set_flashdata('msg_berhasil', '<div class="alert alert-success" role="alert"> Data berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+			$this->session->set_flashdata('msg_berhasil', 'Data berhasil diubah');
 			redirect(site_url('listpegawai'));
 		} elseif ($this->form_validation->run() == FALSE) {
-			$this->session->set_flashdata('msg_gagal', '<div class="alert alert-danger" role="alert"> Data gagal diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+			$this->session->set_flashdata('msg_gagal', 'Data gagal diubah');
 			$this->edit_pegawai($id_pegawai);
 		}
 	}
@@ -175,12 +175,10 @@ class Listpegawai extends CI_Controller
 
 		if ($this->form_validation->run() == TRUE) {
 			$this->db->update('pns_local', $data_pegawai, array('id_pegawai' => $id_pegawai));
-			$this->session->set_flashdata('msg_berhasil', '<div class="alert alert-success" role="alert"> Data berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-				<span aria-hidden="true">&times;</span></button></div>');
+			$this->session->set_flashdata('msg_berhasil', 'Data berhasil diubah');
 			redirect(site_url('listpegawai'));
 		} elseif ($this->form_validation->run() == FALSE) {
-			$this->session->set_flashdata('msg_gagal', '<div class="alert alert-danger" role="alert"> Data gagal diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-				<span aria-hidden="true">&times;</span></button></div>');
+			$this->session->set_flashdata('msg_gagal', 'Data gagal diubah');
 			$this->edit_pegawai($id_pegawai);
 		}
 	}
@@ -216,12 +214,10 @@ class Listpegawai extends CI_Controller
 
 		if ($this->form_validation->run() == TRUE) {
 			$this->db->update('pns_local', $data_status, array('id_pegawai' => $id_pegawai));
-			$this->session->set_flashdata('msg_berhasil', '<div class="alert alert-success" role="alert"> Status pegawai berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-							<span aria-hidden="true">&times;</span></button></div>');
+			$this->session->set_flashdata('msg_berhasil', 'Status pegawai berhasil diubah');
 			redirect('listpegawai');
 		} elseif ($this->form_validation->run() == FALSE) {
-			$this->session->set_flashdata('msg_gagal', '<div class="alert alert-danger" role="alert"> Status pegawai gagal diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-							<span aria-hidden="true">&times;</span></button></div>');
+			$this->session->set_flashdata('msg_gagal', 'Status pegawai gagal diubah');
 			redirect('listpegawai');
 		}
 	}
@@ -253,12 +249,10 @@ class Listpegawai extends CI_Controller
 
 			if ($this->form_validation->run() == TRUE) {
 				$this->db->update('pns_local', $data_status, array('id_pegawai' => $id_pegawai));
-				$this->session->set_flashdata('msg_berhasil', '<div class="alert alert-success" role="alert"> Status pegawai berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					<span aria-hidden="true">&times;</span></button></div>');
+				$this->session->set_flashdata('msg_berhasil', 'Status pegawai berhasil diubah');
 				redirect('listpegawai/pensiun');
 			} elseif ($this->form_validation->run() == FALSE) {
-				$this->session->set_flashdata('msg_gagal', '<div class="alert alert-danger" role="alert"> Status pegawai gagal diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-					<span aria-hidden="true">&times;</span></button></div>');
+				$this->session->set_flashdata('msg_gagal', 'Status pegawai gagal diubah');
 				redirect('listpegawai/pensiun');
 			}
 		}
@@ -278,12 +272,10 @@ class Listpegawai extends CI_Controller
 			);
 			if ($this->form_validation->run() == TRUE) {
 				$this->db->update('pns_local', $data_status, array('id_pegawai' => $id_pegawai));
-				$this->session->set_flashdata('msg_berhasil', '<div class="alert alert-success" role="alert"> Status pegawai berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-						<span aria-hidden="true">&times;</span></button></div>');
+				$this->session->set_flashdata('msg_berhasil', 'Status pegawai berhasil diubah');
 				redirect('listpegawai/nonaktif');
 			} elseif ($this->form_validation->run() == FALSE) {
-				$this->session->set_flashdata('msg_gagal', '<div class="alert alert-danger" role="alert"> Status pegawai gagal diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-						<span aria-hidden="true">&times;</span></button></div>');
+				$this->session->set_flashdata('msg_gagal', 'Status pegawai gagal diubah');
 				redirect('listpegawai/nonaktif');
 			}
 		}
