@@ -11,7 +11,7 @@
   <title><?= site_name . " - " . $title ?></title>
 
   <!-- Custom fonts for this template-->
-  <link href="<?= base_url('assets/fontawesome-free/css/all.min.css') ?>" rel="stylesheet" type="text/css">
+  <link href="<?= filter_var(base_url('assets/fontawesome-free/css/all.min.css', FILTER_VALIDATE_URL)) ?>" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Crimson+Text|Signika+Negative:300|Zilla+Slab&display=swap" rel="stylesheet">
   <!-- Custom styles for this template-->
@@ -34,7 +34,7 @@
         <div class="sidebar-brand-icon">
           <i class="fas fa-chart-line"></i>
         </div>
-        <div class="sidebar-brand-text mx-3"><?= site_name ?></div>
+        <div class="sidebar-brand-text mx-3"><?= filter_var(site_name, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?></div>
       </a>
 
       <!-- Divider -->
