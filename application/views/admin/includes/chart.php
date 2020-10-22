@@ -238,9 +238,9 @@
   //------------------------------------------------------------------------------------------------------------------- JUMLAH PEGAWAI
   var ctx = document.getElementById("pegawaichart").getContext("2d");
   var data = {
-    labels: [<?php print_r($aa); ?>],
+    labels: [<?= filter_var($aa, FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES); ?>],
     datasets: [{
-      data: [<?= $totalpn; ?>],
+      data: [<?= filter_var($totalpn, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>],
       backgroundColor: ['#DEB887', '#5F9EA0'],
       hoverBorderColor: "rgba(234, 236, 244, 1)",
     }]

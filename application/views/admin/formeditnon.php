@@ -61,7 +61,7 @@ $jenis_jabatan = array(
           <div class="form-row">
             <div class="form-group col-md-3">
               <label>Nama Lengkap </label>
-              <input type="text" class="form-control" name="nama" value="<?= $dataPegawai['nama']; ?>">
+              <input type="text" class="form-control" name="nama" value="<?= filter_var($dataPegawai['nama'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>">
             </div>
             <div class="form-group col-md-3">
               <label>Jenis Kelamin </label>
