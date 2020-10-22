@@ -5,7 +5,7 @@
     <h4 class="font-weight-bold text-black">Tambah Data Pegawai</h4>
   </div>
 
-  <form method="POST" action="<?= site_url('addpegawai/simpanpns') ?>" enctype="multipart/form-data">
+  <form method="POST" action="<?= filter_var(site_url('addpegawai/simpanpns'), FILTER_SANITIZE_URL) ?>" enctype="multipart/form-data">
     <div class="card bg-light">
       <div class="card bg-light mb-3" style="margin: 7px">
         <div class="card-header">Informasi Umum</div>

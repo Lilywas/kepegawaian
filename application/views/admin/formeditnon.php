@@ -52,7 +52,7 @@ $jenis_jabatan = array(
   <div>
     <h4 class="font-weight-bold text-black">Edit Data Pegawai</h4>
   </div>
-  <form method="POST" action="<?= site_url('listpegawai/update_non') ?>" enctype="multipart/form-data">
+  <form method="POST" action="<?= filter_var(site_url('listpegawai/update_non'), FILTER_SANITIZE_URL) ?>" enctype="multipart/form-data">
     <input hidden type="text" id="id" name="id_pegawai" value="<?= $dataPegawai['id_pegawai']; ?>">
     <div class="card bg-light">
       <div class="card bg-light mb-3" style="margin: 7px">
@@ -61,7 +61,7 @@ $jenis_jabatan = array(
           <div class="form-row">
             <div class="form-group col-md-3">
               <label>Nama Lengkap </label>
-              <input type="text" class="form-control" name="nama" value="<?= filter_var($dataPegawai['nama'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>">
+              <input type="text" class="form-control" name="nama" value="<?= filter_var($dataPegawai['nama'], FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES); ?>">
             </div>
             <div class="form-group col-md-3">
               <label>Jenis Kelamin </label>
@@ -80,19 +80,19 @@ $jenis_jabatan = array(
             </div>
             <div class="form-group col-md-3">
               <label>Tempat Lahir </label>
-              <input type="text" class="form-control" name="tempat_lahir" value="<?= $dataPegawai['tempat_lahir']; ?>" readonly>
+              <input type="text" class="form-control" name="tempat_lahir" value="<?= filter_var($dataPegawai['tempat_lahir'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>" readonly>
             </div>
             <div class="form-group col-md-3">
               <label>Tanggal Lahir </label>
               <?php
               $tgl = $dataPegawai['tgl_lahir'];
               ?>
-              <input type="date" data-date="" data-date-format="DD/MM/YYYY" name="tgl_lahir" class="form-control" value="<?= htmlspecialchars($tgl) ?>">
+              <input type="date" data-date="" data-date-format="DD/MM/YYYY" name="tgl_lahir" class="form-control" value="<?= filter_var($tgl, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?>">
             </div>
           </div>
           <div class="form-group">
             <label>Alamat </label>
-            <input type="text" class="form-control" name="alamat" value="<?= $dataPegawai['alamat']; ?>">
+            <input type="text" class="form-control" name="alamat" value="<?= filter_var($dataPegawai['alamat'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>">
           </div>
           <div class="form-row">
             <div class="form-group col-md-4">
@@ -127,7 +127,7 @@ $jenis_jabatan = array(
             </div>
             <div class="form-group col-md-4">
               <label>Jurusan</label>
-              <input type="text" class="form-control" name="jurusan" value="<?= $dataPegawai['jurusan'] ?>">
+              <input type="text" class="form-control" name="jurusan" value="<?= filter_var($dataPegawai['jurusan'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?>">
             </div>
           </div>
         </div>
@@ -138,11 +138,11 @@ $jenis_jabatan = array(
           <div class="form-row">
             <div class="form-group col-md-4">
               <label>No HP </label>
-              <input type="text" class="form-control" name="hp" value="<?= $dataPegawai['hp'] ?>">
+              <input type="text" class="form-control" name="hp" value="<?= filter_var($dataPegawai['hp'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?>">
             </div>
             <div class="form-group col-md-4">
               <label>email </label>
-              <input type="email" class="form-control" name="email" value="<?= $dataPegawai['email'] ?>">
+              <input type="email" class="form-control" name="email" value="<?= filter_var($dataPegawai['email'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?>">
             </div>
           </div>
         </div>
@@ -215,7 +215,7 @@ $jenis_jabatan = array(
               <?php
               $tgl = $dataPegawai['tgl_kerja'];
               ?>
-              <input type="date" data-date="" data-date-format="DD/MM/YYYY" name="tgl_kerja" class="form-control" value="<?= htmlspecialchars($tgl) ?>">
+              <input type="date" data-date="" data-date-format="DD/MM/YYYY" name="tgl_kerja" class="form-control" value="<?= filter_var($tgl, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?>">
             </div>
           </div>
         </div>

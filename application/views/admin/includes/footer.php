@@ -3,7 +3,7 @@
 <footer class="sticky-footer bg-white">
 	<div class="container my-auto">
 		<div class="copyright text-center my-auto">
-			<span style="line-height: 1.5; font-size: 15px;">Copyright &copy; <?= site_name ?> <?= Date('Y') ?><br>Sistem Informasi Kepegawaian</span>
+			<span style="line-height: 1.5; font-size: 15px;">Copyright &copy; <?= filter_var(site_name, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?> <?= filter_var(Date('Y'), FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?><br>Sistem Informasi Kepegawaian</span>
 		</div>
 	</div>
 </footer>
@@ -21,22 +21,22 @@
 
 
 <!-- JavaScript -->
-<script src="<?= base_url('assets/jquery/jquery.min.js') ?>"></script>
-<script src="<?= base_url('assets/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
+<script src="<?= filter_var(base_url('assets/jquery/jquery.min.js'), FILTER_SANITIZE_URL) ?>"></script>
+<script src="<?= filter_var(base_url('assets/bootstrap/js/bootstrap.bundle.min.js'), FILTER_SANITIZE_URL) ?>"></script>
 
 <!-- Core plugin JavaScript-->
-<script src="<?= base_url('assets/jquery-easing/jquery.easing.min.js') ?>"></script>
+<script src="<?= filter_var(base_url('assets/jquery-easing/jquery.easing.min.js'), FILTER_SANITIZE_URL) ?>"></script>
 
 <!-- Custom scripts for all pages-->
-<script src="<?= base_url('assets/js/sb-admin-2.min.js') ?>"></script>
+<script src="<?= filter_var(base_url('assets/js/sb-admin-2.min.js'), FILTER_SANITIZE_URL) ?>"></script>
 
 <!-- Page level plugins -->
-<script src="<?= base_url('assets/datatables/jquery.dataTables.min.js'); ?>"></script>
-<script src="<?= base_url('assets/datatables/dataTables.bootstrap4.min.js'); ?>"></script>
+<script src="<?= filter_var(base_url('assets/datatables/jquery.dataTables.min.js'), FILTER_SANITIZE_URL); ?>"></script>
+<script src="<?= filter_var(base_url('assets/datatables/dataTables.bootstrap4.min.js'), FILTER_SANITIZE_URL); ?>"></script>
 
 <!-- Page level plugins -->
-<script src="<?= base_url('assets/chart.js/Chart.min.js') ?>"></script>
-<script src="<?= base_url('assets/chart.js/Chart.js') ?>"></script>
+<script src="<?= filter_var(base_url('assets/chart.js/Chart.min.js'), FILTER_SANITIZE_URL) ?>"></script>
+<script src="<?= filter_var(base_url('assets/chart.js/Chart.js'), FILTER_SANITIZE_URL) ?>"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.7.3/dist/Chart.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
 

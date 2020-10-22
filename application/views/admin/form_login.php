@@ -12,11 +12,11 @@
 	<title>SINKEP - Login</title>
 
 	<!-- Custom fonts for this template-->
-	<link href="<?= base_url('assets/fontawesome-free/css/all.min.css') ?>" rel="stylesheet" type="text/css">
+	<link href="<?= filter_var(base_url('assets/fontawesome-free/css/all.min.css'), FILTER_SANITIZE_URL) ?>" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
 	<!-- Custom styles for this template-->
-	<link href="<?= base_url('assets/css/sb-admin-2.min.css') ?>" rel="stylesheet">
+	<link href="<?= filter_var(base_url('assets/css/sb-admin-2.min.css'), FILTER_SANITIZE_URL) ?>" rel="stylesheet">
 
 </head>
 
@@ -38,8 +38,11 @@
 									<div class="text-center">
 										<h1 class="h4 text-gray-900 mb-4">Selamat Datang di Sistem Informasi Kepegawaian</h1>
 									</div>
-									<?= $this->session->flashdata('notification'); ?>
-									<form class="user" action="<?= site_url('account/login'); ?>" autocomplete="on" method="POST" enctype="multipart/form-data">
+									<?php
+									if ($this->session->flashdata('notification')) { ?>
+										<div class="alert alert-danger" role="alert"><?= filter_var($this->session->flashdata('notification'), FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></div>
+									<?php } ?>
+									<form class="user" action="<?= filter_var(site_url('account/login'), FILTER_SANITIZE_URL); ?>" autocomplete="on" method="POST" enctype="multipart/form-data">
 										<div class="input-group mb-3">
 											<div class="input-group-prepend">
 												<span class="input-group-text"><i class="far fa-fw fa-user"></i></span>
@@ -68,7 +71,7 @@
 		</div>
 
 	</div>
-	<script src="<?= base_url('assets/jquery/jquery.min.js') ?>"></script>
+	<script src="<?= filter_var(base_url('assets/jquery/jquery.min.js'), FILTER_SANITIZE_URL) ?>"></script>
 </body>
 
 </html>

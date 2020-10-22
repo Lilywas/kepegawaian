@@ -9,10 +9,10 @@
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <a href="<?= site_url('listpegawai') ?>">
+              <a href="<?= filter_var(site_url('listpegawai'), FILTER_SANITIZE_URL) ?>">
                 <div class="text-md font-weight-bold text-primary text-uppercase mb-1">Jumlah Pegawai Aktif</div>
               </a>
-              <div class="h4 mb-0 font-weight-bold text-gray-800"><?= $jumlah_aktif; ?></div>
+              <div class="h4 mb-0 font-weight-bold text-gray-800"><?= filter_var($jumlah_aktif, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></div>
             </div>
             <div class="col-auto">
               <i class="fas fa-users fa-5x text-gray-500"></i>
@@ -27,10 +27,10 @@
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <a href="<?= site_url('listpegawai/pensiun') ?>">
+              <a href="<?= filter_var(site_url('listpegawai/pensiun'), FILTER_SANITIZE_URL) ?>">
                 <div class="text-md font-weight-bold text-warning text-uppercase mb-1"><?= "Jumlah Pegawai Akan Pensiun Tahun " . Date('Y'); ?></div>
               </a>
-              <div class="h4 mb-0 font-weight-bold text-gray-800"><?= $total1; ?></div>
+              <div class="h4 mb-0 font-weight-bold text-gray-800"><?= filter_var($total1, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></div>
             </div>
             <div class="col-auto">
               <i class="fas fa-user-clock fa-5x text-gray-500"></i>

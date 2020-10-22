@@ -8,17 +8,17 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title><?= site_name . " - " . $title ?></title>
+  <title><?= filter_var(site_name, FILTER_SANITIZE_FULL_SPECIAL_CHARS) . " - " . filter_var($title, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?></title>
 
   <!-- Custom fonts for this template-->
-  <link href="<?= filter_var(base_url('assets/fontawesome-free/css/all.min.css'), FILTER_VALIDATE_URL) ?>" rel="stylesheet" type="text/css">
+  <link href="<?= filter_var(base_url('assets/fontawesome-free/css/all.min.css'), FILTER_SANITIZE_URL) ?>" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Crimson+Text|Signika+Negative:300|Zilla+Slab&display=swap" rel="stylesheet">
   <!-- Custom styles for this template-->
-  <link href="<?= filter_var(base_url('assets/css/sb-admin-2.min.css'), FILTER_VALIDATE_URL) ?>" rel="stylesheet">
-  <link href="<?= filter_var(base_url('assets/css/custom.css'), FILTER_VALIDATE_URL) ?>" rel="stylesheet">
+  <link href="<?= filter_var(base_url('assets/css/sb-admin-2.min.css'), FILTER_SANITIZE_URL) ?>" rel="stylesheet">
+  <link href="<?= filter_var(base_url('assets/css/custom.css'), FILTER_SANITIZE_URL) ?>" rel="stylesheet">
 
-  <link href="<?= filter_var(base_url('assets/datatables/dataTables.bootstrap4.min.css'), FILTER_VALIDATE_URL); ?>" rel="stylesheet">
+  <link href="<?= filter_var(base_url('assets/datatables/dataTables.bootstrap4.min.css'), FILTER_SANITIZE_URL); ?>" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
 </head>
 

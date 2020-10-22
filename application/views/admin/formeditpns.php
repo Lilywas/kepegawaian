@@ -60,19 +60,19 @@ $jabatan = array(
     <h4 class="font-weight-bold text-black">Edit Data Pegawai</h4>
   </div>
   <div class="card bg-light">
-    <form method="POST" action="<?= site_url('listpegawai/update_pns') ?>" enctype="multipart/form-data">
-      <input hidden type="text" name="id_pegawai" value="<?= $dataPegawai['id_pegawai']; ?>">
+    <form method="POST" action="<?= filter_var(site_url('listpegawai/update_pns'), FILTER_SANITIZE_URL) ?>" enctype="multipart/form-data">
+      <input hidden type="text" name="id_pegawai" value="<?= filter_var($dataPegawai['id_pegawai'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>">
       <div class="card bg-light mb-3" style="margin: 7px">
         <div class="card-header">Informasi Umum</div>
         <div class="card-body">
           <div class="form-row">
             <div class="form-group col-md-4">
               <label>NIP </label>
-              <input type="text" class="form-control" name="nip" value="<?php print_r($dataPegawai['nip']); ?>">
+              <input type="text" class="form-control" name="nip" value="<?= filter_var($dataPegawai['nip'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>">
             </div>
             <div class="form-group col-md-4">
               <label>Nama Lengkap </label>
-              <input type="text" class="form-control" name="nama" value="<?php print_r($dataPegawai['nama']); ?>">
+              <input type="text" class="form-control" name="nama" value="<?= filter_var($dataPegawai['nama'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>">
             </div>
             <div class="form-group col-md-4">
               <label>Jenis Kelamin </label>
@@ -93,14 +93,14 @@ $jabatan = array(
           <div class="form-row">
             <div class="form-group col-md-4">
               <label>Tempat Lahir </label>
-              <input type="text" class="form-control" name="tempat_lahir" value="<?php print_r($dataPegawai['tempat_lahir']) ?>">
+              <input type="text" class="form-control" name="tempat_lahir" value="<?= filter_var($dataPegawai['tempat_lahir'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?>">
             </div>
             <div class="form-group col-md-4">
               <label>Tanggal Lahir </label>
               <?php
               $tgl = $dataPegawai['tgl_lahir'];
               ?>
-              <input type="date" data-date="" data-date-format="DD/MM/YYYY" name="tgl_lahir" class="form-control" value="<?php print_r($tgl) ?>">
+              <input type="date" data-date="" data-date-format="DD/MM/YYYY" name="tgl_lahir" class="form-control" value="<?= filter_var($tgl, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?>">
             </div>
             <div class="form-group col-md-4">
               <label>Agama </label>
@@ -120,7 +120,7 @@ $jabatan = array(
           </div>
           <div class="form-row">
             <label>Alamat </label>
-            <input type="text" class="form-control" name="alamat" value="<?php print_r($dataPegawai['alamat']); ?>">
+            <input type="text" class="form-control" name="alamat" value="<?= filter_var($dataPegawai['alamat'], FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>">
           </div>
           <div class="form-row">
             <div class="form-group col-md-4">
@@ -140,7 +140,7 @@ $jabatan = array(
             </div>
             <div class="form-group col-md-4">
               <label>Jurusan</label>
-              <input type="text" class="form-control" name="jurusan" value="<?php print_r($dataPegawai['jurusan']) ?>">
+              <input type="text" class="form-control" name="jurusan" value="<?= filter_var($dataPegawai['jurusan'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?>">
             </div>
           </div>
         </div>
@@ -151,11 +151,11 @@ $jabatan = array(
           <div class="form-row">
             <div class="form-group col-md-4">
               <label>No HP </label>
-              <input type="text" class="form-control" name="hp" value="<?php print_r($dataPegawai['hp']) ?>">
+              <input type="text" class="form-control" name="hp" value="<?= filter_var($dataPegawai['hp'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?>">
             </div>
             <div class="form-group col-md-4">
               <label>email </label>
-              <input type="email" class="form-control" name="email" value="<?php print_r($dataPegawai['email']) ?>">
+              <input type="email" class="form-control" name="email" value="<?= filter_var($dataPegawai['email'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?>">
             </div>
           </div>
         </div>
@@ -172,10 +172,10 @@ $jabatan = array(
                 foreach ($pangkat as $key => $value) {
                   if ($key == $dataPegawai['pangkat']) {
                 ?>
-                    <option selected=""><?= $value; ?></option>
+                    <option selected=""><?= filter_var($value, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></option>
                   <?php } else {
                   ?>
-                    <option><?= $value; ?></option>
+                    <option><?= filter_var($value, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></option>
                 <?php }
                 }
                 ?>
@@ -238,20 +238,20 @@ $jabatan = array(
             </div>
             <div class="form-group col-md-4">
               <label>Bagian </label>
-              <input type="text" class="form-control" name="bagian" value="<?php print_r($dataPegawai['bagian']) ?>">
+              <input type="text" class="form-control" name="bagian" value="<?= filter_var($dataPegawai['bagian'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?>">
             </div>
             <div class="form-group col-md-4">
               <label>Tanggal Mulai Kerja</label>
               <?php
               $tgl = $dataPegawai['tgl_kerja'];
               ?>
-              <input type="date" data-date="" data-date-format="DD/MM/YYYY" name="tgl_kerja" class="form-control" value="<?php print_r($tgl) ?>">
+              <input type="date" data-date="" data-date-format="DD/MM/YYYY" name="tgl_kerja" class="form-control" value="<?= filter_var($tgl, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?>">
             </div>
           </div>
           <div class="form-row">
             <div class="form-group col-md-4">
               <label>Usia Pensiun </label>
-              <input type="text" class="form-control" name="pensiun" value="<?php print_r($dataPegawai['pensiun']) ?>">
+              <input type="text" class="form-control" name="pensiun" value="<?= filter_var($dataPegawai['pensiun'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?>">
             </div>
           </div>
         </div>

@@ -47,7 +47,7 @@ class Account extends CI_Controller
 			redirect(site_url('home/admin'));
 		} elseif ($temp_account == 0) {
 			//Jika akun tidak dittemukan, kembali ke halaman login
-			$this->session->set_flashdata('notification', '<div class="alert alert-danger" role="alert"> Username dan Password tidak ditemukan</div>');
+			$this->session->set_flashdata('notification', 'Username dan Password tidak ditemukan');
 			redirect(site_url('account'));
 		}
 	}

@@ -45,13 +45,10 @@ class Kompetensi extends CI_Controller
 			);
 
 			$this->db->insert('kompetensi_bidang', $data_komp);
-			$this->session->set_flashdata('msg_berhasil', '<div class="alert alert-success" role="alert"> Data kompetensi berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-				<span aria-hidden="true">&times;</span></button></div>');
+			$this->session->set_flashdata('msg_berhasil', 'Data kompetensi berhasil ditambahkan');
 			redirect(site_url('kompetensi/kelola/' . $id_pegawai));
 		} elseif ($this->form_validation->run() == FALSE) {
-			$this->session->set_flashdata('msg_gagal', '<div class="alert alert-danger" role="alert"> Data kompetensi gagal ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-				</button></div>');
+			$this->session->set_flashdata('msg_gagal', 'Data kompetensi gagal ditambahkan');
 			redirect(site_url('kompetensi/kelola/' . $id_pegawai));
 		}
 	}
@@ -71,13 +68,10 @@ class Kompetensi extends CI_Controller
 			);
 
 			$this->db->insert('riwayat_unit_kerja', $data_riwayat);
-			$this->session->set_flashdata('msg_riwayat_berhasil', '<div class="alert alert-success" role="alert"> Data riwayat unit kerja berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-				<span aria-hidden="true">&times;</span></button></div>');
+			$this->session->set_flashdata('msg_riwayat_berhasil', 'Data riwayat unit kerja berhasil ditambahkan');
 			redirect(site_url('kompetensi/kelola/' . $id_pegawai));
 		} elseif ($this->form_validation->run() == FALSE) {
-			$this->session->set_flashdata('msg_riwayat_gagal', '<div class="alert alert-danger" role="alert"> Data riwayat unit kerja gagal ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-				</button></div>');
+			$this->session->set_flashdata('msg_riwayat_gagal', 'Data riwayat unit kerja gagal ditambahkan');
 			redirect(site_url('kompetensi/kelola/' . $id_pegawai));
 		}
 	}
@@ -89,8 +83,7 @@ class Kompetensi extends CI_Controller
 		$dataId = array('id_pegawai' => $data['dataRiwayat']->id_pegawai);
 		$id_pegawai = $dataId['id_pegawai'];
 		$this->UserModel->delete_komp($id_kompetensi);
-		$this->session->set_flashdata('msg_berhasil', '<div class="alert alert-success" role="alert"> Data kompetensi berhasil dihapus <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-			<span aria-hidden="true">&times;</span></button></div>');
+		$this->session->set_flashdata('msg_berhasil', 'Data kompetensi berhasil dihapus');
 		redirect(site_url('kompetensi/kelola/' . $id_pegawai));
 	}
 
@@ -101,8 +94,7 @@ class Kompetensi extends CI_Controller
 		$dataId = array('id_pegawai' => $data['dataRiwayat']->id_pegawai);
 		$id_pegawai = $dataId['id_pegawai'];
 		$this->UserModel->delete_riwayat($id_riwayat);
-		$this->session->set_flashdata('msg_riwayat_berhasil', '<div class="alert alert-success" role="alert"> Data riwayat unit kerja berhasil dihapus <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-			<span aria-hidden="true">&times;</span></button></div>');
+		$this->session->set_flashdata('msg_riwayat_berhasil', 'Data riwayat unit kerja berhasil dihapus');
 		redirect(site_url('kompetensi/kelola/' . $id_pegawai));
 	}
 
@@ -118,13 +110,10 @@ class Kompetensi extends CI_Controller
 
 		if ($this->form_validation->run() == TRUE) {
 			$this->db->update('kompetensi_bidang', $data_komp, array('id_kompetensi' => $id_kompetensi));
-			$this->session->set_flashdata('msg_berhasil', '<div class="alert alert-success" role="alert"> Data kompetensi berhasil diperbarui <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-				<span aria-hidden="true">&times;</span></button></div>');
+			$this->session->set_flashdata('msg_berhasil', 'Data kompetensi berhasil diperbarui');
 			redirect(site_url('kompetensi/kelola/' . $id_pegawai));
 		} elseif ($this->form_validation->run() == FALSE) {
-			$this->session->set_flashdata('msg_gagal', '<div class="alert alert-danger" role="alert"> Data kompetensi gagal diperbarui <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-				</button></div>');
+			$this->session->set_flashdata('msg_gagal', 'Data kompetensi gagal diperbarui');
 			redirect(site_url('kompetensi/kelola/' . $id_pegawai));
 		}
 	}
@@ -143,13 +132,10 @@ class Kompetensi extends CI_Controller
 
 		if ($this->form_validation->run() == TRUE) {
 			$this->db->update('riwayat_unit_kerja', $data_riwayat, array('id_riwayat_unit_kerja' => $id_riwayat));
-			$this->session->set_flashdata('msg_riwayat_berhasil', '<div class="alert alert-success" role="alert"> Data riwayat unit kerja berhasil diperbarui <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-				<span aria-hidden="true">&times;</span></button></div>');
+			$this->session->set_flashdata('msg_riwayat_berhasil', 'Data riwayat unit kerja berhasil diperbarui');
 			redirect(site_url('kompetensi/kelola/' . $id_pegawai));
 		} elseif ($this->form_validation->run() == FALSE) {
-			$this->session->set_flashdata('msg_riwayat_gagal', '<div class="alert alert-danger" role="alert"> Data riwayat unit kerja gagal diperbarui <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-				</button></div>');
+			$this->session->set_flashdata('msg_riwayat_gagal', 'Data riwayat unit kerja gagal diperbarui');
 			redirect(site_url('kompetensi/kelola/' . $id_pegawai));
 		}
 	}

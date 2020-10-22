@@ -297,9 +297,9 @@
   //-----------------------------------------------------------------------------------------------------------------------JENIS KELAMIN
   var ctx = document.getElementById("jkchart").getContext("2d");
   var data = {
-    labels: [<?= $bb; ?>],
+    labels: [<?= filter_var($bb, FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES); ?>],
     datasets: [{
-      data: [<?= $totaljk; ?>],
+      data: [<?= filter_var($totaljk, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>],
       backgroundColor: ['#DEB887', '#5F9EA0'],
       hoverBorderColor: "rgba(234, 236, 244, 1)",
     }]
@@ -353,9 +353,9 @@
   //--------------------------------------------------------------------------------------------------------------PENDIDIKAN
   var ctx = document.getElementById("pendchart").getContext("2d");
   var data = {
-    labels: [<?= $dd; ?>],
+    labels: [<?= filter_var($dd, FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES); ?>],
     datasets: [{
-      data: [<?= $totalpend; ?>],
+      data: [<?= filter_var($totalpend, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>],
       backgroundColor: ['#DEB887', '#5F9EA0', '#7FFF00', '#D2691E', '#FF7F50', '#6495ED', '#FFF8DC', '#DC143C', '#8B008B', '#FF8C00'],
       hoverBorderColor: "rgba(234, 236, 244, 1)",
     }]
@@ -410,9 +410,9 @@
   //----------------------------------------------------------------------------------------------------------------AGAMA
   var ctx = document.getElementById("agamachart").getContext("2d");
   var data = {
-    labels: [<?= $ee; ?>],
+    labels: [<?= filter_var($ee, FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES); ?>],
     datasets: [{
-      data: [<?= $totalagama; ?>],
+      data: [<?= filter_var($totalagama, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>],
       backgroundColor: ['#DEB887', '#5F9EA0', '#7FFF00', '#D2691E', '#FF7F50', '#6495ED'],
       hoverBorderColor: "rgba(234, 236, 244, 1)",
     }]
@@ -469,7 +469,11 @@
   var data = {
     labels: ["18 - 30", "31 - 40", "41 - 50", ">50"],
     datasets: [{
-      data: [<?= $satu; ?>, <?= $dua; ?>, <?= $tiga; ?>, <?= $empat; ?>],
+      data: [<?= filter_var($satu, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+        <?= filter_var($dua, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+        <?= filter_var($tiga, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+        <?= filter_var($empat, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>
+      ],
       backgroundColor: ['#DEB887', '#5F9EA0', '#7FFF00', '#D2691E'],
       hoverBorderColor: "rgba(234, 236, 244, 1)",
     }]
@@ -529,7 +533,7 @@
     return "rgb(" + r + "," + g + "," + b + ")";
   }
   var color = [];
-  var dataaa = [<?= $totalkomp ?>];
+  var dataaa = [<?= filter_var($totalkomp, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?>];
   for (var i in data) {
     color.push(dynamicColors());
   }
@@ -539,9 +543,9 @@
   ?>
     var ctx = document.getElementById("kompchart").getContext("2d");
     var data = {
-      labels: [<?= $hh; ?>],
+      labels: [<?= filter_var($hh, FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES); ?>],
       datasets: [{
-        data: [<?= $totalkomp; ?>],
+        data: [<?= filter_var($totalkomp, FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_FLAG_NO_ENCODE_QUOTES); ?>],
         backgroundColor: color,
         hoverBorderColor: "rgba(234, 236, 244, 1)",
       }]
@@ -603,15 +607,15 @@
       label: 'Laki-laki',
       backgroundColor: '#008000',
       data: [
-        <?= $jumlah_lk_pns; ?>,
-        <?= $jumlah_lk_nonpns; ?>
+        <?= filter_var($jumlah_lk_pns, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+        <?= filter_var($jumlah_lk_nonpns, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>
       ]
     }, {
       label: 'Perempuan',
       backgroundColor: '#DC143C',
       data: [
-        <?= $jumlah_pr_pns; ?>,
-        <?= $jumlah_pr_nonpns; ?>
+        <?= filter_var($jumlah_pr_pns, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+        <?= filter_var($jumlah_pr_nonpns, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>
       ]
     }]
   };
@@ -692,31 +696,31 @@
       label: 'PNS',
       backgroundColor: '#8B008B',
       data: [
-        <?= $jumlah_sd_pns; ?>,
-        <?= $jumlah_smp_pns; ?>,
-        <?= $jumlah_smak_pns; ?>,
-        <?= $jumlah_d1_pns; ?>,
-        <?= $jumlah_d2_pns; ?>,
-        <?= $jumlah_d3_pns; ?>,
-        <?= $jumlah_d4_pns; ?>,
-        <?= $jumlah_s1_pns; ?>,
-        <?= $jumlah_s2_pns; ?>,
-        <?= $jumlah_s3_pns; ?>
+        <?= filter_var($jumlah_sd_pns, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+        <?= filter_var($jumlah_smp_pns, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+        <?= filter_var($jumlah_smak_pns, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+        <?= filter_var($jumlah_d1_pns, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+        <?= filter_var($jumlah_d2_pns, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+        <?= filter_var($jumlah_d3_pns, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+        <?= filter_var($jumlah_d4_pns, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+        <?= filter_var($jumlah_s1_pns, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+        <?= filter_var($jumlah_s2_pns, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+        <?= filter_var($jumlah_s3_pns, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>
       ]
     }, {
       label: 'Non-PNS',
       backgroundColor: '#FF8C00',
       data: [
-        <?= $jumlah_sd_nonpns; ?>,
-        <?= $jumlah_smp_nonpns; ?>,
-        <?= $jumlah_smak_nonpns; ?>,
-        <?= $jumlah_d1_nonpns; ?>,
-        <?= $jumlah_d2_nonpns; ?>,
-        <?= $jumlah_d3_nonpns; ?>,
-        <?= $jumlah_d4_nonpns; ?>,
-        <?= $jumlah_s1_nonpns; ?>,
-        <?= $jumlah_s2_nonpns; ?>,
-        <?= $jumlah_s3_nonpns; ?>
+        <?= filter_var($jumlah_sd_nonpns, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+        <?= filter_var($jumlah_smp_nonpns, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+        <?= filter_var($jumlah_smak_nonpns, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+        <?= filter_var($jumlah_d1_nonpns, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+        <?= filter_var($jumlah_d2_nonpns, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+        <?= filter_var($jumlah_d3_nonpns, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+        <?= filter_var($jumlah_d4_nonpns, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+        <?= filter_var($jumlah_s1_nonpns, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+        <?= filter_var($jumlah_s2_nonpns, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+        <?= filter_var($jumlah_s3_nonpns, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>
       ]
     }]
   };
@@ -802,7 +806,11 @@
       labels: ["18 - 30", "31 - 40", "41 - 50", ">50"],
       datasets: [{
         label: "Jumlah",
-        data: [<?= $satupns; ?>, <?= $duapns; ?>, <?= $tigapns; ?>, <?= $empatpns; ?>],
+        data: [<?= filter_var($satupns, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+          <?= filter_var($duapns, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+          <?= filter_var($tigapns, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+          <?= filter_var($empatpns, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>
+        ],
         backgroundColor: "rgba(43, 191, 254, 0)",
         hoverBorderColor: "rgba(43, 191, 254, 1)",
         borderColor: "rgb(43, 191, 254)",
@@ -887,10 +895,20 @@
   var pensiunchart = new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: [<?= Date('Y'); ?>, <?= (Date('Y') + 1); ?>, <?= (Date('Y') + 2); ?>, <?= (Date('Y') + 3); ?>, <?= (Date('Y') + 4); ?>],
+      labels: [<?= filter_var(Date('Y'), FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+        <?= filter_var((Date('Y') + 1), FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+        <?= filter_var((Date('Y') + 2), FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+        <?= filter_var((Date('Y') + 3), FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+        <?= filter_var((Date('Y') + 4), FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>
+      ],
       datasets: [{
         label: "Jumlah",
-        data: [<?= $total1; ?>, <?= $total2; ?>, <?= $total3; ?>, <?= $total4; ?>, <?= $total5; ?>],
+        data: [<?= filter_var($total1, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+          <?= filter_var($total2, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+          <?= filter_var($total3, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+          <?= filter_var($total4, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+          <?= filter_var($total5, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>
+        ],
         backgroundColor: ['#DEB887', '#5F9EA0', '#7FFF00', '#D2691E', '#FF7F50'],
         // hoverBackgroundColor: ['#DAA520', '#2e59d9'],
         hoverBorderColor: "rgba(234, 236, 244, 1)",
@@ -977,46 +995,46 @@
         label: "Laki-laki",
         backgroundColor: '#DAA520',
         data: [
-          <?= $satualk; ?>,
-          <?= $satublk; ?>,
-          <?= $satuclk; ?>,
-          <?= $satudlk; ?>,
-          <?= $duaalk; ?>,
-          <?= $duablk; ?>,
-          <?= $duaclk; ?>,
-          <?= $duadlk; ?>,
-          <?= $tigaalk; ?>,
-          <?= $tigablk; ?>,
-          <?= $tigaclk; ?>,
-          <?= $tigadlk; ?>,
-          <?= $empatalk; ?>,
-          <?= $empatblk; ?>,
-          <?= $empatclk; ?>,
-          <?= $empatdlk; ?>,
-          <?= $empatelk; ?>
+          <?= filter_var($satualk, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+          <?= filter_var($satublk, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+          <?= filter_var($satuclk, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+          <?= filter_var($satudlk, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+          <?= filter_var($duaalk, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+          <?= filter_var($duablk, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+          <?= filter_var($duaclk, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+          <?= filter_var($duadlk, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+          <?= filter_var($tigaalk, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+          <?= filter_var($tigablk, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+          <?= filter_var($tigaclk, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+          <?= filter_var($tigadlk, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+          <?= filter_var($empatalk, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+          <?= filter_var($empatblk, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+          <?= filter_var($empatclk, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+          <?= filter_var($empatdlk, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+          <?= filter_var($empatelk, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>
         ],
         hoverBorderColor: "rgba(234, 236, 244, 1)",
       }, {
         label: "Perempuan",
         backgroundColor: '#FFD700',
         data: [
-          <?= $satuapr; ?>,
-          <?= $satubpr; ?>,
-          <?= $satucpr; ?>,
-          <?= $satudpr; ?>,
-          <?= $duaapr; ?>,
-          <?= $duabpr; ?>,
-          <?= $duacpr; ?>,
-          <?= $duadpr; ?>,
-          <?= $tigaapr; ?>,
-          <?= $tigabpr; ?>,
-          <?= $tigacpr; ?>,
-          <?= $tigadpr; ?>,
-          <?= $empatapr; ?>,
-          <?= $empatbpr; ?>,
-          <?= $empatcpr; ?>,
-          <?= $empatdpr; ?>,
-          <?= $empatepr; ?>
+          <?= filter_var($satuapr, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+          <?= filter_var($satubpr, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+          <?= filter_var($satucpr, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+          <?= filter_var($satudpr, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+          <?= filter_var($duaapr, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+          <?= filter_var($duabpr, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+          <?= filter_var($duacpr, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+          <?= filter_var($duadpr, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+          <?= filter_var($tigaapr, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+          <?= filter_var($tigabpr, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+          <?= filter_var($tigacpr, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+          <?= filter_var($tigadpr, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+          <?= filter_var($empatapr, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+          <?= filter_var($empatbpr, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+          <?= filter_var($empatcpr, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+          <?= filter_var($empatdpr, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>,
+          <?= filter_var($empatepr, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>
         ],
         hoverBorderColor: "rgba(234, 236, 244, 1)",
       }],
