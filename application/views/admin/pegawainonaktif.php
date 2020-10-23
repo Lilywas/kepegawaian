@@ -87,14 +87,13 @@
 
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-          <button type="submit" value="1" name="simpan" class="btn btn-primary"> Simpan
-          </button>
+          <button type="submit" value="1" name="simpan" class="btn btn-primary">Simpan</button>
         </div>
-
       </form>
     </div>
   </div>
 </div>
+
 
 <!-- MODAL DETAIL PEGAWAI -->
 <?php
